@@ -30,7 +30,7 @@
 
   <div class="col-md-12 mt-20 no-padding">
   <h5 class="border-bottom mb-10">
-    List of my characters
+    List of my characters:
   </h5>
 </div>
 @foreach(Helpers::getAccountCharacters() as $character)
