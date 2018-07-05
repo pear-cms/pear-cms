@@ -1,7 +1,17 @@
 @extends('partials.layout')
 
 @section('content')
-<div class="container">
+<div class="third-page">
+  <div class="half-page-content mt-20">
+    <h4 class="text-header text-upper">
+      Register Account
+    </h4>
+    <p class="text-beige col-md-6 col-center">
+      Register an account below by entering your desired account information.
+    </p>
+  </div>
+</div>
+<div class="container col-md-6 mt-20">
   <form action="{{ route('register') }}" method="POST">
     @csrf
     @if($errors->all())
@@ -52,7 +62,7 @@
 {!! Recaptcha::render() !!}
 </div>
 <div class="form-group text-center">
-<button type="submit" class="button border yellow center">
+<button type="submit" class="button border orange">
 Count me in!
 </button>
 </div>

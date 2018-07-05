@@ -61,6 +61,9 @@
               <a class="nav-link" href="#">Community</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="{{ url('/connection-guide') }}">Connection Guide</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link disabled" href="#">Shop</a>
             </li>
           </ul>
@@ -80,6 +83,9 @@
               <a class="dropdown-item" href="{{ url('/acp') }}">
                 Account Panel
               </a>
+              <a class="dropdown-item" href="{{ url('/donate') }}">
+                Donate to {{ env('APP_NAME') }}
+              </a>
               <a class="dropdown-item" href="{{ url('/logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                 Log out
               </a>
@@ -97,49 +103,6 @@
         </div>
       </nav>
 
-      <div class="bottom-sticky">
-        <div class="container text-center mt-15">
-        <h6 class="text-white inline-block mr-15">
-          <img src="{{ asset('images/logo/logo_64.png') }}" width="32" height="32" /> Pear CMS release
-        </h6>
-        <div class="ticker vertical-align-middle text-center">
-          <div class="inner" id="days">
-            ??
-          </div>
-          <div class="countdown text-grey text-small text-upper">
-            days
-          </div>
-        </div>
-
-        <div class="ticker vertical-align-middle text-center">
-          <div class="inner" id="hours">
-            ??
-          </div>
-          <div class="countdown text-grey text-small text-upper">
-            hours
-          </div>
-        </div>
-
-        <div class="ticker vertical-align-middle text-center">
-          <div class="inner" id="mins">
-            ??
-          </div>
-          <div class="countdown text-grey text-small text-upper">
-            mins
-          </div>
-        </div>
-
-        <div class="ticker vertical-align-middle text-center">
-          <div class="inner" id="secs">
-            ??
-          </div>
-          <div class="countdown text-grey text-small text-upper">
-            secs
-          </div>
-        </div>
-
-      </div>
-      </div>
 
       <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
           {{ csrf_field() }}

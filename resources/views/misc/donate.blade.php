@@ -1,7 +1,17 @@
 @extends('partials.layout')
 
 @section('content')
-<div class="container">
+<div class="third-page">
+  <div class="half-page-content mt-20">
+    <h4 class="text-header text-upper">
+      Donate to {{ env('APP_NAME') }}
+    </h4>
+    <p class="text-beige col-md-6 col-center">
+      Donate to us and receive donation points in order to purchase in-game cosmetic items.
+    </p>
+  </div>
+</div>
+<div class="container col-md-6 mt-20">
   @if (Session::has('success'))
                 {{ Session::get('success') }}
                 @endif
@@ -28,7 +38,7 @@
   </div>
 
 <div class="form-group text-center">
-<button type="submit" class="button border yellow center">
+<button type="submit" class="button border orange">
 Donate
 </button>
 </div>

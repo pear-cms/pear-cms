@@ -74,7 +74,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'username'  => 'required|max:30|unique:auth.account',
             'email'     => 'required|email|max:255|unique:auth.account|unique:auth.account,reg_mail',
-            'password'  => 'required|min:6|confirmed',
+            'password'  => 'required|min:6|confirmed|max:30|alpha_num',
             'g-recaptcha-response' => 'required|recaptcha',
         ]);
     }
@@ -104,13 +104,6 @@ class RegisterController extends Controller
         }
 
         $data = Account::create($account);
-
-    DB::connection('auth')->table('rbac_account_permissions')->insert([
-          'accountId'     => $data->id,
-          'permissionId'  => '199',
-          'granted'       => '1',
-          'realmId'       => '-1'
-         ]);
 
     	return $data;
     }

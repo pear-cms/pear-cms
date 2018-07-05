@@ -323,7 +323,36 @@ border: 1px solid #fff;
   margin-top: 5px;
 }
 
+.form-control {
+  color: #707070;
+  background-color: #242424;
+  border: 1px solid #323232;
+  border-radius: 0px;
+}
 
+.form-control:focus {
+    color: #909090;
+    background-color: #242424;
+    border-color: #404040;
+    box-shadow: none;
+}
+
+.form-control::placeholder {
+  color: #707070;
+}
+
+.text-muted {
+  color: #505050 !important;
+}
+
+.form.error {
+  background:#c0392b;
+  text-align: center;
+  color: #FFF;
+  padding: 5px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
 
 
 
