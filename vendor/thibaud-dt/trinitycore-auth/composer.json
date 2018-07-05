@@ -1,0 +1,41 @@
+{
+    "name": "thibaud-dt/trinitycore-auth",
+    "description": "Laravel package for TrinityCore Authentification",
+    "keywords": [
+        "auth",
+        "authentication",
+        "trinitycore",
+        "laravel"
+    ],
+    "license": "GPL-3.0",
+    "homepage": "https://github.com/Thibaud-DT/trinitycore-auth",
+    "authors": [
+        {
+            "name": "Thibaud DELOBELLE TOUSSAINT",
+            "email": "thibaud@d-t.fr",
+            "homepage": "http://thibaud.d-t.fr",
+            "role": "Developer"
+        }
+    ],
+    "prefer-stable": true,
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^5.5.9 || ^7.0",
+        "thibaud-dt/trinitycore-models": ">=0.1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "ThibaudDT\\TrinityCoreAuth\\": "src/"
+        }
+    },
+    "extra": {
+    "laravel": {
+      "providers": [
+        "ThibaudDT\\TrinityCoreAuth\\Providers\\TrinityCoreAuthServiceProvider"
+      ],
+      "aliases": {
+        "ThibaudDT": "Flashadvocate\\TrinityCoreAuth\\Facades\\TrinityCore"
+      }
+    }
+  }
+}
