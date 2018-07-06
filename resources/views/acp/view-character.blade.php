@@ -14,7 +14,7 @@
 <div class="row">
   <div class="col-md-12">
   <h5 class="border-bottom mb-10">
-    <img src="{{ asset('images/races') }}/{{ $character->race }}_{{ $character->gender }}.jpg" /> {{ $character->name}}, level {{ $character->level }}
+    <img alt="{{ $character->name }}" src="{{ asset('images/races') }}/{{ $character->race }}_{{ $character->gender }}.jpg" /> {{ $character->name}}, Level {{ $character->level }}
     <span class="float-right">{{ Helpers::MapIdToZoneName($character->map )}}</span>
   </h5>
 </div>
@@ -37,13 +37,19 @@
   </h5>
   </div>
 
+  <div class="col-md-12">
+  <h5 class="border-bottom mb-10">
+    Online Status <span class="float-right">{{ Helpers::getCharacterStatus($character->online) }}</span>
+  </h5>
+  </div>
+
   <div class="col-md-12 mt-20">
   <h5 class="border-bottom mb-10">
     Current money
     <span class="float-right">
-    <img src="{{ asset('images/icons/gold.png') }}" /> {{ floor($character->money / 10000) }}g
-    <img src="{{ asset('images/icons/silver.png') }}" /> {{ floor($character->money % 10000 / 100) }}s
-    <img src="{{ asset('images/icons/copper.png') }}" /> {{ floor($character->money % 100) }}c
+    {{ floor($character->money / 10000) }} <img alt="gold" src="{{ asset('images/icons/gold.png') }}" />
+    {{ floor($character->money % 10000 / 100) }} <img alt="silver" src="{{ asset('images/icons/silver.png') }}" />
+    {{ floor($character->money % 100) }} <img alt="copper" src="{{ asset('images/icons/copper.png') }}" />
   </span>
   </h5>
 </div>

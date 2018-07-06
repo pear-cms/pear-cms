@@ -123,6 +123,18 @@ class Helpers {
       return 'offline';
     }
   }
+
+  public static function getCharacterStatus($status)
+  {
+    // returns online or offline for requested account.
+    if ( $status )
+    {
+      return 'Online';
+    } else {
+      return 'Offline';
+    }
+  }
+
   public static function getAccountCharacters()
   {
     // returns the charcaters of the account requesting it.
@@ -147,6 +159,35 @@ class Helpers {
     return DB::connection('website')->table('news')->where('id', $id)->first();
   }
 
+  public static function hashPassword($pass)
+  {
+    $user = strtoupper(Auth::user()->username);
+    $pass = strtoupper($pass);
+    return strtoupper(sha1($user.':'.$pass));
+  }
+
+  public static function ChangePassword($oldpass, $newpass)
+  {
+    if ( DB::connection('auth')->table('account')->where(['username' => Auth::user()->username, 'sha_pass_hash' => Helpers::hashPassword($oldpass)])->first() )
+    {
+      $client = new SoapClient(NULL, array(
+      'location'    => "http://" . env('SOAP_HOST') .":" . env('SOAP_PORT') . "/",
+      'uri'         => 'urn:TC',
+      'style'       => SOAP_RPC,
+      'login'       => env('SOAP_USERNAME'),
+      'password'    => env('SOAP_PASSWORD'),
+      ));
+      $command = 'acc set password '. Auth::user()->username .' ' . $newpass . ' ' . $newpass;
+      if ( $result = $client->executeCommand(new SoapParam($command, 'command')) ) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
+
+  }
 
   public static function getTotalAccountsInNumbers()
   {
@@ -154,7 +195,7 @@ class Helpers {
     return DB::connection('auth')->table('account')->get()->count();
   }
 
-  public static function getAccountCharctersNumbers()
+  public static function getAccountCharactersNumbers()
   {
     // returns the characters in an int format:
     return DB::connection('characters')->table('characters')->where('account', Auth::user()->id)->count();

@@ -25,7 +25,7 @@
     <body>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="{{ url('/') }}">
-          <img src="{{ asset('images/logo/logo_64.png') }}" width="32" height="32" />
+          <img alt="logo" src="{{ asset('images/logo/logo_64.png') }}" width="32" height="32" />
         </a>
         <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span> </span>
@@ -96,7 +96,7 @@
             <a class="nav-link" href="{{ url('/login') }}">Log in</a>
           </li>
           <li class="nav-item red">
-            <a class="nav-link" href="{{ url('/register') }}">Regsiter</a>
+            <a class="nav-link" href="{{ url('/register') }}">Register</a>
           </li>
           @endif
           </ul>

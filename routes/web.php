@@ -56,5 +56,30 @@ Route::group(['middleware' => ['\App\Http\Middleware\AuthMaintenance::class']], 
       }
   })->middleware('auth');
 
+  Route::get('/acp/password', function () {
+        return view('acp.change-password', ['title' => 'Change Password']);
+  })->middleware('auth');
+
+  Route::post('/acp/password', function () {
+    $oldpass = request()->oldpass;
+    $password = request()->password;
+    $confirmpassword = request()->confirmpassword;
+    if ( $oldpass == $password ) {
+      return redirect('/acp/password')->with('fail', 'Current and new password should be different!');
+    }
+    if ( $password == $confirmpassword ) {
+      	   if ( Helpers::ChangePassword($oldpass, $password) )
+    	      {
+              return redirect('/acp/password')->with('success', 'Successfully changed your password!');
+              //return redirect('/acp');
+    	     } else {
+              return redirect('/acp/password')->with('fail', 'You entered a wrong password!');
+    	        //return redirect('acp.change-password', ['title' => 'Change Password']->with('fail', 'Password change was unsuccessful. Try again?'));
+    	     }
+    } else {
+      return redirect('/acp/password')->with('fail', 'The new password and confirmed password must match.');
+    }
+  })->middleware('auth');
+
 TrinityCoreAuth::routes();
 });

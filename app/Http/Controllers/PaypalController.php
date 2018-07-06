@@ -120,7 +120,7 @@ class PaypalController extends Controller
     Session::forget('paypal_payment_id');
 
     if (empty($request->input('PayerID')) || empty($request->input('token'))) {
-      return redirect('/donate')->with('fail', 'Payment faileld somehow.');
+      return redirect('/donate')->with('fail', 'Payment failed somehow.');
     }
 
     $payment = Payment::get($payment_id, $this->_api_context);

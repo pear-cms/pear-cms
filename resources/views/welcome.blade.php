@@ -21,6 +21,14 @@
       </a>
     </div>
   </div>
+  @else
+  <div class="container col-md-6">
+  <div class="row justify-content-md-center mt-20">
+    <a class="button border orange col-md-4" href="{{ url('/acp') }}">
+      Account Panel
+    </a>
+  </div>
+</div>
   @endif
   </div>
 </div>
@@ -40,6 +48,7 @@
       </p>
       <h4 class="news-article-title">
         Introducing Pear CMS!
+      </h4>
       </div>
       <div class="news-article-fade"></div>
     </a>
@@ -51,6 +60,7 @@
       </p>
       <h4 class="news-article-title">
         Pear CMS fixes!
+      </h4>
       </div>
       <div class="news-article-fade"></div>
     </a>

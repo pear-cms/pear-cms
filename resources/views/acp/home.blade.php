@@ -21,23 +21,31 @@
 <a class="button border orange col-sm" href="#">
   Change Avatar
 </a>
-  <a class="button border orange col-sm" href="#">
+  <a class="button border orange col-sm" href="{{ url('/acp/password') }}">
     Change password
   </a>
   <a class="button border orange col-sm" href="#">
     my tickets
   </a>
-
+  <a class="button border orange col-sm" href="{{ url('/logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+    Log out
+  </a>
   <div class="col-md-12 mt-20 no-padding">
   <h5 class="border-bottom mb-10">
     List of my characters:
   </h5>
 </div>
+
 @foreach(Helpers::getAccountCharacters() as $character)
 <a class="button border orange col-sm-5" href="{{ url('/acp/character') }}/{{ $character->name }}">
-  <img src="{{ asset('images/races') }}/{{ $character->race }}_{{ $character->gender }}.jpg" /> {{ $character->name }}
+  <img alt="{{ $character->name }}" src="{{ asset('images/races') }}/{{ $character->race }}_{{ $character->gender }}.jpg" /> {{ $character->name }}
 </a>
 @endforeach
+@if (Helpers::getAccountCharactersNumbers() == 0)
+<p>
+  You don't have any characters!
+</p>
+@endif
 
 </div>
 </div>
