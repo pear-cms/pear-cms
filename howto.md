@@ -20,8 +20,6 @@ $ php artisan key:generate
 ##5. Add this to your 'httpd-vhosts.conf' located in 'apache/conf/extra/'
 
 ```sh
-$ php artisan key:generate
-```sh
 $ <VirtualHost *:80>
 $ 	DocumentRoot "YOUR APACHE WWW DIRECTORY/Pear CMS Directory/public"
 $ 	ServerAdmin *** YOUR EMAIL ***
