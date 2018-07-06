@@ -21,7 +21,9 @@ $ php artisan key:generate
 
 ```sh
 $ php artisan key:generate
-```<VirtualHost *:80>
-	DocumentRoot "YOUR APACHE WWW DIRECTORY/Pear CMS Directory/public"
-	ServerAdmin *** YOUR EMAIL ***
-</VirtualHost>```
+```sh
+$ <VirtualHost *:80>
+$ 	DocumentRoot "YOUR APACHE WWW DIRECTORY/Pear CMS Directory/public"
+$ 	ServerAdmin *** YOUR EMAIL ***
+$ </VirtualHost>
+```
