@@ -25,3 +25,12 @@ $ 	DocumentRoot "YOUR APACHE WWW DIRECTORY/Pear CMS Directory/public"
 $ 	ServerAdmin *** YOUR EMAIL ***
 $ </VirtualHost>
 ```
+
+Example:
+
+```sh
+$ <VirtualHost *:80>
+$ 	DocumentRoot "C:/xampp/htdocs/pear/public"
+$ 	ServerAdmin himikoemu@gmail.com
+$ </VirtualHost>
+```
