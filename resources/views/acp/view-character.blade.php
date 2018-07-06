@@ -21,7 +21,7 @@
 
   <div class="col-md-12">
   <h5 class="border-bottom mb-10">
-    Total honor points <span class="float-right">{{ $character->totalHonorPoints }}</span>
+    Total Honor Points <span class="float-right">{{ $character->totalHonorPoints }}</span>
   </h5>
   </div>
 

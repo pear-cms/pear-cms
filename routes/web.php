@@ -81,5 +81,38 @@ Route::group(['middleware' => ['\App\Http\Middleware\AuthMaintenance::class']], 
     }
   })->middleware('auth');
 
+  Route::get('/acp/tickets', function () {
+        return view('acp.view-tickets', ['title' => 'My Tickets']);
+  })->middleware('auth');
+
+  Route::get('/acp/character/ticket/{name}/{id}', function ($name, $id) {
+      if ( Helpers::CharacterBelongsToId($name, Auth::user()->id))
+      {
+        $data = Helpers::getCharacterDataByName($name);
+        if ( Helpers::TicketBelongsToCharacter($data->guid, $id)) {
+          $data = Helpers::getGamemasterTicket($id);
+          return view('acp.view-ticket', ['title' => $name . '\'s Tickets', 'ticket' => $data]);
+        } else {
+          return redirect('/acp');
+        }
+      } else {
+        // Character do not belong to the id attempting to access it. Redirect to acp.
+        return redirect('/acp');
+      }
+  })->middleware('auth');
+
+  Route::get('/acp/character/tickets/{name}', function ($name) {
+      if ( Helpers::CharacterBelongsToId($name, Auth::user()->id))
+      {
+        // Character belongs to the id accessing it.
+        $data = Helpers::getCharacterDataByName($name);
+        //return view('acp.view-character-tickets', ['title' => $name . '\'s Tickets']);
+        return view('acp.view-character-tickets', ['title' => $name . '\'s Tickets', 'character' => $data]);
+      } else {
+        // Character do not belong to the id attempting to access it. Redirect to acp.
+        return redirect('/acp');
+      }
+  })->middleware('auth');
+
 TrinityCoreAuth::routes();
 });

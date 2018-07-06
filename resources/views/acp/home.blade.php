@@ -24,7 +24,7 @@
   <a class="button border orange col-sm" href="{{ url('/acp/password') }}">
     Change password
   </a>
-  <a class="button border orange col-sm" href="#">
+  <a class="button border orange col-sm" href="{{ url('/acp/tickets') }}">
     my tickets
   </a>
   <a class="button border orange col-sm" href="{{ url('/logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">

@@ -135,6 +135,17 @@ class Helpers {
     }
   }
 
+  public static function getTicketStatus($status)
+  {
+    // returns online or offline for requested account.
+    if ( $status )
+    {
+      return 'Closed';
+    } else {
+      return 'Open';
+    }
+  }
+
   public static function getAccountCharacters()
   {
     // returns the charcaters of the account requesting it.
@@ -304,6 +315,17 @@ class Helpers {
       return false;
     }
   }
+
+  public static function TicketBelongsToCharacter($guid, $id)
+  {
+    if (DB::connection('characters')->table('gm_ticket')->where(['playerGuid' => $guid, 'id' => $id])->first())
+    {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   public static function secondsToTime($seconds) {
     $dtF = new \DateTime('@0');
     $dtT = new \DateTime("@$seconds");
@@ -345,9 +367,24 @@ class Helpers {
     return DB::connection('characters')->table('gm_ticket')->where('completed', '1')->count();
   }
 
+  public static function limitTicketLength($string)
+  {
+    if (strlen($string) > 15) {
+      $str = substr($string, 0, 12) . "...";
+    } else {
+      $str = $string;
+    }
+    return $str;
+  }
+
   public static function getCompletedGamemasterTickets()
   {
     return DB::connection('characters')->table('gm_ticket')->where('completed', '1')->get();
+  }
+
+  public static function getCharacterTickets($guid)
+  {
+    return DB::connection('characters')->table('gm_ticket')->where('playerGuid', $guid)->get();
   }
 
   public static function resolveGamemasterTicket($id)
