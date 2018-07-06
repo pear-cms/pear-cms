@@ -387,6 +387,11 @@ class Helpers {
     return DB::connection('characters')->table('gm_ticket')->where('playerGuid', $guid)->get();
   }
 
+  public static function getCharacterTicketsCount($guid)
+  {
+    return DB::connection('characters')->table('gm_ticket')->where('playerGuid', $guid)->count();
+  }
+
   public static function resolveGamemasterTicket($id)
   {
     $client = new SoapClient(NULL, array(

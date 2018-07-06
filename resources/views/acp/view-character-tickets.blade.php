@@ -18,7 +18,7 @@
     {{ $character->name }}'s tickets
   </h5>
 </div>
-
+@if ( Helpers::getCharacterTicketsCount($character->guid) > 0)
 <table class="table">
   <thead>
     <tr>
@@ -39,6 +39,9 @@
     @endforeach
   </tbody>
 </table>
+@else
+  <p>{{$character->name}} has no tickets made.</p>
+@endif
 </div>
 </div>
 @endsection
