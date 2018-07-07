@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="{{ app()->getLocale() }}">
     <head>
-        <link rel="shortcut icon" href="{{ asset('images/logo/favicon.ico') }}" type="image/x-icon" />
+        <link rel="shortcut icon" href="{{ asset('images/logo/favicon_new.ico') }}" type="image/x-icon" />
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="csrf-token" content="{{ csrf_token() }}">

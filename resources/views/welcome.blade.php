@@ -40,30 +40,19 @@
         Latest news
       </h4>
     </div>
-
-    <a class="news-article col-sm" href="#" style="background-image:url('{{ asset('images/news/news_image_1.jpg') }}')">
+    @foreach ( Helpers::getNewsArticles() as $news)
+    <a class="news-article col-sm" href="{{ url('/news/')}}/{{$news->id}}" style="background-image:url('{{ asset('images/news/' . $news->picture) }}')">
       <div class="news-article-bottom col-md-12">
       <p class="news-article-date">
-        June 5th, 2018
+        {{date('M d, Y', $news->date)}}
       </p>
       <h4 class="news-article-title">
-        Introducing Pear CMS!
+        {{ucwords($news->title)}}
       </h4>
       </div>
       <div class="news-article-fade"></div>
     </a>
-
-    <a class="news-article col-sm" href="#" style="background-image:url('{{ asset('images/news/news_image_2.jpg') }}')">
-      <div class="news-article-bottom col-md-12">
-      <p class="news-article-date">
-        June 4th, 2018
-      </p>
-      <h4 class="news-article-title">
-        Pear CMS fixes!
-      </h4>
-      </div>
-      <div class="news-article-fade"></div>
-    </a>
+    @endforeach
 
 </div>
 </div>

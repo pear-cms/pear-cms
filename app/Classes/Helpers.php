@@ -21,6 +21,7 @@ class Helpers {
 
   public static function getRealmStatus($port)
   {
+    // returns the realm status.
     error_reporting(0);
     $fp = (fsockopen(env('REALM_IP'), $port,$errno,$errstr,3));
     if($fp) {
@@ -45,7 +46,7 @@ class Helpers {
 
   public static function getRealms()
   {
-    // returns allrealms.
+    // returns all realms.
     return DB::connection('auth')->table('realmlist')->get();
   }
 

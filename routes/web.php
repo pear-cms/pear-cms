@@ -118,5 +118,14 @@ Route::group(['middleware' => ['\App\Http\Middleware\AuthMaintenance::class']], 
       return view('misc.status', ['title' => "Server Status"]);
   });
 
+  Route::get('news/{id}', function($id) {
+    $data = Helpers::getNewsArticle($id);
+    if ( $data ) {
+      return view('misc.news', ['title' =>'Viewing News #' . $id, 'news' => $data]);
+    } else {
+      return redirect('/');
+    }
+  });
+
 TrinityCoreAuth::routes();
 });

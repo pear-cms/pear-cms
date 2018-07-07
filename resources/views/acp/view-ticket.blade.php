@@ -16,7 +16,7 @@
 
   <div class="col-md-12">
   <h5 class="border-bottom mb-10">
-    Created by: <span class="float-right">{{ $ticket->name }}</span>
+    Created By <span class="float-right">{{ $ticket->name }}</span>
   </h5>
   </div>
 
