@@ -49,6 +49,9 @@
       <h4 class="news-article-title">
         {{ucwords($news->title)}}
       </h4>
+      <h4 class="news-article-description">
+        {{ucfirst($news->description)}}
+      </h4>
       </div>
       <div class="news-article-fade"></div>
     </a>

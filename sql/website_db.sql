@@ -17,6 +17,7 @@ CREATE TABLE `news` (
 	`id` INT(11) NOT NULL AUTO_INCREMENT,
 	`title` VARCHAR(50) NOT NULL DEFAULT 'Title',
 	`description` VARCHAR(255) NOT NULL DEFAULT 'Description',
+	`content` VARCHAR(65000) NOT NULL DEFAULT 'Content',
 	`picture` VARCHAR(50) NOT NULL DEFAULT 'news_image_1.jpg',
 	`date` INT(20) NOT NULL DEFAULT '0',
 	PRIMARY KEY (`id`)
@@ -24,4 +25,5 @@ CREATE TABLE `news` (
 ENGINE=InnoDB
 AUTO_INCREMENT=1
 ;
+
 
