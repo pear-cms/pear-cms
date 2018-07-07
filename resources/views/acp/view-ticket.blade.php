@@ -37,7 +37,27 @@
     Ticket Status <span class="float-right">{{Helpers::getTicketStatus($ticket->type)}}</span>
   </h5>
   </div>
-
+  @if ( $ticket->type  == 0)
+  @if ( $ticket->assignedTo  > 0)
+  <div class="col-md-12">
+  <h5 class="border-bottom mb-10">
+    Assigned To <span class="float-right">GM {{Helpers::getCharacterNameFromGuid($ticket->assignedTo)}}</span>
+  </h5>
+  </div>
+  @endif
+  @else
+  @if ( $ticket->closedBy  > 0)
+  <div class="col-md-12">
+  <h5 class="border-bottom mb-10">
+    @if ( $ticket->closedBy  == Helpers::getCharacterDataByName($ticket->name)->guid)
+    Closed By <span class="float-right">You</span>
+    @else
+    Closed By <span class="float-right">GM {{Helpers::getCharacterNameFromGuid($ticket->closedBy)}}</span>
+    @endif
+  </h5>
+  </div>
+  @endif
+  @endif
   <div class="col-md-12 mt-20">
   <h5 class="border-bottom mb-10">
     Description:

@@ -19,14 +19,14 @@ class Helpers {
     }
   }
 
-  public static function getRealmStatus()
+  public static function getRealmStatus($port)
   {
-    // returns the realm status.
-    if (! @fsockopen(env('REALM_IP', 'localhost'), '8085', $errorno, $errorstr, 1) )
-    {
-      $realmStatus = 'offline';
-    } else {
-      $realmStatus = 'online';
+    error_reporting(0);
+    $fp = (fsockopen(env('REALM_IP'), $port,$errno,$errstr,3));
+    if($fp) {
+      return "Online";
+    }else{
+      return "Offline";
     }
     return $realmStatus;
   }
@@ -41,6 +41,12 @@ class Helpers {
       } else {
         return false;
       }
+  }
+
+  public static function getRealms()
+  {
+    // returns allrealms.
+    return DB::connection('auth')->table('realmlist')->get();
   }
 
   public static function getOnlinePlayers()

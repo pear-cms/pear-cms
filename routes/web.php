@@ -114,5 +114,9 @@ Route::group(['middleware' => ['\App\Http\Middleware\AuthMaintenance::class']], 
       }
   })->middleware('auth');
 
+  Route::get('/status', function () {
+      return view('misc.status', ['title' => "Server Status"]);
+  });
+
 TrinityCoreAuth::routes();
 });
