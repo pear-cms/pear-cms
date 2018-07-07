@@ -25,14 +25,14 @@
   <label for="username">
     Username
   </label>
-  <input type="username" class="form-control" id="username" name="username" aria-describedby="usernamehelp" placeholder="Enter your cool username..." value="{{ old('username') }}" />
+  <input type="text" class="form-control" id="username" name="username" placeholder="Enter your cool username..." value="{{ old('username') }}" />
 </div>
 
 <div class="form-group">
 <label for="password">
   Password
 </label>
-<input type="password" class="form-control" id="password" name="password" aria-describedby="passwordhelp" placeholder="Enter your strong password..." />
+<input type="password" class="form-control" id="password" name="password" placeholder="Enter your strong password..." />
 </div>
 
 <div class="form-group">

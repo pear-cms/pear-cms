@@ -1,29 +1,33 @@
 @extends('partials.layout')
-
 @section('content')
-<div class="third-page" style="background-image:url('{{ asset('images/news/' . $news->picture) }}')">
+<div class="third-page">
   <div class="half-page-content mt-20">
     <h4 class="text-header text-upper">
-      Viewing News #{{$news->id}}
+      Displaying all news
     </h4>
     <p class="text-beige col-md-6 col-center">
-      You are currently viewing news #{{$news->id}}
+      Here are all news that {{env('APP_NAME')}} currently has.
     </p>
   </div>
 </div>
-<div>
-<div class="container col-md-6 mt-20">
+<div class="container col-md-6 text-grey mt-20">
 <div class="row">
-  <a class="news-article col-sm" style="background-image:url('{{ asset('images/news/' . $news->picture) }}')"> </a>
-  <div class="col-md-12 mt-20">
-  <h5 class="border-bottom mb-10">
-    {{ucwords($news->title)}}<span class="float-right">Posted on {{date('H:i:s M d, Y', $news->date)}}</span>
-  </h5>
-  <p>
-    {{ucfirst($news->content)}}
+@foreach (Helpers::getAllNewsArticles() as $news)
+<a class="news-article col-sm-12 mt-20" href="{{ url('/news/')}}/{{$news->id}}" style="background-image:url('{{ asset('images/news/' . $news->picture) }}')">
+  <div class="news-article-bottom col-md-12">
+  <p class="news-article-date">
+    {{date('M d, Y', $news->date)}}
   </p>
+  <h4 class="news-article-title">
+    {{ucwords($news->title)}}
+  </h4>
+  <h4 class="news-article-description">
+    {{ucfirst($news->description)}}
+  </h4>
   </div>
-</div>
+  <div class="news-article-fade"></div>
+</a>
+@endforeach
 </div>
 </div>
 @endsection

@@ -26,7 +26,7 @@
     <label for="email">
       Email address
     </label>
-    <input type="email" class="form-control" id="email" name="email" aria-describedby="emailhelp" placeholder="Enter your email..." value="{{ old('email') }}" />
+    <input type="email" class="form-control" id="email" name="email" aria-describedby="emailhelp" placeholder="Enter your email..." />
     <small id="emailhelp" class="form-text text-muted">
       We promise not to send you anything inappropriate or share your email address among third parties.
     </small>
@@ -36,8 +36,8 @@
   <label for="username">
     Username
   </label>
-  <input type="username" class="form-control" id="username" name="username" aria-describedby="usernamehelp" placeholder="Enter a cool username..." value="{{ old('username') }}" />
-  <small id="emailhelp" class="form-text text-muted">
+  <input type="text" class="form-control" id="username" name="username" aria-describedby="usernamehelp" placeholder="Enter a cool username..." />
+  <small id="usernamehelp" class="form-text text-muted">
     Do not enter an inappropriate name as they may be suspended.
   </small>
 </div>
@@ -47,7 +47,7 @@
   Password
 </label>
 <input type="password" class="form-control" id="password" name="password" aria-describedby="passwordhelp" placeholder="Enter a strong password..." />
-<small id="emailhelp" class="form-text text-muted">
+<small id="passwordhelp" class="form-text text-muted">
   A strong password is the key to keeping your account secured!
 </small>
 </div>

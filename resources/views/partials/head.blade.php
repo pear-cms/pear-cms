@@ -54,8 +54,8 @@
               <p>
                 News at a glance.
               </p>
-              <a class="dropdown-item" href="#">View all news</a>
-              <a class="dropdown-item" href="#">View server status</a>
+              <a class="dropdown-item" href="{{url('/news')}}">View all news</a>
+              <a class="dropdown-item" href="{{url('/status')}}">View server status</a>
             </div>
           </li>
             <li class="nav-item">

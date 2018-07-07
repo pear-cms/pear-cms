@@ -31,21 +31,21 @@
   <label for="oldpass">
     Old Password
   </label>
-  <input type="password" class="form-control" id="oldpass" name="oldpass" aria-describedby="oldpasshelp" placeholder="Enter your old password..." />
+  <input type="password" class="form-control" id="oldpass" name="oldpass" placeholder="Enter your old password..." />
 </div>
 
 <div class="form-group">
 <label for="password">
   New Password
 </label>
-<input type="password" class="form-control" id="password" name="password" aria-describedby="passwordhelp" placeholder="Enter your new strong password..." />
+<input type="password" class="form-control" id="password" name="password" placeholder="Enter your new strong password..." />
 </div>
 
 <div class="form-group">
 <label for="confirmpassword">
   Confirm Password
 </label>
-<input type="password" class="form-control" id="confirmpassword" name="confirmpassword" aria-describedby="confirmpasswordhelp" placeholder="Repeat your new strong password..." />
+<input type="password" class="form-control" id="confirmpassword" name="confirmpassword" placeholder="Repeat your new strong password..." />
 </div>
 
 <div class="form-group text-center">

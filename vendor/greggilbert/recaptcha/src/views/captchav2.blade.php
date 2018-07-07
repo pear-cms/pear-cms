@@ -12,7 +12,7 @@ if ( ! function_exists('renderDataAttributes')) {
 }
 ?>
 @if(!empty($options))
-    <script type="text/javascript">
+    <script>
         var RecaptchaOptions = <?=json_encode($options) ?>;
     </script>
 @endif
@@ -22,8 +22,7 @@ if ( ! function_exists('renderDataAttributes')) {
     <div style="width: 302px; height: 352px;">
         <div style="width: 302px; height: 352px; position: relative;">
             <div style="width: 302px; height: 352px; position: absolute;">
-                <iframe src="https://www.google.com/recaptcha/api/fallback?k={{ $public_key }}"
-                        frameborder="0" scrolling="no"
+                <iframe src="https://www.google.com/recaptcha/api/fallback?k={{ $public_key }}"	
                         style="width: 302px; height:352px; border-style: none;">
                 </iframe>
             </div>
