@@ -46,7 +46,7 @@
           {{ $ticket->id }}
       </th>
       <td>
-        <a href="{{ url('/acp/character/ticket') }}/{{ $character->name }}/{{ $ticket->id }}" class="ticket-status-{{ Helpers::ticketStatus($ticket->closedBy) }}">
+        <a href="{{ url('/acp/character/ticket') }}/{{ $character->name }}/{{ $ticket->id }}" class="ticket-status-{{ Helpers::ticketStatus($ticket->type) }}">
           {{ Helpers::limitTicketLength($ticket->description) }}
         </a>
       </td>
@@ -56,8 +56,8 @@
       <td>
         {{date('Y-m-d, H:i:s', $ticket->lastModifiedTime)}}
       </td>
-      <td class="ticket-status-{{ Helpers::ticketStatus($ticket->closedBy) }}">
-        {{ Helpers::ticketStatus($ticket->closedBy) }}
+      <td class="ticket-status-{{ Helpers::ticketStatus($ticket->type) }}">
+        {{ Helpers::ticketStatus($ticket->type) }}
       </td>
     </tr>
     @endforeach

@@ -64,8 +64,13 @@
   @if ( $ticket->closedBy  > 0)
   <div class="col-md-12">
   <h5 class="border-bottom mb-10">
+    Closed By
     <span class="float-right">
-      GM {{ Helpers::getCharacterNameFromGuid($ticket->closedBy) }}
+      @if ($ticket->closedBy == $ticket->playerGuid)
+      You
+      @else
+        GM {{ Helpers::getCharacterNameFromGuid($ticket->closedBy) }}
+      @endif
     </span>
   </h5>
   </div>

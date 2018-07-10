@@ -289,6 +289,10 @@ class Helpers {
     }
   }
 
+  public static function getCharacterNameFromGuid($guid) {
+    // returns 3 news articles
+    return DB::connection('characters')->table('characters')->where('guid', $guid)->value('name');
+  }
 
   // News articles system below.
   public static function getNewsArticles()

@@ -13,25 +13,26 @@
 </div>
 <div class="container col-md-6 mt-20">
 <div class="row">
+  <div class="col-md-12 mt-20">
+<h5 class="border-bottom mb-10 text-small text-muted">
+  Posted by
+  <img src='{{ asset('images/icons/gm.png') }}' />
+  <span class="text-gamemaster">
+    {{ $news->author }}
+  </span>
+
+  <span class="float-right">
+    Posted on {{ date('h:i A d/m/y', strtotime($news->timestamp)) }}
+  </span>
+</h5>
+</div>
   <div class="col-md-12 mt-10 news-content">
   <p>
     {!! ucfirst($news->content) !!}
   </p>
   </div>
 
-  <div class="col-md-12 mt-20">
-  <h5 class="border-bottom mb-10 text-small text-muted">
-    Posted by
-    <img src='{{ asset('images/icons/gm.png') }}' />
-    <span class="text-gamemaster">
-      {{ $news->author }}
-    </span>
-
-    <span class="float-right">
-      Posted on {{ date('h:i A d/m/y', strtotime($news->timestamp)) }}
-    </span>
-  </h5>
-
+<div class="col-md-12 mt-20">
   @foreach($comments as $comment)
 
   <div class="col-md-12 mt-10 border">
