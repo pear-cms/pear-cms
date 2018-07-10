@@ -8,6 +8,7 @@
   background: transparent;
   font-family: 'PT Sans Caption', sans-serif;
   color: #f7b10a !important;
+  text-decoration: none !important;
 }
 .button.border.orange {
       border: 1px solid #c77e19 !important;

@@ -40,23 +40,31 @@
         Latest news
       </h4>
     </div>
+    @if(!empty(Helpers::getNewsArticles()))
     @foreach ( Helpers::getNewsArticles() as $news)
-    <a class="news-article col-sm" href="{{ url('/news/')}}/{{$news->id}}" style="background-image:url('{{ asset('images/news/' . $news->picture) }}')">
+    <a class="news-article col-sm" href="{{ url('/news/')}}/{{$news->id}}" style="background-image:url('{{ asset('images/news/' . $news->image) }}')">
       <div class="news-article-bottom col-md-12">
       <p class="news-article-date">
-        {{date('M d, Y', $news->date)}}
+        {{ date('M d, Y', $news->timestamp) }}
       </p>
       <h4 class="news-article-title">
-        {{ucwords($news->title)}}
+        {{ ucwords($news->title )}}
       </h4>
       <h4 class="news-article-description">
-        {{ucfirst($news->description)}}
+        {{ substr($news->description, 0, 50) }}..
+        <span class="float-right">
+          Read more
+        </span>
       </h4>
       </div>
       <div class="news-article-fade"></div>
     </a>
     @endforeach
-
+    @else
+    <p class="col-sm">
+      No news articles to show.
+    </p>
+    @endif
 </div>
 </div>
 @endsection

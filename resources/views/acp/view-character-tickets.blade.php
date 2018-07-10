@@ -22,25 +22,51 @@
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">Text</th>
-      <th scope="col">Created</th>
-      <th scope="col">Modified</th>
+      <th scope="col">
+        #
+      </th>
+      <th scope="col">
+        Description
+      </th>
+      <th scope="col">
+        Created
+      </th>
+      <th scope="col">
+        Modified
+      </th>
+      <th scope="col">
+        Status
+      </th>
     </tr>
   </thead>
   <tbody>
     @foreach(Helpers::GetCharacterTickets($character->guid) as $ticket)
     <tr>
-      <th scope="row"><a href="{{ url('/acp/character/ticket') }}/{{ $character->name }}/{{ $ticket->id }}">{{$ticket->id}}</a></th>
-      <td><a href="{{ url('/acp/character/ticket') }}/{{ $character->name }}/{{ $ticket->id }}">{{Helpers::limitTicketLength($ticket->description)}}</a></td>
-      <td>{{date('Y-m-d, H:i:s', $ticket->createTime)}}</td>
-      <td>{{date('Y-m-d, H:i:s', $ticket->lastModifiedTime)}}</td>
+      <th scope="row">
+          {{ $ticket->id }}
+      </th>
+      <td>
+        <a href="{{ url('/acp/character/ticket') }}/{{ $character->name }}/{{ $ticket->id }}" class="ticket-status-{{ Helpers::ticketStatus($ticket->closedBy) }}">
+          {{ Helpers::limitTicketLength($ticket->description) }}
+        </a>
+      </td>
+      <td>
+        {{date('Y-m-d, H:i:s', $ticket->createTime)}}
+      </td>
+      <td>
+        {{date('Y-m-d, H:i:s', $ticket->lastModifiedTime)}}
+      </td>
+      <td class="ticket-status-{{ Helpers::ticketStatus($ticket->closedBy) }}">
+        {{ Helpers::ticketStatus($ticket->closedBy) }}
+      </td>
     </tr>
     @endforeach
   </tbody>
 </table>
 @else
-  <p>{{$character->name}} has no tickets made.</p>
+  <p class="text-red">
+    {{$character->name}} has no tickets made.
+  </p>
 @endif
 </div>
 </div>

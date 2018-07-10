@@ -7,7 +7,7 @@
       Server Status
     </h4>
     <p class="text-beige col-md-6 col-center">
-      Check basic information about the server.
+      See some important statistics, status and other essential information about {{ env('APP_NAME') }}.
     </p>
   </div>
 </div>
@@ -16,13 +16,22 @@
   @foreach ( Helpers::getRealms() as $realm)
   <div class="col-md-12">
   <h5 class="border-bottom mb-10">
-    {{ $realm->name }}<span class="float-right">{{ Helpers::getRealmStatus($realm->port)}}</span>
+    <span class="text-orange">
+      {{ $realm->name }}
+    </span>
+    <span class="float-right">
+      {{ Helpers::getRealmStatus($realm->port) }}
+    </span>
   </h5>
   </div>
   @endforeach
+
   <div class="col-md-12 mt-20">
   <h5 class="border-bottom mb-10">
-    Logon Server<span class="float-right">{{ Helpers::getRealmStatus(3724)}}</span>
+    Authentication server
+    <span class="float-right">
+      {{ Helpers::getRealmStatus(3724) }}
+    </span>
   </h5>
 </div>
 </div>

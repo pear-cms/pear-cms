@@ -1,5 +1,4 @@
 @extends('partials.layout')
-
 @section('content')
 <div class="third-page">
   <div class="half-page-content mt-20">
@@ -12,12 +11,6 @@
   </div>
 </div>
 <div class="container col-md-6 mt-20">
-  @if (Session::has('success'))
-                {{ Session::get('success') }}
-                @endif
-                @if ( Session::has('fail'))
-                {{ Session::get('fail') }}
-                @endif
   <form action="{{ url('/acp/password') }}" method="POST">
     @csrf
     @if($errors->all())
@@ -27,30 +20,40 @@
             @endforeach
     </div>
     @endif
+    @if (Session::has('success'))
+    <div class="form error" style="display:block;">
+          {{ Session::get('success') }}
+   </div>
+    @endif
+    @if ( Session::has('error'))
+    <div class="form error" style="display:block;">
+          {{ Session::get('error') }}
+    </div>
+      @endif
   <div class="form-group">
   <label for="oldpass">
-    Old Password
+    Current password
   </label>
-  <input type="password" class="form-control" id="oldpass" name="oldpass" placeholder="Enter your old password..." />
+  <input type="password" class="form-control" id="current_password" name="current_password" placeholder="Enter your current password..." />
 </div>
 
 <div class="form-group">
 <label for="password">
-  New Password
+  New password
 </label>
 <input type="password" class="form-control" id="password" name="password" placeholder="Enter your new strong password..." />
 </div>
 
 <div class="form-group">
 <label for="confirmpassword">
-  Confirm Password
+  Confirm password
 </label>
-<input type="password" class="form-control" id="confirmpassword" name="confirmpassword" placeholder="Repeat your new strong password..." />
+<input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Repeat your new strong password..." />
 </div>
 
 <div class="form-group text-center">
 <button type="submit" class="button border orange">
-Okay! Let's do the change...
+Okay! Let's do the change.
 </button>
 </div>
   </form>

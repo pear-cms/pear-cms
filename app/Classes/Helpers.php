@@ -19,19 +19,6 @@ class Helpers {
     }
   }
 
-  public static function getRealmStatus($port)
-  {
-    // returns the realm status.
-    error_reporting(0);
-    $fp = (fsockopen(env('REALM_IP'), $port,$errno,$errstr,3));
-    if($fp) {
-      return "Online";
-    }else{
-      return "Offline";
-    }
-    return $realmStatus;
-  }
-
   public static function checkIfAccountLocked()
   {
     if ( DB::connection('auth')->table('account')->where([
@@ -42,12 +29,6 @@ class Helpers {
       } else {
         return false;
       }
-  }
-
-  public static function getRealms()
-  {
-    // returns all realms.
-    return DB::connection('auth')->table('realmlist')->get();
   }
 
   public static function getOnlinePlayers()
@@ -159,52 +140,30 @@ class Helpers {
     return DB::connection('characters')->table('characters')->where('account', Auth::user()->id)->get();
   }
 
-  public static function getNewsArticles()
+  public static function hashPassword($password)
   {
-    // returns 3 news articles
-    return DB::connection('website')->table('news')->orderBy('id', 'desc')->take(3)->get();
+    // return in ACCOUNT:PASSWORD format as per TrinityCore requirements.
+    return strtoupper(sha1(strtoupper(Auth::user()->username) . ':' . strtoupper($password)));
   }
 
-  public static function getAllNewsArticles()
+  public static function sendSOAPCommand($command)
   {
-    // returns all news articles
-    return DB::connection('website')->table('news')->orderBy('id', 'desc')->get();
-  }
-
-  public static function getNewsArticle($id)
-  {
-    // returns specific news article
-    return DB::connection('website')->table('news')->where('id', $id)->first();
-  }
-
-  public static function hashPassword($pass)
-  {
-    $user = strtoupper(Auth::user()->username);
-    $pass = strtoupper($pass);
-    return strtoupper(sha1($user.':'.$pass));
-  }
-
-  public static function ChangePassword($oldpass, $newpass)
-  {
-    if ( DB::connection('auth')->table('account')->where(['username' => Auth::user()->username, 'sha_pass_hash' => Helpers::hashPassword($oldpass)])->first() )
-    {
-      $client = new SoapClient(NULL, array(
-      'location'    => "http://" . env('SOAP_HOST') .":" . env('SOAP_PORT') . "/",
-      'uri'         => 'urn:TC',
-      'style'       => SOAP_RPC,
-      'login'       => env('SOAP_USERNAME'),
-      'password'    => env('SOAP_PASSWORD'),
-      ));
-      $command = 'acc set password '. Auth::user()->username .' ' . $newpass . ' ' . $newpass;
-      if ( $result = $client->executeCommand(new SoapParam($command, 'command')) ) {
-        return true;
-      } else {
-        return false;
-      }
+    // Initialize a SOAP session.
+    $client = new SoapClient(NULL, array(
+    'location'    => "http://" . env('SOAP_HOST') .":" . env('SOAP_PORT') . "/",
+    'uri'         => 'urn:TC',
+    'style'       => SOAP_RPC,
+    'login'       => env('SOAP_USERNAME'),
+    'password'    => env('SOAP_PASSWORD'),
+    ));
+    // check for the sent SOAP command.
+    if ( $result = $client->executeCommand(new SoapParam($command, 'command')) ) {
+      // return true if it was successful.
+      return true;
     } else {
+      // return false if it was unsuccessful.
       return false;
     }
-
   }
 
   public static function getTotalAccountsInNumbers()
@@ -229,7 +188,39 @@ class Helpers {
     }
   }
 
+  // Get realms and their status below.
+  public static function getRealms()
+  {
+    // returns all realms.
+    return DB::connection('auth')->table('realmlist')->get();
+  }
 
+  public static function getRealmStatus($port)
+  {
+    // attempts to  connect to the port for 5 seconds.
+    if(@fsockopen(env('REALM_IP'), $port, $error, $errorString, 5)) {
+      // return online if connected.
+      return "Online";
+    } else {
+      // return offline if connection failed.
+      return "Offline";
+    }
+  }
+
+  public static function getRealmIcon($icon)
+  {
+    $icons = [
+      '0'     => 'Normal',
+      '1'     => 'PvP',
+      '4'     => 'Normal',
+      '6'     => 'RP',
+      '8'     => 'RP PvP'
+    ];
+
+    return $icons[$icon];
+  }
+
+  // Check if account is Gamemaster or Administrator (GM level 3) below.
   public static function checkIfGM()
   {
     // checks if user is GM.
@@ -262,6 +253,68 @@ class Helpers {
       }
   }
 
+  // getCharacter<function> functions below.
+  public static function getCharacterDataByName($name)
+  {
+    return DB::connection('characters')->table('characters')->where('name', $name)->first();
+  }
+
+  public static function getCharacterTickets($guid)
+  {
+    return DB::connection('characters')->table('gm_ticket')->where('playerGuid', $guid)->get();
+  }
+
+  public static function getTicketInformationFromGuid($guid, $id)
+  {
+    if($query = DB::connection('characters')->table('gm_ticket')->where(['playerGuid' => $guid, 'id' => $id])->first())
+    {
+      return $query;
+    } else {
+      return false;
+    }
+  }
+
+  public static function getCharacterTicketsCount($guid)
+  {
+    return DB::connection('characters')->table('gm_ticket')->where('playerGuid', $guid)->count();
+  }
+
+  public static function CharacterBelongsToId($name, $id)
+  {
+    if (DB::connection('characters')->table('characters')->where(['name' => $name, 'account' => $id])->first())
+    {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+
+  // News articles system below.
+  public static function getNewsArticles()
+  {
+    // returns 3 news articles
+    return DB::connection('website')->table('news')->orderBy('id', 'desc')->take(3)->get();
+  }
+
+  public static function getNewsArticleComments($id)
+  {
+      return DB::connection('website')->table('news_comments')->orderBy('timestamp', 'desc')->where('newsId', $id)->get();
+  }
+
+  public static function getAllNewsArticles()
+  {
+    // returns all news articles
+    return DB::connection('website')->table('news')->orderBy('id', 'desc')->get();
+  }
+
+  public static function getNewsArticle($id)
+  {
+    // returns specific news article
+    return DB::connection('website')->table('news')->where('id', $id)->first();
+  }
+
+  // Set and get status of website/authentication system of website below.
   public static function getSiteMaintenanceStatus()
   {
     if ( DB::connection('website')->table('settings')->where('settings_name', 'site_maintenance')->value('settings_value') == '1' )
@@ -313,183 +366,9 @@ class Helpers {
       return true;
     }
   }
-  public static function CharacterBelongsToId($name, $id)
-  {
-    if (DB::connection('characters')->table('characters')->where(['name' => $name, 'account' => $id])->first())
-    {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  public static function TicketBelongsToCharacter($guid, $id)
-  {
-    if (DB::connection('characters')->table('gm_ticket')->where(['playerGuid' => $guid, 'id' => $id])->first())
-    {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  public static function secondsToTime($seconds) {
-    $dtF = new \DateTime('@0');
-    $dtT = new \DateTime("@$seconds");
-    return $dtF->diff($dtT)->format('%a days, %h hours, %i minutes and %s seconds');
-}
-  public static function getCharacterDataByName($name)
-  {
-    return DB::connection('characters')->table('characters')->where('name', $name)->first();
-  }
-
-  public static function getCharacterNameFromGuid($id)
-  {
-    return DB::connection('characters')->table('characters')->where('guid', $id)->value('name');
-  }
-
-  public static function getOpenGamemasterTicketsCount()
-  {
-    return DB::connection('characters')->table('gm_ticket')->where('completed', '0')->count();
-  }
-
-  public static function getOpenGamemasterTickets()
-  {
-    return DB::connection('characters')->table('gm_ticket')->where('completed', '0')->get();
-  }
-
-  public static function getGamemasterTicket($id)
-  {
-    $data = DB::connection('characters')->table('gm_ticket')->where('id', $id)->first();
-    if ( $data )
-    {
-      return $data;
-    } else {
-      return false;
-    }
-  }
-
-  public static function getCompletedGamemasterTicketsCount()
-  {
-    return DB::connection('characters')->table('gm_ticket')->where('completed', '1')->count();
-  }
-
-  public static function limitTicketLength($string)
-  {
-    if (strlen($string) > 15) {
-      $str = substr($string, 0, 12) . "...";
-    } else {
-      $str = $string;
-    }
-    return $str;
-  }
-
-  public static function getCompletedGamemasterTickets()
-  {
-    return DB::connection('characters')->table('gm_ticket')->where('completed', '1')->get();
-  }
-
-  public static function getCharacterTickets($guid)
-  {
-    return DB::connection('characters')->table('gm_ticket')->where('playerGuid', $guid)->get();
-  }
-
-  public static function getCharacterTicketsCount($guid)
-  {
-    return DB::connection('characters')->table('gm_ticket')->where('playerGuid', $guid)->count();
-  }
-
-  public static function resolveGamemasterTicket($id)
-  {
-    $client = new SoapClient(NULL, array(
-    'location'    => "http://" . env('SOAP_HOST') .":" . env('SOAP_PORT') . "/",
-    'uri'         => 'urn:TC',
-    'style'       => SOAP_RPC,
-    'login'       => env('SOAP_USERNAME'),
-    'password'    => env('SOAP_PASSWORD'),
-    ));
-    $command = 'ticket complete ' . $id . ' Please keep an eye on your mailbox as you might have received a response from the Gamemaster there. We hope that this message is satisfying enough and if you inquire further assistance, please do not hesitate to contact us again.';
-    if ( $result = $client->executeCommand(new SoapParam($command, 'command')) ) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  public static function completeGamemasterTicket($id)
-  {
-    $client = new SoapClient(NULL, array(
-    'location'    => "http://" . env('SOAP_HOST') .":" . env('SOAP_PORT') . "/",
-    'uri'         => 'urn:TC',
-    'style'       => SOAP_RPC,
-    'login'       => env('SOAP_USERNAME'),
-    'password'    => env('SOAP_PASSWORD'),
-    ));
-    $command = 'ticket complete ' . $id . ' A Gamemaster has marked your ticket as completed. It might have been resolved already or the ticket content was not sufficient. If you feel this is a mistake, please do not hesitate to contact us again.';
-    if ( $result = $client->executeCommand(new SoapParam($command, 'command')) ) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  public static function sendGamemasterMail($name, $title, $content)
-  {
-    $client = new SoapClient(NULL, array(
-    'location'    => "http://" . env('SOAP_HOST') .":" . env('SOAP_PORT') . "/",
-    'uri'         => 'urn:TC',
-    'style'       => SOAP_RPC,
-    'login'       => env('SOAP_USERNAME'),
-    'password'    => env('SOAP_PASSWORD'),
-    ));
-    $command = 'send mail ' . $name . ' "' . $title . '" "' . $content . '"';
-    if ( $result = $client->executeCommand(new SoapParam($command, 'command')) ) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  public static function sendGamemasterResponse($id, $response)
-  {
-    $client = new SoapClient(NULL, array(
-    'location'    => "http://" . env('SOAP_HOST') .":" . env('SOAP_PORT') . "/",
-    'uri'         => 'urn:TC',
-    'style'       => SOAP_RPC,
-    'login'       => env('SOAP_USERNAME'),
-    'password'    => env('SOAP_PASSWORD'),
-    ));
-    $command = 'ticket complete ' . $id . ' ' . $response;
-    if ( $result = $client->executeCommand(new SoapParam($command, 'command')) ) {
-      return false;
-    } else {
-      return true;
-    }
-  }
-
-  public static function restartWorldServer()
-  {
-    $client = new SoapClient(NULL, array(
-    'location'    => "http://" . env('SOAP_HOST') .":" . env('SOAP_PORT') . "/",
-    'uri'         => 'urn:TC',
-    'style'       => SOAP_RPC,
-    'login'       => env('SOAP_USERNAME'),
-    'password'    => env('SOAP_PASSWORD'),
-    ));
-    $command = 'server restart 180 Server maintenance.';
-    if ( $result = $client->executeCommand(new SoapParam($command, 'command')) ) {
-      return false;
-    } else {
-      return true;
-    }
-  }
-
-  public static function checkIfTicketIsCompleted($id)
-  {
-
-  }
 
 
+  // Misc functions below.
   public static function MapIdToZoneName($id)
   {
     $maps = [
@@ -567,4 +446,35 @@ class Helpers {
 
     return $minSec;
 }
+
+public static function secondsToTime($seconds) {
+  $dtF = new \DateTime('@0');
+  $dtT = new \DateTime("@$seconds");
+  return $dtF->diff($dtT)->format('%a days, %h hours, %i minutes and %s seconds');
+}
+
+public static function limitTicketLength($string)
+{
+  if (strlen($string) > 15) {
+    $str = substr($string, 0, 12) . "...";
+  } else {
+    $str = $string;
+  }
+  return $str;
+}
+
+public static function ticketStatus($status)
+{
+  $types = [
+    '-1'     => 'Closed',
+    '0'      => 'Open',
+  ];
+  // If a ticket is closed by a GM, the integer will be greater than 0 which is why we need this.
+  if ( $status > 0) {
+    return 'Closed';
+  } else {
+    return $types[$status];
+  }
+}
+
 }

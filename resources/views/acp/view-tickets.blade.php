@@ -7,15 +7,15 @@
       My Tickets
     </h4>
     <p class="text-beige col-md-6 col-center">
-      Pick a character to see it's tickets.
+      Pick a character to see its tickets.
     </p>
   </div>
 </div>
 <div class="container col-md-6 mt-20">
 <div class="row">
   <div class="col-md-12 mt-20 no-padding">
-  <h5 class="border-bottom mb-10">
-    Select character:
+  <h5 class="border-bottom text-grey mb-10">
+    Select a character
   </h5>
 </div>
 
@@ -25,7 +25,7 @@
 </a>
 @endforeach
 @if (Helpers::getAccountCharactersNumbers() == 0)
-<p>
+<p class="text-red">
   You don't have any characters!
 </p>
 @endif

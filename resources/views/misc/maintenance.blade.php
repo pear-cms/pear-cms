@@ -6,7 +6,7 @@
       {{ env('APP_NAME') }} is in maintenance
     </h4>
     <p class="text-beige col-md-6 col-center">
-      Currently {{ env('APP_NAME') }} is in maintenance, please wait.
+      {{ env('APP_NAME') }} is getting its oil levels checked to ensure the website cog wheels are running smoothly. Please, allow us some moments.
     </p>
   </div>
 </div>
@@ -17,7 +17,7 @@
     Maintenance is ongoing!
   </h5>
   <p>
-     Maintenance happens a lot to websites. Whether a bug is being fixed or just a simple system check. Please gives us few minutes to sort the problem!
+    Maintenance allow us some moments to ensure that we offer you the best browsing experience possible and ensure that no bugs are present.
   </p>
 </div>
 </div>

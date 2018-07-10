@@ -6,7 +6,7 @@
       Viewing ticket #{{ $ticket->id }}
     </h4>
     <p class="text-beige col-md-6 col-center">
-      See some data that were retrieved from database regarding your ticket #{{ $ticket->id }}.
+      See some data that were retrieved from the database regarding your ticket #{{ $ticket->id }}.
     </p>
   </div>
 </div>
@@ -16,32 +16,47 @@
 
   <div class="col-md-12">
   <h5 class="border-bottom mb-10">
-    Created By <span class="float-right">{{ $ticket->name }}</span>
+    Created by
+    <span class="float-right">
+      {{ $ticket->name }}
+    </span>
   </h5>
   </div>
 
   <div class="col-md-12">
   <h5 class="border-bottom mb-10">
-    Created at <span class="float-right">{{date('Y-m-d, H:i:s', $ticket->createTime)}}</span>
+    Created at
+    <span class="float-right">
+      {{ date('Y-m-d, H:i:s', $ticket->createTime) }}
+    </span>
   </h5>
   </div>
 
   <div class="col-md-12">
   <h5 class="border-bottom mb-10">
-    Last Modified at <span class="float-right">{{date('Y-m-d, H:i:s', $ticket->lastModifiedTime)}}</span>
+    Last modified at
+    <span class="float-right">
+      {{ date('Y-m-d, H:i:s', $ticket->lastModifiedTime) }}
+    </span>
   </h5>
   </div>
 
   <div class="col-md-12">
   <h5 class="border-bottom mb-10">
-    Ticket Status <span class="float-right">{{Helpers::getTicketStatus($ticket->type)}}</span>
+    Ticket status
+    <span class="float-right">
+      {{ Helpers::getTicketStatus($ticket->type) }}
+    </span>
   </h5>
   </div>
   @if ( $ticket->type  == 0)
-  @if ( $ticket->assignedTo  > 0)
+  @if ( $ticket->assignedTo > 0)
   <div class="col-md-12">
   <h5 class="border-bottom mb-10">
-    Assigned To <span class="float-right">GM {{Helpers::getCharacterNameFromGuid($ticket->assignedTo)}}</span>
+    Assigned to
+    <span class="float-right">
+      GM {{ Helpers::getCharacterNameFromGuid($ticket->assignedTo) }}
+    </span>
   </h5>
   </div>
   @endif
@@ -49,11 +64,9 @@
   @if ( $ticket->closedBy  > 0)
   <div class="col-md-12">
   <h5 class="border-bottom mb-10">
-    @if ( $ticket->closedBy  == Helpers::getCharacterDataByName($ticket->name)->guid)
-    Closed By <span class="float-right">You</span>
-    @else
-    Closed By <span class="float-right">GM {{Helpers::getCharacterNameFromGuid($ticket->closedBy)}}</span>
-    @endif
+    <span class="float-right">
+      GM {{ Helpers::getCharacterNameFromGuid($ticket->closedBy) }}
+    </span>
   </h5>
   </div>
   @endif

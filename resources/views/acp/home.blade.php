@@ -15,7 +15,7 @@
 <div class="row">
   <div class="col-md-12 no-padding">
   <h5 class="border-bottom mb-10">
-    Quick Tools:
+    Quick Tools
   </h5>
 </div>
 <a class="button border orange col-sm" href="#">
@@ -31,8 +31,8 @@
     Log out
   </a>
   <div class="col-md-12 mt-20 no-padding">
-  <h5 class="border-bottom mb-10">
-    List of my characters:
+  <h5 class="border-bottom mb-10 text-grey">
+    Character List
   </h5>
 </div>
 
@@ -42,7 +42,7 @@
 </a>
 @endforeach
 @if (Helpers::getAccountCharactersNumbers() == 0)
-<p>
+<p class="text-red">
   You don't have any characters!
 </p>
 @endif

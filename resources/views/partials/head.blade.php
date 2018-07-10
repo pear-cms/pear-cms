@@ -22,6 +22,7 @@
         <link href="{{ asset('css/buttons.css') }}" rel="stylesheet">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
         <script src="{{ asset('js/jquery.min.js') }}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
     </head>
     <body>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -55,12 +56,19 @@
                 News at a glance.
               </p>
               <a class="dropdown-item" href="{{url('/news')}}">View all news</a>
-              <a class="dropdown-item" href="{{url('/status')}}">View server status</a>
             </div>
           </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Community</a>
-            </li>
+          <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Game <span class="navbar-arrow"></span>
+          </a>
+          <div class="dropdown-menu fluid" aria-labelledby="navbarDropdownMenuLink">
+            <p>
+              Realm server status and in-game statistics.
+            </p>
+            <a class="dropdown-item" href="{{url('/status')}}">View realm status</a>
+          </div>
+        </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ url('/connection-guide') }}">Connection Guide</a>
             </li>
@@ -80,6 +88,12 @@
             <div class="dropdown-menu fluid" aria-labelledby="navbarDropdownMenuLink">
               <p>
                 User Actions
+                <span class="float-right">
+                  <span class="mr-10">
+                  <img src="{{ asset('images/icons/silvercoin.png') }}" /> {{ Auth::user()->silvercoins }}
+                </span>
+                  <img src="{{ asset('images/icons/goldcoin.png') }}" /> {{ Auth::user()->goldcoins }}
+                </span>
               </p>
               <a class="dropdown-item" href="{{ url('/acp') }}">
                 Account Panel

@@ -26,7 +26,7 @@
     <label for="email">
       Email address
     </label>
-    <input type="email" class="form-control" id="email" name="email" aria-describedby="emailhelp" placeholder="Enter your email..." />
+    <input type="email" class="form-control" id="email" name="email" aria-describedby="emailhelp" value="{{ old('email') }}" placeholder="Enter your email..." />
     <small id="emailhelp" class="form-text text-muted">
       We promise not to send you anything inappropriate or share your email address among third parties.
     </small>
@@ -36,7 +36,7 @@
   <label for="username">
     Username
   </label>
-  <input type="text" class="form-control" id="username" name="username" aria-describedby="usernamehelp" placeholder="Enter a cool username..." />
+  <input type="text" class="form-control" id="username" name="username" aria-describedby="usernamehelp" value="{{ old('username') }}" placeholder="Enter a cool username..." />
   <small id="usernamehelp" class="form-text text-muted">
     Do not enter an inappropriate name as they may be suspended.
   </small>

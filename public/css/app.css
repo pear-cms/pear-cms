@@ -36,6 +36,15 @@ text-align: center;
 color: #000;
 }
 
+.half-page-content-bottom {
+  position: absolute;
+left: 0;
+top: 0;
+bottom: 0;
+width: 100%;
+text-align: center;
+}
+
 .news-article {
   height: 150px;
   background-size: cover;
@@ -89,9 +98,12 @@ text-shadow: 0 0 1px transparent, 0 1px 2px rgba(0,0,0,.8);
 background: linear-gradient(to bottom,rgba(0,0,0,0) 60%,rgba(0,0,0,.8) 90%);
 position: absolute;
 top: 0;
-right: -0.5px;
+right: 0;
 bottom: 0px;
 left: 0;
+}
+.news-article-fade:first-child {
+  bottom: -0.5px;
 }
 
 .navbar {
@@ -240,9 +252,10 @@ font-size: 12px;
 
 .dropdown-menu.fluid > p {
   border-bottom: 1px solid #352011;
-  width: 100px;
   margin-left: 20px;
-  color: #fff;
+  padding-bottom:5px;
+  color: #cacaca;
+  font-weight: 700;
   font-size: 13px;
   font-family: 'Source Sans Pro', sans-serif;
 }
@@ -337,16 +350,20 @@ border: 1px solid #fff;
 
 .form-control {
   color: #707070;
-  background-color: #242424;
-  border: 1px solid #323232;
-  border-radius: 0px;
+  background-image: url('../images/textures/light_texture.jpg');
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.08);
+  background-position: top;
+  background-size: 300%;
+  border: 0;
+  border-radius: 0;
 }
 
 .form-control:focus {
     color: #909090;
-    background-color: #242424;
-    border-color: #404040;
-    box-shadow: none;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.08);
+    background-position: top;
+    background-size: 300%;
+    border: 0;
 }
 
 .form-control::placeholder {
@@ -369,23 +386,58 @@ border: 1px solid #fff;
 
 
 
+.comment-gamemaster > svg {
+  height: 150px;
+    width: 300px;
+    fill: #00b4ff;
+    display: inline-block;
+    opacity: .2;
+    position: absolute;
+    top: 0;
+    transform: rotate(-25deg);
+    background-repeat: no-repeat;
+    left: 0;
+}
+.table td, .table th {
+  border-top: 0;
+  padding-bottom:5px;border-bottom: 1px solid #352011 !important;
+  color:#cacaca;
+  font-weight: 400;
+}
 
+.ticket-status-Open {
+  color:#eccc68 !important;
+}
 
+.ticket-status-Closed {
+  color:#ee5253 !important;
+}
+
+table {
+  font-size:11px;
+}
+.news-content{color:#ebdec2 !important;}
 .inline-block{display:inline-block;}
+.border{border: 1px solid #352011 !important;}
+.border-left{border-left: 1px solid #352011 !important;}
 .border-bottom{padding-bottom:5px;border-bottom: 1px solid #352011 !important;}
 .border-top{padding-top:5px;border-top: 1px solid #352011 !important;}
 .vertical-align-middle{vertical-align: middle;}
-.mb-10{margin-bottom:10px;}.mb-20{margin-bottom:20px;}.mt-10{margin-top:10px;}.mt-15{margin-top:15px;}.mt-20{margin-top:20px;}.mr-15{margin-right:15px;}.mr-5{margin-right:5px !important;}
+.mb-10{margin-bottom:10px;}.mb-20{margin-bottom:20px;}.mt-10{margin-top:10px;}.mt-15{margin-top:15px;}.mt-20{margin-top:20px;}.mr-10{margin-right:10px;}.mr-15{margin-right:15px;}.mr-5{margin-right:5px !important;}
 .col-center{margin-left:auto !important;margin-right: auto !important;}
 .no-padding{padding:0;}
 .text-center {text-align:center !important;}
 .text-upper {text-transform:uppercase;}
 .text-white {color:#fff;}
 .text-small{font-size:11px;}
+.text-gamemaster{color:#00a8ff;}
 .text-beige {
   color: #ebdec2;
     text-shadow: 0 0 1px transparent, 0 1px 2px rgba(0,0,0,.8);
 }
+.text-light {color: #ebdec2 !important;}
+.text-orange{color:#f7b10a;}
+.text-red{color:#ee5253;}
 .text-grey {
   color: #cacaca;
     text-shadow: 0 0 1px transparent, 0 1px 2px rgba(0,0,0,.8);
