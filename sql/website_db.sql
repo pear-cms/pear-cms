@@ -21,6 +21,6 @@ CREATE TABLE `news_comments` (
   `id` INT(10) NOT NULL AUTO_INCREMENT ,
   `newsId` INT(10) NOT NULL ,
   `comment` VARCHAR(250) NOT NULL ,
-  `timestamp` DATE NOT NULL ,
+  `timestamp` INT(20) NOT NULL ,
    PRIMARY KEY (`id`))
  ENGINE=InnoDB;
