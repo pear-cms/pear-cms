@@ -25,8 +25,13 @@
     Change password
   </a>
   <a class="button border orange col-sm" href="{{ url('/acp/tickets') }}">
-    my tickets
+    My Tickets
   </a>
+  @if (Helpers::checkIfGM())
+  <a class="button border orange col-sm" href="{{ url('/acp/tickets') }}">
+    GM Panel
+  </a>
+  @endif
   <a class="button border orange col-sm" href="{{ url('/logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
     Log out
   </a>

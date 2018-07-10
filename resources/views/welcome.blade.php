@@ -40,7 +40,7 @@
         Latest news
       </h4>
     </div>
-    @if(!empty(Helpers::getNewsArticles()))
+    @if(Helpers::getNewsArticles()->count() > 0)
     @foreach ( Helpers::getNewsArticles() as $news)
     <a class="news-article col-sm" href="{{ url('/news/')}}/{{$news->id}}" style="background-image:url('{{ asset('images/news/' . $news->image) }}')">
       <div class="news-article-bottom col-md-12">

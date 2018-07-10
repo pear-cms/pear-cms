@@ -13,7 +13,7 @@ CREATE TABLE `news` (
 	`description` VARCHAR(255) NOT NULL DEFAULT 'News description',
 	`content` VARCHAR(65000) NOT NULL DEFAULT 'News body content',
 	`image` VARCHAR(50) NOT NULL DEFAULT 'news_image_1.jpg',
-  `author` VARCHAR(30) NOT NULL ,
+	`author` VARCHAR(30) NOT NULL ,
 	`timestamp` INT(20) NOT NULL DEFAULT '0',
 	PRIMARY KEY (`id`))
   ENGINE=InnoDB;
