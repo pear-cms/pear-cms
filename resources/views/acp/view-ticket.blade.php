@@ -64,7 +64,7 @@
   @if ( $ticket->closedBy  > 0)
   <div class="col-md-12">
   <h5 class="border-bottom mb-10">
-    Closed By
+    Closed by
     <span class="float-right">
       @if ($ticket->closedBy == $ticket->playerGuid)
       You

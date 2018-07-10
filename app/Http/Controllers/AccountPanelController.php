@@ -64,7 +64,7 @@ class AccountPanelController extends Controller
         if ( $data = Helpers::getTicketInformationFromGuid($data->guid, $id)) {
           return view('acp.view-ticket',
           [
-            'title' => $name . '\'s Tickets',
+            'title' => 'Viewing ticket by ' . $name ,
             'ticket' => $data
           ]);
         } else {
