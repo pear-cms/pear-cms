@@ -299,7 +299,7 @@ class Helpers {
 
   public static function getNewsArticleComments($id)
   {
-      return DB::connection('website')->table('news_comments')->orderBy('timestamp', 'asc')->where('newsId', $id)->get();
+      return DB::connection('website')->table('news_comments')->orderBy('timestamp', 'desc')->where('newsId', $id)->get();
   }
 
   public static function getAllNewsArticles()
