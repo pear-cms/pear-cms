@@ -52,7 +52,7 @@
         </ul>
     </li>
     <li>
-      Log in and enjoy!
+      <a href="{{url('/login')}}">Log in</a> and enjoy!
     </li>
   </ul>
 </p>
