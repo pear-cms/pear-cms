@@ -48,7 +48,7 @@
       <div class="col-md-12">
         <h5 class="mb-10 text-small">
           <span class="float-right text-muted">
-            Posted on {{ date('h:i A d/m/y', strtotime($comment->timestamp)) }}
+            Posted on {{ date('h:i A d/m/y', $comment->timestamp) }}
           </span>
         </h5>
       </div>
