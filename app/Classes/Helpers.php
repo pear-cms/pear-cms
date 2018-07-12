@@ -198,7 +198,7 @@ class Helpers {
   public static function getRealmStatus($port)
   {
     // attempts to  connect to the port for 5 seconds.
-    if(@fsockopen(env('REALM_IP'), $port, $error, $errorString, 5)) {
+    if(@fsockopen(env('REALM_IP'), $port, $error, $errorString, 2)) {
       // return online if connected.
       return "Online";
     } else {

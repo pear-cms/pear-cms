@@ -21,7 +21,7 @@
     </div>
     @endif
     @if (Session::has('success'))
-    <div class="form error" style="display:block;">
+    <div class="form success" style="display:block;">
           {{ Session::get('success') }}
    </div>
     @endif

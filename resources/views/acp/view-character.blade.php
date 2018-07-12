@@ -39,7 +39,7 @@
 
   <div class="col-md-12">
   <h5 class="border-bottom mb-10">
-    Online Status <span class="float-right">{{ Helpers::getCharacterStatus($character->online) }}</span>
+    Online Status <span class="float-right status {{ Helpers::getCharacterStatus($character->online) }}">{{ Helpers::getCharacterStatus($character->online) }}</span>
   </h5>
   </div>
 

@@ -19,7 +19,7 @@
     <span class="text-orange">
       {{ $realm->name }}
     </span>
-    <span class="float-right">
+    <span class="float-right status {{ Helpers::getRealmStatus($realm->port) }}">
       {{ Helpers::getRealmStatus($realm->port) }}
     </span>
   </h5>
@@ -29,7 +29,7 @@
   <div class="col-md-12 mt-20">
   <h5 class="border-bottom mb-10">
     Authentication server
-    <span class="float-right">
+    <span class="float-right status {{ Helpers::getRealmStatus(3724) }}">
       {{ Helpers::getRealmStatus(3724) }}
     </span>
   </h5>

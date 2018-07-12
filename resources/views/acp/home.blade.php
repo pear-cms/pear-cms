@@ -28,7 +28,7 @@
     My Tickets
   </a>
   @if (Helpers::checkIfGM())
-  <a class="button border orange col-sm" href="{{ url('/acp/tickets') }}">
+  <a class="button border orange col-sm" href="{{ url('/gm') }}">
     GM Panel
   </a>
   @endif
