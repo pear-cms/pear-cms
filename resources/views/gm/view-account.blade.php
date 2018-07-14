@@ -65,9 +65,9 @@
       @if(Helpers::getAccountStatus($account->id) == 2)
         <span title="Ban Reason" data-toggle="popover" data-trigger="hover" data-content="{{ Helpers::getBanReason($account->id) }}" class="float-right status Banned">Banned (Hover)</span>
       @elseif(Helpers::getAccountStatus($account->id) == 1)
-       <span class="float-right status Locked">Locked</span>
+       <span title="What does Locked means?" data-toggle="popover" data-trigger="hover" data-content="The acount is locked, which means only 1 IP ({{ $account->last_ip }}) can log in." class="float-right status Locked">Locked (Hover)</span>
        @elseif(Helpers::getAccountStatus($account->id) == 0)
-       <span class="float-right status Active">Active</span>       
+       <span class="float-right status Active">Active</span>
        @endif
     </h5>
     </div>
