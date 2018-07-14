@@ -37,7 +37,7 @@ class Helpers {
     ]);
   }
 
-  public static function addSilevrCoins($accid, $count) {
+  public static function addSilverCoins($accid, $count) {
     DB::connection('auth')->table('account')->where('id', $accid)->update([
       'silvercoins'   => DB::raw('silvercoins + ' . $count),
     ]);
