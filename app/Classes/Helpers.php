@@ -9,6 +9,18 @@ use SoapParam;
 
 class Helpers {
 
+  public static function getAllAccounts()
+  {
+    // returns all accounts.
+    return DB::connection('auth')->table('account')->get();
+  }
+
+  public static function getAccountInformation($accid)
+  {
+    // returns account information.
+    return DB::connection('auth')->table('account')->where('id', $accid)->first();
+  }
+
   public static function lockAccount()
   {
     // returns if success or failed to lock account.
@@ -98,23 +110,41 @@ class Helpers {
     }
   }
 
-  public static function getAccountStatus()
+  public static function getAccountOnlineStatus($accid)
   {
     // returns online or offline for requested account.
     if ( DB::connection('auth')->table('account')->where([
-      'id' => Auth::user()->id,
+      'id' => $accid,
       'online' => '1'
       ])->first() )
     {
-      return 'online';
+      return 'Online';
     } else {
-      return 'offline';
+      return 'Offline';
     }
+  }
+
+  public static function getAccountStatus($accid) {
+    if ( DB::connection('auth')->table('account_banned')->where([
+      'id' => $accid,
+      'active' => '1'
+      ])->first() )
+    {
+      return 'Banned';
+    }
+    if ( DB::connection('auth')->table('account')->where([
+      'id' => $accid,
+      'locked' => '1'
+      ])->first() )
+    {
+      return 'Locked';
+    }
+    return "Active";
   }
 
   public static function getCharacterStatus($status)
   {
-    // returns online or offline for requested account.
+    // returns online or offline for requested character.
     if ( $status )
     {
       return 'Online';
@@ -176,6 +206,12 @@ class Helpers {
   {
     // returns the characters in an int format:
     return DB::connection('characters')->table('characters')->where('account', Auth::user()->id)->count();
+  }
+
+  public static function getAccountCharactersNumbersById($accid)
+  {
+    // returns the characters in an int format:
+    return DB::connection('characters')->table('characters')->where('account', $accid)->count();
   }
 
   public static function getFactionByRace($race)
@@ -298,7 +334,7 @@ class Helpers {
   public static function getNewsArticles()
   {
     // returns 3 news articles
-    return DB::connection('website')->table('news')->orderBy('id', 'desc')->take(3)->get();
+    return DB::connection('website')->table('news')->orderBy('timestamp', 'desc')->take(3)->get();
   }
 
   public static function getNewsArticleComments($id)
@@ -309,7 +345,7 @@ class Helpers {
   public static function getAllNewsArticles()
   {
     // returns all news articles
-    return DB::connection('website')->table('news')->orderBy('id', 'desc')->get();
+    return DB::connection('website')->table('news')->orderBy('timestamp', 'desc')->get();
   }
 
   public static function getNewsArticle($id)

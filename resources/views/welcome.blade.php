@@ -49,6 +49,9 @@
       </p>
       <h4 class="news-article-title">
         {{ ucwords($news->title )}}
+        @if (time()-$news->timestamp < 86400)
+              <span class="badge badge-secondary">New</span>
+        @endif
       </h4>
       <h4 class="news-article-description">
         {{ substr($news->description, 0, 50) }}..

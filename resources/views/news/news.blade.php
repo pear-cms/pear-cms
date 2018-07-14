@@ -12,6 +12,7 @@
 </div>
 <div class="container col-md-6 text-grey mt-20">
 <div class="row">
+  @if(Helpers::getAllNewsArticles()->count() > 0)
 @foreach (Helpers::getAllNewsArticles() as $news)
 <a class="news-article col-sm-12 mt-20" href="{{ url('/news/')}}/{{$news->id}}" style="background-image:url('{{ asset('images/news/' . $news->image) }}')">
   <div class="news-article-bottom col-md-12">
@@ -20,6 +21,9 @@
   </p>
   <h4 class="news-article-title">
     {{ ucwords($news->title) }}
+    @if (time()-$news->timestamp < 86400)
+      <span class="badge badge-secondary">New</span>
+    @endif
   </h4>
   <h4 class="news-article-description">
     {{ substr($news->description, 0, 50) }}..
@@ -31,6 +35,11 @@
   <div class="news-article-fade"></div>
 </a>
 @endforeach
+@else
+<p class="col-sm">
+  No news articles to show.
+</p>
+@endif
 </div>
 </div>
 @endsection

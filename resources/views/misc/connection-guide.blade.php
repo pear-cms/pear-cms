@@ -36,7 +36,7 @@
       </li>
       <li>
         <a href="https://drive.google.com/open?id=1z1IFOaDciHH5TG79kr_1TvICLgSjv7rD">
-          3.3.5 a client with original graphics
+          3.3.5a client with original graphics
         </a>
       </li>
     </ul>

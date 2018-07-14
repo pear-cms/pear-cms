@@ -115,11 +115,12 @@ class AccountPanelController extends Controller
             //Change Password
             if(Helpers::sendSOAPCommand('acc set password '. Auth::user()->username .' ' . $request->get('password') . ' ' . $request->get('password')))
             {
+              // return redirect if the password was successfully changed.
               return redirect()->back()->with("success","Password changed successfully!");
-              //return true;
             } else {
+              // return redirect if the password change was unsuccessful.
               return redirect()->back()->with("error", "Something goofed...");
-              return false;
+
             }
 
             return redirect()->back()->with("success","Password changed successfully!");

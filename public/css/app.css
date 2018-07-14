@@ -69,6 +69,11 @@ text-align: center;
   color: #fff;
 }
 
+.news-article:hover .badge {
+  background-color: #f8b700;
+  color: white;
+}
+
 .news-article:hover .news-article-description {
   color: silver;
 }
@@ -398,6 +403,22 @@ border: 1px solid #fff;
 
 .status.Offline {
   color:#c0392b;
+}
+
+.status.Banned {
+  color:#c0392b;
+}
+
+.status.Active {
+  color:#2bbf50;
+}
+
+.status.Locked {
+  color:#ffbb00;
+}
+
+.status.Muted {
+  color:#ffbb00;
 }
 
 .comment-gamemaster > svg {

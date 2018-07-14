@@ -64,3 +64,9 @@ Route::group(['middleware' => ['\App\Http\Middleware\AuthMaintenance::class']], 
 
   TrinityCoreAuth::routes();
 });
+
+Route::group(['middleware' => ['\App\Http\Middleware\GMCheck::class']], function () {
+  Route::get('/gm', 'GamemasterController@index');
+  Route::get('/gm/account/list', 'GamemasterController@viewAccountList');
+  Route::get('/gm/account/view/{id}', 'GamemasterController@viewAccount');
+  });

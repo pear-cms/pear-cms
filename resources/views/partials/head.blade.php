@@ -90,9 +90,9 @@
                 User Actions
                 <span class="float-right">
                   <span class="mr-10">
-                  <img src="{{ asset('images/icons/silvercoin.png') }}" /> {{ Auth::user()->silvercoins }}
+                  <img alt="silvercoins" src="{{ asset('images/icons/silvercoin.png') }}" /> {{ Auth::user()->silvercoins }}
                 </span>
-                  <img src="{{ asset('images/icons/goldcoin.png') }}" /> {{ Auth::user()->goldcoins }}
+                  <img alt="goldcoins" src="{{ asset('images/icons/goldcoin.png') }}" /> {{ Auth::user()->goldcoins }}
                 </span>
               </p>
               <a class="dropdown-item" href="{{ url('/acp') }}">

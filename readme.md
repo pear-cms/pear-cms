@@ -4,7 +4,8 @@
 Please, do not use in production as the product is not yet finished.
 
 ## Before you attempt to use this
-Please, insert the SQL files from within /sql into your databases or Pear CMS will malfunction.
+Please, read the [howto.md](https://github.com/pear-cms/pear-cms/blob/master/howto.md) to understand how to use Pear CMS.
+Please, insert the SQL files from within [/sql](https://github.com/pear-cms/pear-cms/tree/master/sql) into your databases or Pear CMS will malfunction.
 
 ## Built With
 
