@@ -22,7 +22,13 @@
         <link href="{{ asset('css/buttons.css') }}" rel="stylesheet">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
         <script src="{{ asset('js/jquery.min.js') }}"></script>
+        <script src="{{ asset('js/popper.min.js') }}"></script>
         <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+        <script>
+        $(function () {
+          $('[data-toggle="popover"]').popover()
+        })
+        </script>
     </head>
     <body>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -98,6 +104,11 @@
               <a class="dropdown-item" href="{{ url('/acp') }}">
                 Account Panel
               </a>
+              @if (Helpers::checkIfGM())
+              <a class="dropdown-item" href="{{ url('/gm') }}">
+                GM Panel
+              </a>
+              @endif
               <a class="dropdown-item" href="{{ url('/donate') }}">
                 Donate to {{ env('APP_NAME') }}
               </a>

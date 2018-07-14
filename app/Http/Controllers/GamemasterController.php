@@ -53,4 +53,14 @@ class GamemasterController extends Controller
         'account' => $data
       ]);
     }
+
+    public function editAccount($id)
+    {
+      $data = Helpers::getAccountInformation($id);
+      return view('gm.edit-account',
+      [
+        'title' => 'Editing account '.$data->username,
+        'account' => $data
+      ]);
+    }
 }

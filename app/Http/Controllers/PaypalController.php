@@ -17,8 +17,9 @@ use PayPal\Api\PaymentExecution;
 use PayPal\Auth\OAuthTokenCredential;
 use Validator;
 use Session;
-use DB;
 use Auth;
+use DB;
+use Helpers;
 
 class PaypalController extends Controller
 {
@@ -139,10 +140,11 @@ class PaypalController extends Controller
     if ($result->getState() == 'approved') { // payment made
       // Payment is successful do your business logic here
       //dd($result);
-      DB::connection('auth')->table('account')->where('id', Auth::user()->id)->update([
-        'dp'   => DB::raw('dp + ' . Session::get('amount')),
-      ]);
-      return redirect('/donate')->with('success', 'Funds were added successfully.');
+      //DB::connection('auth')->table('account')->where('id', Auth::user()->id)->update([
+      //  'goldcoins'   => DB::raw('goldcoins + ' . Session::get('amount')),
+      //]);
+      Helpers::addGoldCoins(Auth::user()->id, Session::get('amount'));
+      return redirect('/donate')->with('success', Session::get('amount').' (gold coins) were added successfully.');
     }
 
     return redirect('/donate')->with('fail', 'Payment failed somehow.');

@@ -61,7 +61,14 @@
   </div>
     <div class="col-md-12">
     <h5 class="border-bottom mb-10">
-      Account Status <span class="float-right status {{Helpers::getAccountStatus($account->id)}}">{{Helpers::getAccountStatus($account->id)}}</span>
+      Account Status
+      @if(Helpers::getAccountStatus($account->id) == 2)
+        <span title="Ban Reason" data-toggle="popover" data-trigger="hover" data-content="{{ Helpers::getBanReason($account->id) }}" class="float-right status Banned">Banned (Hover)</span>
+      @elseif(Helpers::getAccountStatus($account->id) == 1)
+       <span class="float-right status Locked">Locked</span>
+       @elseif(Helpers::getAccountStatus($account->id) == 0)
+       <span class="float-right status Active">Active</span>       
+       @endif
     </h5>
     </div>
   <div class="col-md-12 mt-20">

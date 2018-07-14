@@ -13,10 +13,14 @@
 </div>
 <div class="container col-md-6 mt-20">
   @if (Session::has('success'))
+              <div class="form success" style="display:block;">
                 {{ Session::get('success') }}
+              </div>
                 @endif
                 @if ( Session::has('fail'))
+                <div class="form error" style="display:block;">
                 {{ Session::get('fail') }}
+              </div>
                 @endif
   <form action="{{ url('/donate') }}" method="POST">
     @csrf
@@ -33,7 +37,7 @@
     </label>
     <input type="amount" class="form-control" id="amount" name="amount" aria-describedby="amount" placeholder="Enter amount to donate..." value="{{ old('amount') }}" />
     <small id="emailhelp" class="form-text text-muted">
-      1 (one) USD equals 1 (one) donation point.
+      1 (one) USD equals 1 (one) <img alt="goldcoins" src="http://cosmicwarcraft.ddns.net/images/icons/goldcoin.png"> (gold coin).
     </small>
   </div>
 

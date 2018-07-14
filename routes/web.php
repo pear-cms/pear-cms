@@ -69,4 +69,5 @@ Route::group(['middleware' => ['\App\Http\Middleware\GMCheck::class']], function
   Route::get('/gm', 'GamemasterController@index');
   Route::get('/gm/account/list', 'GamemasterController@viewAccountList');
   Route::get('/gm/account/view/{id}', 'GamemasterController@viewAccount');
+  Route::get('/gm/account/edit/{id}', 'GamemasterController@editAccount');
   });

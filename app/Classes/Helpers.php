@@ -31,6 +31,18 @@ class Helpers {
     }
   }
 
+  public static function addGoldCoins($accid, $count) {
+    DB::connection('auth')->table('account')->where('id', $accid)->update([
+      'goldcoins'   => DB::raw('goldcoins + ' . $count),
+    ]);
+  }
+
+  public static function addSilevrCoins($accid, $count) {
+    DB::connection('auth')->table('account')->where('id', $accid)->update([
+      'silvercoins'   => DB::raw('silvercoins + ' . $count),
+    ]);
+  }
+
   public static function checkIfAccountLocked()
   {
     if ( DB::connection('auth')->table('account')->where([
@@ -124,22 +136,34 @@ class Helpers {
     }
   }
 
+  public static function getBanReason($accid) {
+    if ( DB::connection('auth')->table('account_banned')->where([
+      'id' => $accid,
+      'active' => '1'
+      ])->first() )
+    {
+      return DB::connection('auth')->table('account_banned')->where('id', $accid)->value('banreason');
+    } else {
+      return "Not Banned";
+    }
+  }
+
   public static function getAccountStatus($accid) {
     if ( DB::connection('auth')->table('account_banned')->where([
       'id' => $accid,
       'active' => '1'
       ])->first() )
     {
-      return 'Banned';
+      return 2;
     }
     if ( DB::connection('auth')->table('account')->where([
       'id' => $accid,
       'locked' => '1'
       ])->first() )
     {
-      return 'Locked';
+      return 1;
     }
-    return "Active";
+    return 0;
   }
 
   public static function getCharacterStatus($status)
