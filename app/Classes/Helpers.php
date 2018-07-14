@@ -32,12 +32,14 @@ class Helpers {
   }
 
   public static function addGoldCoins($accid, $count) {
+    // adds X amount of gold coins to X account Id
     DB::connection('auth')->table('account')->where('id', $accid)->update([
       'goldcoins'   => DB::raw('goldcoins + ' . $count),
     ]);
   }
 
   public static function addSilverCoins($accid, $count) {
+    // adds X amount of silver coins to X account Id
     DB::connection('auth')->table('account')->where('id', $accid)->update([
       'silvercoins'   => DB::raw('silvercoins + ' . $count),
     ]);
