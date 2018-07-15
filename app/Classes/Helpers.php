@@ -31,6 +31,16 @@ class Helpers {
     }
   }
 
+  public static function checkAccountExists($id)
+  {
+    if (DB::connection('auth')->table('account')->where(['id' => $id])->first())
+    {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   public static function addGoldCoins($accid, $count) {
     // adds X amount of gold coins to X account Id
     DB::connection('auth')->table('account')->where('id', $accid)->update([
@@ -192,8 +202,14 @@ class Helpers {
 
   public static function getAccountCharacters()
   {
-    // returns the charcaters of the account requesting it.
+    // returns the characters of the account requesting it.
     return DB::connection('characters')->table('characters')->where('account', Auth::user()->id)->get();
+  }
+
+  public static function getAccountCharactersById($accid)
+  {
+    // returns the characters of the account by id.
+    return DB::connection('characters')->table('characters')->where('account', $accid)->get();
   }
 
   public static function hashPassword($password)

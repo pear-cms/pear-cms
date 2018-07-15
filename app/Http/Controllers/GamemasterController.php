@@ -46,6 +46,9 @@ class GamemasterController extends Controller
 
     public function viewAccount($id)
     {
+      if (!Helpers::checkAccountExists($id)) {
+        return redirect('/gm');
+      }
       $data = Helpers::getAccountInformation($id);
       return view('gm.view-account',
       [
@@ -56,10 +59,26 @@ class GamemasterController extends Controller
 
     public function editAccount($id)
     {
+      if (!Helpers::checkAccountExists($id)) {
+        return redirect('/gm');
+      }
       $data = Helpers::getAccountInformation($id);
       return view('gm.edit-account',
       [
         'title' => 'Editing account '.$data->username,
+        'account' => $data
+      ]);
+    }
+
+    public function customizeCharacter($id)
+    {
+      if (!Helpers::checkAccountExists($id)) {
+        return redirect('/gm');
+      }
+      $data = Helpers::getAccountInformation($id);
+      return view('gm.customize-character',
+      [
+        'title' => 'Customize Character of '.$data->username,
         'account' => $data
       ]);
     }

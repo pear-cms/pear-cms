@@ -30,6 +30,15 @@
 <a class="button border orange col-sm" href="{{url('')}}">
   Change Points
 </a>
+<div class="col-md-12 mt-20 no-padding">
+<h5 class="border-bottom mb-10 text-grey">
+  Character Options
+</h5>
+</div>
+
+<a class="button border orange col-sm" href="{{url('/gm/account/')}}/{{$account->id}}/character/customize">
+  Customize Character
+</a>
 </div>
 </div>
 @endsection
