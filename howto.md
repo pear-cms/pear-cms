@@ -6,19 +6,19 @@ How to install
 # Before you attempt to use this
 Please, insert the SQL files from within /sql into your databases or Pear CMS will malfunction.
 
-#1. Install composer
+# 1. Install composer
 
-#2. Type the following command in CMD, should be in the main directory of Pear CMS:
+# 2. Type the following command in CMD, should be in the main directory of Pear CMS:
 ```sh
 php artisan key:generate
 ```
 
-#3. Rename your '.env.example' to '.env' and edit it to your needs!
+# 3. Rename your '.env.example' to '.env' and edit it to your needs!
 
-#4. You should populate the SQL database (with files from /sql directory)
+# 4. You should populate the SQL database (with files from /sql directory)
 
-#5. Making the website public
-##With apache:
+# 5. Making the website public
+## With apache:
 ```sh
 <VirtualHost *:80>
  	DocumentRoot "YOUR APACHE WWW DIRECTORY/Pear CMS Directory/public"
@@ -35,7 +35,7 @@ Example:
 </VirtualHost>
 ```
 
-##With nginx:
+## With nginx:
 ```
 server {
   listen 80;
