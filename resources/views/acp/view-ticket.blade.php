@@ -70,7 +70,7 @@
     Closed by
     <span class="float-right">
       @if ($ticket->closedBy == $ticket->playerGuid)
-      You
+      Creator ({{$ticket->name}})
       @else
       <img src='{{ asset('images/icons/gm.png') }}' />
       <span class="text-gamemaster">

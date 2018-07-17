@@ -82,7 +82,7 @@ class GamemasterController extends Controller
     {
         if (Helpers::checkTicketExists($id)) {
           $data = Helpers::getTicket($id);
-          return view('gm.view-ticket',
+          return view('acp.view-ticket',
           [
             'title' => 'Viewing ticket #' . $id ,
             'ticket' => $data
@@ -92,7 +92,7 @@ class GamemasterController extends Controller
         }
     }
 
-    public function customizeCharacter($id)
+    public function viewCustomizeCharacter($id)
     {
       if (!Helpers::checkAccountExists($id)) {
         return redirect('/gm');
@@ -103,5 +103,15 @@ class GamemasterController extends Controller
         'title' => 'Customize Character of '.$data->username,
         'account' => $data
       ]);
+    }
+
+    public function customizeCharacter($id, Request $request)
+    {
+      if(Helpers::characterCustomize($request->selectedCharacter, $request->customizeType))
+      {
+        return redirect()->back()->with("success", "Successfully added customization for ".Helpers::getCharacterNameFromGuid($request->selectedCharacter).".");
+      } else {
+        return redirect()->back()->with("error", "Something happened...");
+      }
     }
 }

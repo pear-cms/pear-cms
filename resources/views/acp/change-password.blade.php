@@ -11,6 +11,16 @@
   </div>
 </div>
 <div class="container col-md-6 mt-20">
+  @if (Session::has('success'))
+  <div class="form success" style="display:block;">
+        {{ Session::get('success') }}
+ </div>
+  @endif
+  @if ( Session::has('error'))
+  <div class="form error" style="display:block;">
+        {{ Session::get('error') }}
+  </div>
+    @endif
   <form action="{{ url('/acp/password') }}" method="POST">
     @csrf
     @if($errors->all())
@@ -20,16 +30,6 @@
             @endforeach
     </div>
     @endif
-    @if (Session::has('success'))
-    <div class="form success" style="display:block;">
-          {{ Session::get('success') }}
-   </div>
-    @endif
-    @if ( Session::has('error'))
-    <div class="form error" style="display:block;">
-          {{ Session::get('error') }}
-    </div>
-      @endif
   <div class="form-group">
   <label for="oldpass">
     Current password

@@ -33,16 +33,19 @@ class Helpers {
 
   public static function getAllTickets()
   {
+    // returns all tickets.
     return DB::connection('characters')->table('gm_ticket')->get();
   }
 
   public static function getTicket($id)
   {
+    // returns specified ticket.
     return DB::connection('characters')->table('gm_ticket')->where('id', $id)->first();
   }
 
   public static function checkAccountExists($id)
   {
+    // returns true if account exists, false otherwise
     if (DB::connection('auth')->table('account')->where(['id' => $id])->first())
     {
       return true;
@@ -53,7 +56,19 @@ class Helpers {
 
   public static function checkTicketExists($id)
   {
+    // returns true if ticket exists, false otherwise
     if (DB::connection('characters')->table('gm_ticket')->where(['id' => $id])->first())
+    {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  public static function CheckCharacterExists($id)
+  {
+    // returns true if characters exists, false otherwise
+    if (DB::connection('characters')->table('characters')->where(['guid' => $id])->first())
     {
       return true;
     } else {
@@ -77,6 +92,7 @@ class Helpers {
 
   public static function checkIfAccountLocked()
   {
+    // returns true if account is locked, false otherwise
     if ( DB::connection('auth')->table('account')->where([
       ['id',     '=', Auth::user()->id],
       ['locked', '=', '1']
@@ -121,20 +137,22 @@ class Helpers {
   return $data;
   }
 
-    public static function getOnlineCharactersCount() {
-      return DB::connection('characters')->table('characters')->where('online', '=', '1')->count();
-    }
-    public static function getOnlineCharactersByFactionCount($faction)
-    {
-      // returns all online characters by faction.
-      $data = array();
-      if ( $faction == 'horde') {
-        $characters = DB::connection('characters')->table('characters')->where('online', '=', '1')->get();
-        $horde = array('2', '5', '6', '8', '9', '10');
-        foreach ( $characters as $character)
-        if ( in_array($character->race, $horde) ) {
-          $data[] = $character;
-        }
+  public static function getOnlineCharactersCount() {
+    // returns online characters count
+    return DB::connection('characters')->table('characters')->where('online', '=', '1')->count();
+  }
+
+  public static function getOnlineCharactersByFactionCount($faction)
+  {
+    // returns all online characters by faction.
+    $data = array();
+    if ( $faction == 'horde') {
+      $characters = DB::connection('characters')->table('characters')->where('online', '=', '1')->get();
+      $horde = array('2', '5', '6', '8', '9', '10');
+      foreach ( $characters as $character)
+      if ( in_array($character->race, $horde) ) {
+        $data[] = $character;
+      }
     } elseif( $faction == 'alliance') {
       $characters = DB::connection('characters')->table('characters')->where('online', '=', '1')->get();
       $horde = array('2', '5', '6', '8', '9', '10');
@@ -144,9 +162,11 @@ class Helpers {
       }
     }
     return count($data);
-    }
+  }
+
   public static function checkIfGMByCharacterAccount($account)
   {
+    // returns GM if specified account is GM, false otherwise
     if ( DB::connection('auth')->table('account_access')->where('id', $account)->first() ) {
     return true;
     } else {
@@ -169,6 +189,7 @@ class Helpers {
   }
 
   public static function getBanReason($accid) {
+    // returns ban reason for specified account
     if ( DB::connection('auth')->table('account_banned')->where([
       'id' => $accid,
       'active' => '1'
@@ -181,6 +202,7 @@ class Helpers {
   }
 
   public static function getAccountStatus($accid) {
+    // returns account status for specified account
     if ( DB::connection('auth')->table('account_banned')->where([
       'id' => $accid,
       'active' => '1'
@@ -278,11 +300,39 @@ class Helpers {
 
   public static function getFactionByRace($race)
   {
+    // returns faction by race
     $horde = array('2', '5', '6', '8', '9', '10');
     if ( in_array($race, $horde) ) {
       return 'horde';
     } else {
       return 'alliance';
+    }
+  }
+
+  public static function characterCustomize($charid, $option)
+  {
+    // adds customization options for character
+    if(!Helpers::CheckCharacterExists($charid))
+    {
+      return redirect("/gm");
+    }
+    $charname = Helpers::getCharacterNameFromGuid($charid);
+    $soapcmd = "char rename $charname";
+    if ($option == 2)
+    {
+      $soapcmd = "char customize $charname";
+    } elseif($option == 3)
+    {
+      $soapcmd = "char changerace $charname";
+    } elseif($option == 4)
+    {
+      $soapcmd = "char changefaction $charname";
+    }
+
+    if(Helpers::sendSOAPCommand($soapcmd)) {
+      return true;
+    } else {
+      return false;
     }
   }
 
@@ -307,6 +357,7 @@ class Helpers {
 
   public static function getRealmIcon($icon)
   {
+    // returns realm icon
     $icons = [
       '0'     => 'Normal',
       '1'     => 'PvP',
@@ -354,16 +405,19 @@ class Helpers {
   // getCharacter<function> functions below.
   public static function getCharacterDataByName($name)
   {
+    // returns character data by name.
     return DB::connection('characters')->table('characters')->where('name', $name)->first();
   }
 
   public static function getCharacterTickets($guid)
   {
+    // returns all character tickets.
     return DB::connection('characters')->table('gm_ticket')->where('playerGuid', $guid)->get();
   }
 
   public static function getTicketInformationFromGuid($guid, $id)
   {
+    // returns ticket info if ticket belongs to character .
     if($query = DB::connection('characters')->table('gm_ticket')->where(['playerGuid' => $guid, 'id' => $id])->first())
     {
       return $query;
@@ -374,11 +428,13 @@ class Helpers {
 
   public static function getCharacterTicketsCount($guid)
   {
+    // reurns character ticket count.
     return DB::connection('characters')->table('gm_ticket')->where('playerGuid', $guid)->count();
   }
 
   public static function CharacterBelongsToId($name, $id)
   {
+    // returns true if character belongs to account, false otherwise.
     if (DB::connection('characters')->table('characters')->where(['name' => $name, 'account' => $id])->first())
     {
       return true;
@@ -401,7 +457,8 @@ class Helpers {
 
   public static function getNewsArticleComments($id)
   {
-      return DB::connection('website')->table('news_comments')->orderBy('timestamp', 'desc')->where('newsId', $id)->get();
+    // returns news article comments.
+    return DB::connection('website')->table('news_comments')->orderBy('timestamp', 'desc')->where('newsId', $id)->get();
   }
 
   public static function getAllNewsArticles()
@@ -419,6 +476,7 @@ class Helpers {
   // Set and get status of website/authentication system of website below.
   public static function getSiteMaintenanceStatus()
   {
+    // returns maintenance status.
     if ( DB::connection('website')->table('settings')->where('settings_name', 'site_maintenance')->value('settings_value') == '1' )
     {
       return true;
@@ -429,6 +487,7 @@ class Helpers {
 
   public static function setSiteMaintenanceStatus()
   {
+    // sets maintenance status.
     if ( Helpers::getSiteMaintenanceStatus() )
     {
       DB::connection('website')->table('settings')->where('settings_name', 'site_maintenance')->update([
@@ -445,6 +504,7 @@ class Helpers {
 
   public static function getSiteAuthenticationStatus()
   {
+    // ???
     if ( DB::connection('website')->table('settings')->where('settings_name', 'site_authentication')->value('settings_value') == '1' )
     {
       return true;
@@ -455,6 +515,7 @@ class Helpers {
 
   public static function setSiteAuthenticationStatus()
   {
+    // ???
     if ( Helpers::getSiteAuthenticationStatus() )
     {
       DB::connection('website')->table('settings')->where('settings_name', 'site_authentication')->update([
@@ -473,6 +534,7 @@ class Helpers {
   // Misc functions below.
   public static function MapIdToZoneName($id)
   {
+    // returns map name by map id
     $maps = [
       '0'   => 'Eastern Kingdoms',
       '1'   => 'Kalimdor',
@@ -539,6 +601,7 @@ class Helpers {
   }
 
   public static function UnixToTime($time) {
+    // converts unix to timestamp.
     $min = intval(($time / 60) % 60);
     $minSec = $min.'m ';
 
@@ -549,34 +612,37 @@ class Helpers {
     return $minSec;
 }
 
-public static function secondsToTime($seconds) {
-  $dtF = new \DateTime('@0');
-  $dtT = new \DateTime("@$seconds");
-  return $dtF->diff($dtT)->format('%a days, %h hours, %i minutes and %s seconds');
-}
-
-public static function limitTicketLength($string)
-{
-  if (strlen($string) > 15) {
-    $str = substr($string, 0, 12) . "...";
-  } else {
-    $str = $string;
+  public static function secondsToTime($seconds) {
+    // converts unix to Time.
+    $dtF = new \DateTime('@0');
+    $dtT = new \DateTime("@$seconds");
+    return $dtF->diff($dtT)->format('%a days, %h hours, %i minutes and %s seconds');
   }
-  return $str;
-}
 
-public static function ticketStatus($status)
-{
-  $types = [
-    '-1'     => 'Closed',
-    '0'      => 'Open',
-  ];
-  // If a ticket is closed by a GM, the integer will be greater than 0 which is why we need this.
-  if ( $status > 0) {
-    return 'Closed';
-  } else {
-    return $types[$status];
+  public static function limitTicketLength($string)
+  {
+    // limits ticket length.
+    if (strlen($string) > 15) {
+      $str = substr($string, 0, 12) . "...";
+    } else {
+      $str = $string;
+    }
+    return $str;
   }
-}
+
+  public static function ticketStatus($status)
+  {
+    // returns ticket status.
+    $types = [
+      '-1'     => 'Closed',
+      '0'      => 'Open',
+    ];
+    // If a ticket is closed by a GM, the integer will be greater than 0 which is why we need this.
+    if ( $status > 0) {
+      return 'Closed';
+    } else {
+      return $types[$status];
+    }
+  }
 
 }

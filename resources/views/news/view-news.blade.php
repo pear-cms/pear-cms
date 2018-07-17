@@ -22,7 +22,7 @@
   </span>
 
   <span class="float-right">
-    Posted on {{ date('h:i A d/m/y', strtotime($news->timestamp)) }}
+    Posted on {{ date('h:i A d/m/y',$news->timestamp) }}
   </span>
 </h5>
 </div>
