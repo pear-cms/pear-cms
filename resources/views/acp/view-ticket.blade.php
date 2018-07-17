@@ -6,7 +6,7 @@
       Viewing ticket #{{ $ticket->id }}
     </h4>
     <p class="text-beige col-md-6 col-center">
-      See some data that were retrieved from the database regarding your ticket #{{ $ticket->id }}.
+      Currently you are viewing ticket #{{ $ticket->id }}.
     </p>
   </div>
 </div>
