@@ -70,6 +70,28 @@ class GamemasterController extends Controller
       ]);
     }
 
+    public function viewTicketList()
+    {
+      return view('gm.ticket-list',
+      [
+        'title' => 'Ticket List',
+      ]);
+    }
+
+    public function viewTicket($id)
+    {
+        if (Helpers::checkTicketExists($id)) {
+          $data = Helpers::getTicket($id);
+          return view('gm.view-ticket',
+          [
+            'title' => 'Viewing ticket #' . $id ,
+            'ticket' => $data
+          ]);
+        } else {
+          return redirect('/gm');
+        }
+    }
+
     public function customizeCharacter($id)
     {
       if (!Helpers::checkAccountExists($id)) {

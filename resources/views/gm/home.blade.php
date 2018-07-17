@@ -20,6 +20,9 @@
 <a class="button border orange col-sm" href="{{url('/gm/account/list')}}">
   Account List
 </a>
+<a class="button border orange col-sm" href="{{url('/gm/ticket/list')}}">
+  Ticket List
+</a>
 <div class="col-md-12 mt-20 no-padding">
 <h5 class="border-bottom mb-10 text-grey">
   Server Tools

@@ -31,9 +31,29 @@ class Helpers {
     }
   }
 
+  public static function getAllTickets()
+  {
+    return DB::connection('characters')->table('gm_ticket')->get();
+  }
+
+  public static function getTicket($id)
+  {
+    return DB::connection('characters')->table('gm_ticket')->where('id', $id)->first();
+  }
+
   public static function checkAccountExists($id)
   {
     if (DB::connection('auth')->table('account')->where(['id' => $id])->first())
+    {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  public static function checkTicketExists($id)
+  {
+    if (DB::connection('characters')->table('gm_ticket')->where(['id' => $id])->first())
     {
       return true;
     } else {

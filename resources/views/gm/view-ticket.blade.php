@@ -69,14 +69,10 @@
   <h5 class="border-bottom mb-10">
     Closed by
     <span class="float-right">
-      @if ($ticket->closedBy == $ticket->playerGuid)
-      You
-      @else
       <img src='{{ asset('images/icons/gm.png') }}' />
       <span class="text-gamemaster">
         {{ Helpers::getCharacterNameFromGuid($ticket->closedBy) }}
       </span>
-      @endif
     </span>
   </h5>
   </div>
