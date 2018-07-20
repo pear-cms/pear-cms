@@ -21,6 +21,11 @@ Route::get('/', function () {
   }
 });
 
+Route::fallback(function() {
+  Helpers::saveErrorLog(request()->fullUrl() . ' is missing?');
+  return response()->view('misc.missing', [], 404);
+});
+
 // Route group will redirect all routes within to maintenance page if site maintenance is enabled.
 Route::group(['middleware' => ['\App\Http\Middleware\SiteMaintenance::class']], function () {
 
@@ -74,4 +79,6 @@ Route::group(['middleware' => ['\App\Http\Middleware\GMCheck::class']], function
   Route::get('/gm/account/edit/{id}', 'GamemasterController@editAccount');
   Route::get('/gm/account/{id}/character/customize', 'GamemasterController@viewCustomizeCharacter');
   Route::post('/gm/account/{id}/character/customize', 'GamemasterController@customizeCharacter');
+  Route::get('/gm/publish-article', 'GamemasterController@publishArticleForm');
+  Route::post('/gm/publish-article/', 'GamemasterController@publishArticle');
   });

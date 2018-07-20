@@ -21,6 +21,10 @@ class GMCheck
        {
          if ( !Helpers::checkIfGM() )
          {
+           if ( env('ERROR_LOGGING') == true )
+           {
+             Helpers::saveErrorLog('Access denied @ ' . $request->fullUrl());
+           }
            return redirect('/');
          }
        } else {

@@ -16,6 +16,17 @@ body, html {
     background-image: url('../images/third-page-bg.jpg');
     border-bottom: 1px solid #352011;
 }
+.full-page {
+  position: relative;
+    opacity: 1;
+    background-position: center 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 90%;
+    max-width: auto;
+    background-image: url('../images/third-page-bg.jpg');
+    border-bottom: 1px solid #352011;
+}
 .half-page {
   position: relative;
     opacity: 1;
@@ -31,6 +42,15 @@ body, html {
   position: absolute;
 left: 0;
 top: 10%;
+width: 100%;
+text-align: center;
+color: #000;
+}
+
+.full-page-content {
+  position: absolute;
+left: 0;
+top: 30%;
 width: 100%;
 text-align: center;
 color: #000;
@@ -54,6 +74,10 @@ text-align: center;
   position: relative;
   margin-right: 10px;
   font-family: 'PT Sans', sans-serif;
+}
+
+.news-article:nth-child(even) > .news-article-fade {
+  bottom: -0.5px;
 }
 .news-article:hover {
   border-color: #f8b700;
@@ -363,6 +387,21 @@ border: 1px solid #fff;
   border-radius: 0;
 }
 
+.image-border {
+  border: 1px solid rgba(255,255,255,.08);
+  transition: .1s all ease-in;
+  opacity: 0.6;
+}
+
+.image-border:hover {
+  border-color:#352011;
+  opacity: 1;
+}
+.image-border.active {
+  border-color:#352011;
+  opacity: 1;
+}
+
 .form-control:focus {
     color: #909090;
     box-shadow: inset 0 0 0 1px rgba(255,255,255,.08);
@@ -465,7 +504,7 @@ table {
 .text-upper {text-transform:uppercase;}
 .text-white {color:#fff;}
 .text-small{font-size:11px;}
-.text-gamemaster{color:#00a8ff;}
+.text-gamemaster{color:#00b4ff;}
 .text-beige {
   color: #ebdec2;
     text-shadow: 0 0 1px transparent, 0 1px 2px rgba(0,0,0,.8);

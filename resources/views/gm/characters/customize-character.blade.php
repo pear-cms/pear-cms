@@ -11,30 +11,10 @@
   </div>
 </div>
 <div class="container col-md-6 text-grey mt-20">
-  @if (Session::has('success'))
-  <div class="form success" style="display:block;">
-        {{ Session::get('success') }}
- </div>
-  @endif
-  @if ( Session::has('error'))
-  <div class="form error" style="display:block;">
-        {{ Session::get('error') }}
-  </div>
-    @endif
-  <form action="{{url('/gm/account/')}}/{{$account->id}}/character/customize" method="post">
-    @csrf
-    @if($errors->all())
-    <div class="form error" style="display:block;">
-    @foreach ($errors->all() as $error)
-          <p>
-            {{ $error }}
-          </p>
-    @endforeach
-    </div>
-    @endif
+  <form action="{{url('')}}" method="post">
       <div class="form-group">
       <label for="controlSelectCharacter">Choose what to customize</label>
-      <select class="form-control" name="selectedCharacter" id="selectedCharacter">
+      <select class="form-control" id="controlSelectCharacter">
         @foreach(Helpers::getAccountCharactersById($account->id) as $character)
           <option value="{{$character->guid}}">{{$character->name}}</option>
         @endforeach
@@ -42,7 +22,7 @@
     </div>
     <div class="form-group">
     <label for="controlSelectCustomize">Choose what to customize</label>
-    <select class="form-control" name="customizeType" id="customizeType">
+    <select class="form-control" id="controlSelectCustomize">
       <option value="1">Name</option>
       <option value="2">Appearance</option>
       <option value="3">Race</option>

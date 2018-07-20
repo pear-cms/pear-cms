@@ -10,8 +10,8 @@
         "greggilbert/recaptcha": "dev-master",
         "laravel/framework": "5.6.*",
         "laravel/tinker": "^1.0",
-        "paypal/rest-api-sdk-php": "^1.13",
-        "thibaud-dt/trinitycore-auth": "^0.3.0"
+        "paypal/rest-api-sdk-php": "1.13",
+        "thibaud-dt/trinitycore-auth": "0.3.0"
     },
     "require-dev": {
         "filp/whoops": "^2.0",

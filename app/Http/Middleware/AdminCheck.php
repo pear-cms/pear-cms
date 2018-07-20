@@ -21,6 +21,10 @@ class AdminCheck
        {
          if ( !Helpers::checkIfAdmin() )
          {
+           if ( env('ERROR_LOGGING') == true )
+           {
+             Helpers::saveErrorLog('Access denied @ ' . $request->fullUrl());
+           }
            return redirect('/');
          }
        } else {

@@ -18,7 +18,7 @@
     <table class="table">
       <thead>
         <tr>
-          <th>Id</th>
+          <th>ID</th>
           <th>Username</th>
           <th>Email</th>
           <th>Action</th>
@@ -30,7 +30,15 @@
     <td>{{ $account->id }}</td>
     <td>{{ $account->username }}</td>
     <td>{{ $account->email }}</td>
-    <td class="nosearch"><a href="{{url('/gm/account/view/'.$account->id)}}">View</a> / <a href="{{url('/gm/account/edit/'.$account->id)}}">Edit</a></td>
+    <td class="nosearch">
+      <a href="{{url('/gm/account/view/'.$account->id)}}">
+      View
+    </a> 
+      /
+      <a href="{{url('/gm/account/edit/'.$account->id)}}">
+        Edit
+      </a>
+    </td>
   </tr>
   @endforeach
       </tbody>

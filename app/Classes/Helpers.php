@@ -5,6 +5,7 @@ use Config;
 use DB;
 use Auth;
 use SoapClient;
+use Request;
 use SoapParam;
 
 class Helpers {
@@ -643,6 +644,35 @@ class Helpers {
     } else {
       return $types[$status];
     }
+  }
+
+  public static function getIPInfo($ip)
+  {
+     $data = json_decode(file_get_contents("http://ip-api.com/json/" . $ip));
+    if ( !$data->status == 'fail' )
+      {
+        return $data;
+      } else {
+        return (object) array(
+          'regionName'  => 'Unknown',
+          'countryCode' => 'Unknown',
+        );
+      }
+  }
+
+  public static function saveErrorLog($message)
+  {
+    DB::connection('website')->table('error_logs')->insert([
+    'message'  => $message,
+    'username' => Auth::user()->username,
+    'ip'     => Request::ip(),
+    'date'     => date('Y-m-d H:i:s')
+  ]);
+  }
+
+  public static function getNewsImages()
+  {
+    return array_diff(scandir('../public/images/news/'), array('..', '.'));
   }
 
 }

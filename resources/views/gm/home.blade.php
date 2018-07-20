@@ -25,17 +25,11 @@
 </a>
 <div class="col-md-12 mt-20 no-padding">
 <h5 class="border-bottom mb-10 text-grey">
-  Server Tools
+  News system
 </h5>
 </div>
-<a class="button border orange col-sm" href="{{url('')}}">
-  Restart Server
-</a>
-<a class="button border orange col-sm" href="{{url('')}}">
-  Shutdown Server
-</a>
-<a class="button border orange col-sm" href="{{url('')}}">
-  Send Announcement
+<a class="button border orange col-sm" href="{{ url('/gm/publish-article') }}">
+  Publish Article
 </a>
 </div>
 </div>

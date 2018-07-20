@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 Use Validator;
 use Helpers;
 use Auth;
+use Redirect;
+use Input;
 use DB;
 
 class GamemasterController extends Controller
@@ -27,18 +29,15 @@ class GamemasterController extends Controller
      */
     public function index()
     {
-      // get IP info for last ip that accessed account.
-      $data = json_decode(file_get_contents("http://ip-api.com/json/" . Auth::user()->last_ip));
       return view('gm.home',
       [
-        'title' => 'GM Panel',
-        'data' => $data
+        'title' => 'GM Panel'
       ]);
     }
 
     public function viewAccountList()
     {
-      return view('gm.list',
+      return view('gm.characters.list',
       [
         'title' => 'Account List',
       ]);
@@ -50,10 +49,13 @@ class GamemasterController extends Controller
         return redirect('/gm');
       }
       $data = Helpers::getAccountInformation($id);
-      return view('gm.view-account',
+      // get IP info for last ip that accessed account.
+      $ip = Helpers::getIPInfo($data->last_ip);
+      return view('gm.characters.view-account',
       [
-        'title' => 'Viewing account '.$data->username,
-        'account' => $data
+        'title'   => 'Viewing account ' . $data->username,
+        'account' => $data,
+        'ip'      => $ip
       ]);
     }
 
@@ -63,7 +65,7 @@ class GamemasterController extends Controller
         return redirect('/gm');
       }
       $data = Helpers::getAccountInformation($id);
-      return view('gm.edit-account',
+      return view('gm.characters.edit-account',
       [
         'title' => 'Editing account '.$data->username,
         'account' => $data
@@ -112,6 +114,40 @@ class GamemasterController extends Controller
         return redirect()->back()->with("success", "Successfully added customization for ".Helpers::getCharacterNameFromGuid($request->selectedCharacter).".");
       } else {
         return redirect()->back()->with("error", "Something happened...");
+      }
+    }
+
+    public function publishArticleForm()
+    {
+      return view('gm.news.publish-article',
+      [
+        'title' => 'Publish Article'
+      ]);
+    }
+
+    public function publishArticle(Request $request)
+    {
+      $validator = $request->validate([
+            'title'       => 'required|max:50',
+            'description' => 'required|max:255',
+            'image'       => 'required|max:50',
+            'content'     => 'required|max:5000'
+        ]);
+
+        $query = DB::connection('website')->table('news')->insert([
+          'title'         => $request->get('title'),
+          'description'   => $request->get('description'),
+          'content'       => $request->get('content'),
+          'image'         => $request->get('image'),
+          'timestamp'     => time(),
+          'author'        => Auth::user()->username
+        ]);
+
+      if ( $query )
+      {
+        return redirect()->to('/news');
+      } else {
+        return false;
       }
     }
 }

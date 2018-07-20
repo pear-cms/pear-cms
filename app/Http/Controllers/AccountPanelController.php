@@ -103,7 +103,11 @@ class AccountPanelController extends Controller
 
             if (! DB::connection('auth')->table('account')->where(['username' => Auth::user()->username, 'sha_pass_hash' => Helpers::hashPassword($request->get('current_password')) ])->first() )
             {
-                // The passwords matches
+                // The password dont match
+                if ( env('ERROR_LOGGING') == true )
+                {
+                  Helpers::saveErrorLog('Password change failed (current password != stored password).');
+                }
                 return redirect()->back()->with("error", "Your current password does not match the password from our records. Try again.");
             }
 

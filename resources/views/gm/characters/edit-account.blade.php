@@ -14,7 +14,7 @@
 <div class="row">
   <div class="col-md-12 no-padding">
   <h5 class="border-bottom mb-10">
-    Account Options
+    Edit Options
   </h5>
 </div>
 

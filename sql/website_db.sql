@@ -23,6 +23,16 @@ CREATE TABLE `news_comments` (
   `newsId` INT(10) NOT NULL ,
   `comment` VARCHAR(250) NOT NULL ,
   `author` VARCHAR(30) NOT NULL ,
+  `is_gm` INT(10) NOT NULL ,
   `timestamp` INT(20) NOT NULL ,
    PRIMARY KEY (`id`))
  ENGINE=InnoDB;
+
+ CREATE TABLE `error_logs` (
+    `id` INT NOT NULL AUTO_INCREMENT ,
+    `message` VARCHAR(200) NOT NULL COMMENT 'Error message provided.' ,
+    `username` VARCHAR(30) NOT NULL COMMENT 'Username of the user who faced an error.' ,
+    `ip` VARCHAR(30) NOT NULL COMMENT 'IP of the aforementioned user.' ,
+    `date` VARCHAR(30) NOT NULL COMMENT 'Date of occurrence.' ,
+    PRIMARY KEY (`id`))
+ ENGINE = InnoDB;

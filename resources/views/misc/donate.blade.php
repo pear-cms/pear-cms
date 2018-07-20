@@ -7,7 +7,7 @@
       Donate to {{ env('APP_NAME') }}
     </h4>
     <p class="text-beige col-md-6 col-center">
-      Donate to us and receive donation points in order to purchase in-game cosmetic items.
+      Donate to us and receive gold coins in order to purchase items from our shop.
     </p>
   </div>
 </div>
@@ -36,8 +36,8 @@
       Amount in dollar ($)
     </label>
     <input type="amount" class="form-control" id="amount" name="amount" aria-describedby="amount" placeholder="Enter amount to donate..." value="{{ old('amount') }}" />
-    <small id="emailhelp" class="form-text text-muted">
-      1 (one) USD equals 1 (one) <img alt="goldcoins" src="http://cosmicwarcraft.ddns.net/images/icons/goldcoin.png"> (gold coin).
+    <small class="form-text text-muted">
+      <img src="{{ asset('images/icons/goldcoin.png') }}"> 1 = $1
     </small>
   </div>
 

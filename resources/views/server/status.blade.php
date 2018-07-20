@@ -23,16 +23,27 @@
       {{ Helpers::getRealmStatus($realm->port) }}
     </span>
   </h5>
+  <p class="text-small">
+    This reflects the world server status.
+    <span class="float-right text-orange">
+    {{ env('REALM_DESCRIPTION') }}
+  </span>
+  </p>
   </div>
   @endforeach
 
   <div class="col-md-12 mt-20">
   <h5 class="border-bottom mb-10">
-    Authentication server
+    <span class="text-orange">
+      Authentication system
+    </span>
     <span class="float-right status {{ Helpers::getRealmStatus(3724) }}">
       {{ Helpers::getRealmStatus(3724) }}
     </span>
   </h5>
+  <p class="text-small">
+    This reflects the authentication (login) status.
+  </p>
 </div>
 </div>
 </div>

@@ -107,6 +107,10 @@ class PaypalController extends Controller
       // redirect to paypal
       return redirect($redirect_url);
     }
+    if ( env('ERROR_LOGGING') == true )
+    {
+      Helpers::saveErrorLog('Donation failed. Unknown error.');
+    }
     return redirect('/donate')->with('fail', 'An error occurred.');
   }
 
@@ -122,6 +126,10 @@ class PaypalController extends Controller
     Session::forget('paypal_payment_id');
 
     if (empty($request->input('PayerID')) || empty($request->input('token'))) {
+      if ( env('ERROR_LOGGING') == true )
+      {
+        Helpers::saveErrorLog('Donation failed - possible scam detected/user exited payment form.');
+      }
       return redirect('/donate')->with('fail', 'Payment failed somehow.');
     }
 
@@ -144,9 +152,12 @@ class PaypalController extends Controller
       //  'goldcoins'   => DB::raw('goldcoins + ' . Session::get('amount')),
       //]);
       Helpers::addGoldCoins(Auth::user()->id, Session::get('amount'));
-      return redirect('/donate')->with('success', Session::get('amount').' (gold coins) were added successfully.');
+      return redirect('/donate')->with('success', Session::get('amount').' gold coins were added successfully.');
     }
-
+    if ( env('ERROR_LOGGING') == true )
+    {
+      Helpers::saveErrorLog('Donation failed - possible scam detected.');
+    }
     return redirect('/donate')->with('fail', 'Payment failed somehow.');
   }
 }
