@@ -649,7 +649,7 @@ class Helpers {
   public static function getIPInfo($ip)
   {
      $data = json_decode(file_get_contents("http://ip-api.com/json/" . $ip));
-    if ( !$data->status == 'fail' )
+    if ( $data->status == 'success' )
       {
         return $data;
       } else {

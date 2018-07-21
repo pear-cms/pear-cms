@@ -39,11 +39,16 @@ class NewsController extends Controller
       $validator = $request->validate([
             'comment' => 'required|min:30|max:250'
         ]);
-
+        $is_gm = 0;
+        if(Helpers::checkIfGM())
+        {
+          $is_gm = 1;
+        }
         $query = DB::connection('website')->table('news_comments')->insert([
           'newsid'    => $id,
           'comment'   => $request->get('comment'),
           'timestamp' => time(),
+          'is_gm'     => $is_gm,
           'author'    => Auth::user()->username
         ]);
 

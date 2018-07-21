@@ -152,6 +152,10 @@ class PaypalController extends Controller
       //  'goldcoins'   => DB::raw('goldcoins + ' . Session::get('amount')),
       //]);
       Helpers::addGoldCoins(Auth::user()->id, Session::get('amount'));
+      if ( env('ERROR_LOGGING') == true )
+      {
+        //Helpers::saveErrorLog('Donation sucess - '.Session::get('amount').'$ USD.');
+      }
       return redirect('/donate')->with('success', Session::get('amount').' gold coins were added successfully.');
     }
     if ( env('ERROR_LOGGING') == true )

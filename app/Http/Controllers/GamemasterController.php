@@ -100,7 +100,7 @@ class GamemasterController extends Controller
         return redirect('/gm');
       }
       $data = Helpers::getAccountInformation($id);
-      return view('gm.customize-character',
+      return view('gm.characters.customize-character',
       [
         'title' => 'Customize Character of '.$data->username,
         'account' => $data
