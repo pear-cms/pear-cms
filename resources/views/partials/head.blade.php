@@ -58,10 +58,10 @@
             </div>
           </li>
           <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Game <span class="navbar-arrow"></span>
           </a>
-          <div class="dropdown-menu fluid" aria-labelledby="navbarDropdownMenuLink">
+          <div class="dropdown-menu fluid" aria-labelledby="navbarDropdownMenuLink2">
             <p>
               Realm server status and in-game statistics.
             </p>
@@ -78,13 +78,13 @@
           <ul class="navbar-nav ml-auto">
             @if(isset(Auth::user()->id))
             <li class="nav-item red dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <div class="avatar-box">
                 <div class="avatar"></div>
               </div>
                 {{ Auth::user()->username }} <span class="navbar-arrow"></span>
             </a>
-            <div class="dropdown-menu fluid" aria-labelledby="navbarDropdownMenuLink">
+            <div class="dropdown-menu fluid" aria-labelledby="navbarDropdownMenuLink3">
               <p>
                 User Actions
                 <span class="float-right">
