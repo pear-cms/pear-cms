@@ -74,7 +74,7 @@ class GamemasterController extends Controller
 
     public function viewTicketList()
     {
-      return view('gm.ticket-list',
+      return view('gm.tickets.ticket-list',
       [
         'title' => 'Ticket List',
       ]);
