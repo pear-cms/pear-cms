@@ -104,12 +104,6 @@ class Helpers {
       }
   }
 
-  public static function getOnlinePlayers()
-  {
-    // returns the online players in numbers.
-    return DB::connection('characters')->table('characters')->where('online', '=', '1')->count();
-  }
-
   public static function getOnlineCharacters()
   {
     // returns all online characters.

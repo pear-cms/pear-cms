@@ -18,7 +18,9 @@
   <h5 class="border-bottom mb-10">
     Created by
     <span class="float-right">
-      {{ $ticket->name }}
+      <a href="{{ url('/acp/character') }}/{{ $ticket->name }}">
+        {{ $ticket->name }}
+      </a>
     </span>
   </h5>
   </div>
@@ -44,7 +46,7 @@
   <div class="col-md-12">
   <h5 class="border-bottom mb-10">
     Ticket status
-    <span class="float-right">
+    <span class="float-right ticket-status-{{ Helpers::ticketStatus($ticket->type) }}">
       {{ Helpers::getTicketStatus($ticket->type) }}
     </span>
   </h5>
@@ -70,7 +72,7 @@
     Closed by
     <span class="float-right">
       @if ($ticket->closedBy == $ticket->playerGuid)
-      Creator ({{$ticket->name}})
+      Creator (<a href="{{ url('/acp/character') }}/{{ $ticket->name }}">{{$ticket->name}}</a>)
       @else
       <img src='{{ asset('images/icons/gm.png') }}' />
       <span class="text-gamemaster">
@@ -87,9 +89,20 @@
     Description:
   </h5>
   <p>
-    {{ $ticket->description }}
+    {!! nl2br($ticket->description) !!}
   </p>
 </div>
+
+@if (!$ticket->response == "")
+<div class="col-md-12 mt-20">
+<h5 class="border-bottom mb-10">
+  <img src='{{ asset('images/icons/gm.png') }}' /> Response:
+</h5>
+<p>
+  {!! nl2br($ticket->response) !!}
+</p>
+</div>
+@endif
 
 </div>
 </div>
