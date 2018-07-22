@@ -16,7 +16,7 @@
   <div class="col-md-12 mt-20">
 <h5 class="border-bottom mb-10 text-small text-muted">
   Posted by
-  <img src='{{ asset('images/icons/gm.png') }}' />
+  <img alt="gmicon" src='{{ asset('images/icons/gm.png') }}' />
   <span class="text-gamemaster">
     {{ $news->author }}
   </span>

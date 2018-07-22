@@ -57,7 +57,7 @@
   <h5 class="border-bottom mb-10">
     Assigned to
     <span class="float-right">
-      <img src='{{ asset('images/icons/gm.png') }}' />
+      <img alt="gmicon" src='{{ asset('images/icons/gm.png') }}' />
       <span class="text-gamemaster">
         {{ Helpers::getCharacterNameFromGuid($ticket->assignedTo) }}
       </span>
@@ -74,7 +74,7 @@
       @if ($ticket->closedBy == $ticket->playerGuid)
       Creator (<a href="{{ url('/acp/character') }}/{{ $ticket->name }}">{{$ticket->name}}</a>)
       @else
-      <img src='{{ asset('images/icons/gm.png') }}' />
+      <img alt="gmicon" src='{{ asset('images/icons/gm.png') }}' />
       <span class="text-gamemaster">
         {{ Helpers::getCharacterNameFromGuid($ticket->closedBy) }}
       </span>
@@ -96,7 +96,7 @@
 @if (!$ticket->response == "")
 <div class="col-md-12 mt-20">
 <h5 class="border-bottom mb-10">
-  <img src='{{ asset('images/icons/gm.png') }}' /> Response:
+  <img alt="gmicon" src='{{ asset('images/icons/gm.png') }}' /> Response:
 </h5>
 <p>
   {!! nl2br($ticket->response) !!}
