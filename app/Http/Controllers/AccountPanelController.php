@@ -38,7 +38,7 @@ class AccountPanelController extends Controller
 
     public function viewCharacter($name)
     {
-      if ( Helpers::CharacterBelongsToId($name, Auth::user()->id))
+      if ( Helpers::CharacterBelongsToId($name, Auth::user()->id) or Helpers::checkIfGM())
       {
         // Character belongs to the id accessing it.
         $data = Helpers::getCharacterDataByName($name);

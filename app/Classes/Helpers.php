@@ -375,7 +375,10 @@ class Helpers {
   {
     // checks if user is GM.
     if ( isset(Auth::user()->id) ) {
-      if( DB::connection('auth')->table('account_access')->where('id', Auth::user()->id)->first() ) {
+      if( DB::connection('auth')->table('account_access')->where([
+          ['id',      '=', Auth::user()->id],
+          ['gmlevel', '>=', '1']
+          ])->first() ) {
         return true;
       } else {
         return false;
