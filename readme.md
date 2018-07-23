@@ -1,4 +1,4 @@
-![picture](public/images/logo/logo_64.png)
+![picture](public/themes/default/images/logo/logo_64.png)
 
 ## Pear-CMS
 Please, do not use in production as the product is not yet finished.
@@ -15,6 +15,8 @@ Please, insert the SQL files from within [/sql](https://github.com/pear-cms/pear
 ## Authors
 
 * **Pear CMS** - *Initial work* - [Pear CMS](https://github.com/pear-cms)
+* **Albin** - *Development* - [albin@pear-cms.eu](mailto:albin@pear-cms.eu)
+* **Hristiyan** - *Development* - [himikoemu@pear-cms.eu](mailto:himikoemu@pear-cms.eu)
 
 See also the list of [contributors](https://github.com/pear-cms/pear-cms/graphs/contributors) who participated in this project.
 
