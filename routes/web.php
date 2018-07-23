@@ -74,11 +74,12 @@ Route::group(['middleware' => ['\App\Http\Middleware\GMCheck::class']], function
   Route::get('/gm', 'GamemasterController@index');
   Route::get('/gm/account/list', 'GamemasterController@viewAccountList');
   Route::get('/gm/ticket/list', 'GamemasterController@viewTicketList');
-  Route::get('/gm/ticket/view/{id}', 'GamemasterController@viewTicket');
+  Route::get('/gm/ticket/view/{id}', 'GamemasterController@viewTicket')->name('viewTicket');
   Route::get('/gm/account/view/{id}', 'GamemasterController@viewAccount');
   Route::get('/gm/account/edit/{id}', 'GamemasterController@editAccount');
   Route::get('/gm/account/{id}/character/customize', 'GamemasterController@viewCustomizeCharacter');
   Route::post('/gm/account/{id}/character/customize', 'GamemasterController@customizeCharacter');
   Route::get('/gm/publish-article', 'GamemasterController@publishArticleForm');
   Route::post('/gm/publish-article/', 'GamemasterController@publishArticle');
+  Route::post('/gm/ticket/close/{id}', 'GamemasterController@closeTicket')->name('closeTicket');
   });

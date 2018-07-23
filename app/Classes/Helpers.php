@@ -35,7 +35,7 @@ class Helpers {
   public static function getAllTickets()
   {
     // returns all tickets.
-    return DB::connection('characters')->table('gm_ticket')->get();
+    return DB::connection('characters')->table('gm_ticket')->orderBy('lastModifiedTime','desc')->paginate(20);
   }
 
   public static function getTicket($id)
