@@ -61,12 +61,10 @@
           </div>
         @endif
       @else
-<<<<<<< HEAD:resources/views/themes/default/acp/view-ticket.blade.php
-      <img src='{{ asset('themes/default/images/icons/gm.png') }}' />
+      <img src='{{ asset('images/icons/gm.png') }}' />
       <span class="text-gamemaster">
         {{ Helpers::getCharacterNameFromGuid($ticket->closedBy) }}
       </span>
-=======
         @if ( $ticket->closedBy  > 0)
           <div class="col-md-12">
             <h5 class="border-bottom mb-10">
@@ -84,7 +82,6 @@
             </h5>
           </div>
         @endif
->>>>>>> 280b54bc69dbeb1ce6d35fe2906b0789e1a9efe4:resources/views/acp/view-ticket.blade.php
       @endif
       <div class="col-md-12 mt-20">
         <h5 class="border-bottom mb-10">

@@ -37,7 +37,7 @@
     </label>
     <input type="amount" class="form-control" id="amount" name="amount" aria-describedby="amount" placeholder="Enter amount to donate..." value="{{ old('amount') }}" />
     <small class="form-text text-muted">
-      <img src="{{ asset('themes/default/images/icons/goldcoin.png') }}"> 1 = $1
+      <img src="{{ asset('images/icons/goldcoin.png') }}"> 1 = $1
     </small>
   </div>
 
