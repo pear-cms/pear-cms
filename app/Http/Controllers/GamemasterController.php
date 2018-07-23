@@ -99,8 +99,8 @@ class GamemasterController extends Controller
         if (Helpers::checkTicketExists($id)) {
             DB::connection('characters')->table('gm_ticket')->where('id', $id)->update([
              'type' => '1',
-             'closedBy' => Auth::user()->id
-                // Need update lastModificationTime too
+             'closedBy' => Auth::user()->id,
+             'lastModifiedTime' => time()
             ]);
             return redirect()->route('viewTicket', $id);
         } else {
