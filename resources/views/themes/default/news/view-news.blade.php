@@ -1,7 +1,7 @@
 @extends('partials.layout')
 
 @section('content')
-<div class="third-page" style="background-image:url('{{ asset('themes/default/images/news/' . $news->image) }}')">
+<div class="third-page" style="background-image:url('{{ asset('images/news/' . $news->image) }}')">
   <div class="half-page-content mt-20">
     <h4 class="text-header text-upper">
       {{ $news->title }}
@@ -16,7 +16,7 @@
   <div class="col-md-12 mt-20">
 <h5 class="border-bottom mb-10 text-small text-muted">
   Posted by
-  <img src='{{ asset('themes/default/images/icons/gm.png') }}' />
+  <img src='{{ asset('images/icons/gm.png') }}' />
   <span class="text-gamemaster">
     {{ $news->author }}
   </span>
@@ -38,9 +38,9 @@
   <div class="col-md-12 mt-10 border gamemaster">
     <div class="row mb-10 mt-10">
       <div class="col-sm-3 col-md-3 col-lg-2 text-small text-center text-gamemaster">
-      <img class="comment-avatar" src="{{asset('themes/default/images/misc/navbar_avatar_anonymous.png')}}" width="75" height="75" />
+      <img class="comment-avatar" src="{{asset('images/misc/navbar_avatar_anonymous.png')}}" width="75" height="75" />
       <p>
-        <img class="comment-avatar" src="{{asset('themes/default/images/icons/gm.png')}}" width="23" height="16" /> {{ $comment->author }}
+        <img class="comment-avatar" src="{{asset('images/icons/gm.png')}}" width="23" height="16" /> {{ $comment->author }}
       </p>
     </div>
       <div class="col-sm-9 col-md-9 text-small border-left text-gamemaster">

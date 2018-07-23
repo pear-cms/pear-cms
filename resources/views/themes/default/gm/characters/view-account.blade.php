@@ -49,7 +49,7 @@
   <h5 class="border-bottom mb-20">
     Last OS Used
     <span class="float-right text-small">
-      {{ $account->os }} <img alt="{{ $account->os }}" src="{{asset('themes/default/images/platforms')}}/{{strtolower($account->os)}}.png">
+      {{ $account->os }} <img alt="{{ $account->os }}" src="{{asset('images/platforms')}}/{{strtolower($account->os)}}.png">
     </span>
   </h5>
   </div>
@@ -76,8 +76,8 @@
     Current Points
   </h5>
   <p>
-    <img alt="silvercoins" src="{{ asset('themes/default/images/icons/silvercoin.png') }}" /> {{ $account->silvercoins }}
-    <img alt="goldcoins" src="{{ asset('themes/default/images/icons/goldcoin.png') }}" /> {{ $account->goldcoins }}
+    <img alt="silvercoins" src="{{ asset('images/icons/silvercoin.png') }}" /> {{ $account->silvercoins }}
+    <img alt="goldcoins" src="{{ asset('images/icons/goldcoin.png') }}" /> {{ $account->goldcoins }}
   </p>
 </div>
 <div class="col-md-12 mt-20 no-padding">

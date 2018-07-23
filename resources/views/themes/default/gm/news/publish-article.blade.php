@@ -46,9 +46,9 @@
 @foreach (Helpers::getNewsImages() as $image)
 <div class="col-sm-3 mt-10">
   @if( old('image') == $image)
-  <img src="{{ asset('themes/default/images/news') }}/{{ $image }}" width="100%" height="100%" class="image-border active" id="{{ $image }}" />
+  <img src="{{ asset('images/news') }}/{{ $image }}" width="100%" height="100%" class="image-border active" id="{{ $image }}" />
   @else
-  <img src="{{ asset('themes/default/images/news') }}/{{ $image }}" width="100%" height="100%" class="image-border" id="{{ $image }}" />
+  <img src="{{ asset('images/news') }}/{{ $image }}" width="100%" height="100%" class="image-border" id="{{ $image }}" />
   @endif
 </div>
 @endforeach
