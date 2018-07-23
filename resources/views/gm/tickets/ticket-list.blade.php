@@ -62,6 +62,19 @@
     </tr>
     @endforeach
   </tbody>
+  <tr>
+    <td colspan="5">
+      <div class="container">
+        @php
+        $links = Helpers::getAllTickets()->links();
+        $links = str_replace("<ul class=\"pagination", "<ul class=\"pagination justify-content-center", $links);
+        $links = str_replace("class=\"page-link", "class=\"page-link button border orange", $links);
+        $links = str_replace("class=\"page-item active", "class=\"page-item list-group-item-warning", $links);
+        @endphp
+        {!! $links !!}
+      </div>
+    </td>
+  </tr>
 </table>
 @else
   <p class="text-red">

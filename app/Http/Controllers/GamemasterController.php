@@ -94,6 +94,20 @@ class GamemasterController extends Controller
         }
     }
 
+    public function closeTicket($id)
+    {
+        if (Helpers::checkTicketExists($id)) {
+            DB::connection('characters')->table('gm_ticket')->where('id', $id)->update([
+             'type' => '1',
+             'closedBy' => Auth::user()->id
+                // Need update lastModificationTime too
+            ]);
+            return redirect()->route('viewTicket', $id);
+        } else {
+            return redirect('/gm');
+        }
+    }
+
     public function viewCustomizeCharacter($id)
     {
       if (!Helpers::checkAccountExists($id)) {
