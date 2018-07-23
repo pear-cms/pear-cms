@@ -136,6 +136,7 @@ return [
         /*
          * Laravel Framework Service Providers...
          */
+        Igaster\LaravelTheme\themeServiceProvider::class,
         Greggilbert\Recaptcha\RecaptchaServiceProvider::class,
         ThibaudDT\TrinityCoreAuth\Providers\TrinityCoreAuthServiceProvider::class,
         Illuminate\Auth\AuthServiceProvider::class,
@@ -188,7 +189,7 @@ return [
     */
 
     'aliases' => [
-
+        'Theme' => Igaster\LaravelTheme\Facades\Theme::class,
         'Helpers' => App\Classes\Helpers::class,
         'Recaptcha' => Greggilbert\Recaptcha\Facades\Recaptcha::class,
         'TrinityCoreAuth' => ThibaudDT\TrinityCoreAuth\Facades\TrinityCore::class,

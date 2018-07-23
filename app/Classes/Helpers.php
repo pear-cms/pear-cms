@@ -659,9 +659,15 @@ class Helpers {
 
   public static function saveErrorLog($message)
   {
+    if(isset(Auth::user()->username))
+    {
+      $username = Auth::user()->username;
+    } else {
+      $username = 'Guest';
+    }
     DB::connection('website')->table('error_logs')->insert([
     'message'  => $message,
-    'username' => Auth::user()->username,
+    'username' => $username,
     'ip'     => Request::ip(),
     'date'     => date('Y-m-d H:i:s')
   ]);
