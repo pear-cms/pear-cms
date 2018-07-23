@@ -29,15 +29,24 @@ Route::fallback(function() {
 // Route group will redirect all routes within to maintenance page if site maintenance is enabled.
 Route::group(['middleware' => ['\App\Http\Middleware\SiteMaintenance::class']], function () {
 
+  // Connection guide route below.
   Route::get('/connection-guide', function () {
       return view('misc.connection-guide', ['title' => 'Connection Guide']);
   });
 
+  // Donation routes below.
   Route::get('donate', array('as' => 'addmoney.paywithpaypal', 'uses' => 'PaypalController@showForm'));
   Route::post('donate', array('as' => 'addmoney.paypal', 'uses' => 'PaypalController@store'));
   Route::get('donate/status', array('as' => 'payment.status', 'uses' => 'PaypalController@getPaymentStatus'));
 
+  Route::get('/status', function () {
+      return view('server.status', ['title' => "Server Status"]);
+  });
 
+  // News routes below.
+  Route::get('/news/{id}', 'NewsController@getNewsArticles');
+  Route::post('/news/{id}', 'NewsController@addNewsComment');
+  Route::get('/news', 'NewsController@index');
 });
 
 // Route group will redirect all routes within to maintenance page if auth maintenance is enabled.
@@ -58,15 +67,7 @@ Route::group(['middleware' => ['\App\Http\Middleware\AuthMaintenance::class']], 
   Route::get('/acp/character/ticket/{name}/{id}', 'AccountPanelController@viewCharacterTicket');
   Route::get('/acp/character/tickets/{name}', 'AccountPanelController@viewCharacterTickets');
 
-  Route::get('/status', function () {
-      return view('server.status', ['title' => "Server Status"]);
-  });
-
-  // News routes below.
-  Route::get('/news/{id}', 'NewsController@getNewsArticles');
-  Route::post('/news/{id}', 'NewsController@addNewsComment');
-  Route::get('/news', 'NewsController@index');
-
+  // Login, register routes below.
   TrinityCoreAuth::routes();
 });
 
@@ -81,4 +82,8 @@ Route::group(['middleware' => ['\App\Http\Middleware\GMCheck::class']], function
   Route::post('/gm/account/{id}/character/customize', 'GamemasterController@customizeCharacter');
   Route::get('/gm/publish-article', 'GamemasterController@publishArticleForm');
   Route::post('/gm/publish-article/', 'GamemasterController@publishArticle');
-  });
+});
+
+Route::group(['middleware' => ['\App\Http\Middleware\AdminCheck::class']], function () {
+  Route::get('/admin/change-theme/{theme-name}', 'themeController@changeTheme');
+});
