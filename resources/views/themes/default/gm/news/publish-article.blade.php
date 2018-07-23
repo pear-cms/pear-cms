@@ -1,7 +1,7 @@
 @extends('partials.layout')
 @section('customcss')
-<link href="{{ asset('css/quill.core.css') }}" rel="stylesheet">
-<link href="{{ asset('css/quill.snow.css') }}" rel="stylesheet">
+<link href="{{ asset('themes/default/css/quill.core.css') }}" rel="stylesheet">
+<link href="{{ asset('themes/default/css/quill.snow.css') }}" rel="stylesheet">
 @endsection
 @section('content')
 <div class="third-page">
@@ -46,9 +46,9 @@
 @foreach (Helpers::getNewsImages() as $image)
 <div class="col-sm-3 mt-10">
   @if( old('image') == $image)
-  <img src="{{ asset('images/news') }}/{{ $image }}" width="100%" height="100%" class="image-border active" id="{{ $image }}" />
+  <img src="{{ asset('themes/default/images/news') }}/{{ $image }}" width="100%" height="100%" class="image-border active" id="{{ $image }}" />
   @else
-  <img src="{{ asset('images/news') }}/{{ $image }}" width="100%" height="100%" class="image-border" id="{{ $image }}" />
+  <img src="{{ asset('themes/default/images/news') }}/{{ $image }}" width="100%" height="100%" class="image-border" id="{{ $image }}" />
   @endif
 </div>
 @endforeach
