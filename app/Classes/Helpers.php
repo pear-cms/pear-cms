@@ -35,7 +35,7 @@ class Helpers {
   public static function getAllTickets()
   {
     // returns all tickets.
-    return DB::connection('characters')->table('gm_ticket')->get();
+    return DB::connection('characters')->table('gm_ticket')->orderBy('lastModifiedTime','desc')->paginate(20);
   }
 
   public static function getTicket($id)
@@ -102,12 +102,6 @@ class Helpers {
       } else {
         return false;
       }
-  }
-
-  public static function getOnlinePlayers()
-  {
-    // returns the online players in numbers.
-    return DB::connection('characters')->table('characters')->where('online', '=', '1')->count();
   }
 
   public static function getOnlineCharacters()
@@ -375,7 +369,10 @@ class Helpers {
   {
     // checks if user is GM.
     if ( isset(Auth::user()->id) ) {
-      if( DB::connection('auth')->table('account_access')->where('id', Auth::user()->id)->first() ) {
+      if( DB::connection('auth')->table('account_access')->where([
+          ['id',      '=', Auth::user()->id],
+          ['gmlevel', '>=', '1']
+          ])->first() ) {
         return true;
       } else {
         return false;
@@ -649,7 +646,7 @@ class Helpers {
   public static function getIPInfo($ip)
   {
      $data = json_decode(file_get_contents("http://ip-api.com/json/" . $ip));
-    if ( !$data->status == 'fail' )
+    if ( $data->status == 'success' )
       {
         return $data;
       } else {

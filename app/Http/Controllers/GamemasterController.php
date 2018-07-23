@@ -74,7 +74,7 @@ class GamemasterController extends Controller
 
     public function viewTicketList()
     {
-      return view('gm.ticket-list',
+      return view('gm.tickets.ticket-list',
       [
         'title' => 'Ticket List',
       ]);
@@ -94,13 +94,27 @@ class GamemasterController extends Controller
         }
     }
 
+    public function closeTicket($id)
+    {
+        if (Helpers::checkTicketExists($id)) {
+            DB::connection('characters')->table('gm_ticket')->where('id', $id)->update([
+             'type' => '1',
+             'closedBy' => Auth::user()->id,
+             'lastModifiedTime' => time()
+            ]);
+            return redirect()->route('viewTicket', $id);
+        } else {
+            return redirect('/gm');
+        }
+    }
+
     public function viewCustomizeCharacter($id)
     {
       if (!Helpers::checkAccountExists($id)) {
         return redirect('/gm');
       }
       $data = Helpers::getAccountInformation($id);
-      return view('gm.customize-character',
+      return view('gm.characters.customize-character',
       [
         'title' => 'Customize Character of '.$data->username,
         'account' => $data

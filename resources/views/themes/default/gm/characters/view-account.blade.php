@@ -80,6 +80,22 @@
     <img alt="goldcoins" src="{{ asset('themes/default/images/icons/goldcoin.png') }}" /> {{ $account->goldcoins }}
   </p>
 </div>
+<div class="col-md-12 mt-20 no-padding">
+<h5 class="border-bottom mb-10 text-grey">
+  Character List
+</h5>
+</div>
+
+@foreach(Helpers::getAccountCharactersById($account->id) as $character)
+<a class="button border orange col-sm-5" href="{{ url('/acp/character') }}/{{ $character->name }}">
+<img alt="{{ $character->name }}" src="{{ asset('images/races') }}/{{ $character->race }}_{{ $character->gender }}.jpg" /> {{ $character->name }}
+</a>
+@endforeach
+@if (Helpers::getAccountCharactersNumbersById($account->id) == 0)
+<p class="text-red">
+{{$account->username}} doesn't have any characters!
+</p>
+@endif
 
 </div>
 </div>
