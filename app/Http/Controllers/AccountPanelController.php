@@ -7,6 +7,7 @@ Use Validator;
 use Helpers;
 use Auth;
 use DB;
+use Lang;
 
 class AccountPanelController extends Controller
 {
@@ -31,7 +32,7 @@ class AccountPanelController extends Controller
       $data = json_decode(file_get_contents("http://ip-api.com/json/" . Auth::user()->last_ip));
       return view('acp.home',
       [
-        'title' => 'User Account Panel',
+        'title' => __('translation.account_panel'),
         'data' => $data
       ]);
     }
@@ -46,7 +47,7 @@ class AccountPanelController extends Controller
         {
           return redirect()->back();
         }
-        return view('acp.view-character', ['title' => 'Viewing character: ' . $name , 'character' => $data]);
+        return view('acp.view-character', ['title' => __('translation.viewing_character') . ': ' . $name , 'character' => $data]);
       } else {
         // Character do not belong to the id attempting to access it. Redirect to acp.
         return redirect('/acp');
@@ -57,7 +58,7 @@ class AccountPanelController extends Controller
     {
       return view('acp.view-tickets',
       [
-        'title' => 'My Tickets',
+        'title' => __('translation.my_tickets'),
       ]);
     }
     public function viewCharacterTicket($name, $id)
@@ -68,7 +69,7 @@ class AccountPanelController extends Controller
         if ( $data = Helpers::getTicketInformationFromGuid($data->guid, $id)) {
           return view('acp.view-ticket',
           [
-            'title' => 'Viewing ticket by ' . $name ,
+            'title' => __('translation.viewing_ticket_by') . ' ' . $name ,
             'ticket' => $data
           ]);
         } else {
@@ -88,7 +89,7 @@ class AccountPanelController extends Controller
         //return view('acp.view-character-tickets', ['title' => $name . '\'s Tickets']);
         return view('acp.view-character-tickets',
         [
-          'title' => $name . '\'s Tickets',
+          'title' => $name . '\'s ' . __('translation.tickets'),
           'character' => $data
         ]);
       } else {
@@ -112,33 +113,33 @@ class AccountPanelController extends Controller
                 {
                   Helpers::saveErrorLog('Password change failed (current password != stored password).');
                 }
-                return redirect()->back()->with("error", "Your current password does not match the password from our records. Try again.");
+                return redirect()->back()->with("error", __('translation.error_current_password_no_match'));
             }
 
             if(strcmp($request->get('current_password'), $request->get('password')) == 0){
                 //Current password and new password are same
-                return redirect()->back()->with("error", "New password cannot be same as your current password. Please choose a different password.");
+                return redirect()->back()->with("error", __('translation.error_new_password_not_same'));
             }
 
             //Change Password
-            if(Helpers::sendSOAPCommand('acc set password '. Auth::user()->username .' ' . $request->get('password') . ' ' . $request->get('password')))
+            if(Helpers::sendSOAPCommand('acc set password '. Auth::user()->username . ' ' . $request->get('password') . ' ' . $request->get('password')))
             {
               // return redirect if the password was successfully changed.
-              return redirect()->back()->with("success","Password changed successfully!");
+              return redirect()->back()->with("success", __('translation.success_password_change'));
             } else {
               // return redirect if the password change was unsuccessful.
-              return redirect()->back()->with("error", "Something goofed...");
+              return redirect()->back()->with("error", __('translation.error_unknown'));
 
             }
 
-            return redirect()->back()->with("success","Password changed successfully!");
+            return redirect()->back()->with("success", __('translation.success_password_change'));
     }
 
     public function changePasswordForm()
     {
         return view('acp.change-password',
         [
-          'title' => 'Change Password',
+          'title' => __('translation.change_password'),
         ]);
     }
 }

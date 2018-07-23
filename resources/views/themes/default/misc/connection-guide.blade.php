@@ -3,10 +3,10 @@
 <div class="third-page">
   <div class="half-page-content mt-20">
     <h4 class="text-header text-upper">
-      Connection guide for {{ env('APP_NAME') }}
+      {{ __('translation.connection_guide') }}
     </h4>
     <p class="text-beige col-md-6 col-center">
-      Follow the connection guide to properly connect to our realm.
+      {{ __('translation.connection_guide_page_description') }}
     </p>
   </div>
 </div>

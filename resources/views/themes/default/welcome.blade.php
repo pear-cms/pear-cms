@@ -14,10 +14,10 @@
     <div class="container col-md-6">
     <div class="row justify-content-md-center mt-20">
       <a class="button border orange col-md-3">
-        Learn more
+        {{ __('translation.learn_more') }}
       </a>
       <a class="button border red col-md-4" href="{{ url('/register') }}">
-        Register
+        {{ __('translation.register') }}
       </a>
     </div>
   </div>
@@ -25,7 +25,7 @@
   <div class="container col-md-6">
   <div class="row justify-content-md-center mt-20">
     <a class="button border orange col-md-4" href="{{ url('/acp') }}">
-      Account Panel
+      {{ __('translation.account_panel') }}
     </a>
   </div>
 </div>
@@ -37,7 +37,7 @@
 
     <div class="col-md-12">
       <h4 class="text-upper text-header text-white">
-        Latest news
+        {{ __('translation.latest_news') }}
       </h4>
     </div>
     @if(Helpers::getNewsArticles()->count() > 0)
@@ -50,13 +50,15 @@
       <h4 class="news-article-title">
         {{ ucwords($news->title )}}
         @if (time()-$news->timestamp < 86400)
-              <span class="badge badge-secondary">New</span>
+              <span class="badge badge-secondary">
+                {{ __('translation.badge_new') }}
+              </span>
         @endif
       </h4>
       <h4 class="news-article-description">
         {{ substr($news->description, 0, 50) }}..
         <span class="float-right">
-          Read more
+          {{ __('translation.read_more') }}
         </span>
       </h4>
       </div>
@@ -65,7 +67,7 @@
     @endforeach
     @else
     <p class="col-sm">
-      No news articles to show.
+      {{ __('translation.no_articles_to_show') }}
     </p>
     @endif
 </div>

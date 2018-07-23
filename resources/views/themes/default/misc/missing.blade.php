@@ -6,7 +6,7 @@
       Uh oh...
     </h4>
     <p class="text-beige col-md-6 col-center">
-      Once upon a time there might have been a page here... but now it is gone!
+      {{ __('translation.error_not_found') }}
     </p>
   </div>
 </div>

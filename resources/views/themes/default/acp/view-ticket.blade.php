@@ -3,10 +3,10 @@
   <div class="third-page">
     <div class="half-page-content mt-20">
       <h4 class="text-header text-upper">
-        Viewing ticket #{{ $ticket->id }}
+        {{ __('translation.viewing_ticket') }} #{{ $ticket->id }}
       </h4>
       <p class="text-beige col-md-6 col-center">
-        Currently you are viewing ticket #{{ $ticket->id }}.
+        {{ __('translation.currently_viewing_ticket') }} #{{ $ticket->id }}.
       </p>
     </div>
   </div>
@@ -14,7 +14,7 @@
     <div class="row">
       <div class="col-md-12">
         <h5 class="border-bottom mb-10">
-          Created by
+          {{ __('translation.created_by') }}
           <span class="float-right">
             <a href="{{ url('/acp/character') }}/{{ $ticket->name }}">
               {{ $ticket->name }}
@@ -24,7 +24,7 @@
       </div>
       <div class="col-md-12">
         <h5 class="border-bottom mb-10">
-          Created at
+          {{ __('translation.created_at') }}
           <span class="float-right">
             {{ date('Y-m-d, H:i:s', $ticket->createTime) }}
           </span>
@@ -32,7 +32,7 @@
       </div>
       <div class="col-md-12">
         <h5 class="border-bottom mb-10">
-          Last modified at
+          {{ __('translation.last_modified_at') }}
           <span class="float-right">
             {{ date('Y-m-d, H:i:s', $ticket->lastModifiedTime) }}
           </span>
@@ -40,7 +40,7 @@
       </div>
       <div class="col-md-12">
         <h5 class="border-bottom mb-10">
-          Ticket status
+          {{ __('translation.ticket_status') }}
           <span class="float-right ticket-status-{{ Helpers::ticketStatus($ticket->type) }}">
             {{ Helpers::getTicketStatus($ticket->type) }}
           </span>
@@ -50,7 +50,7 @@
         @if ( $ticket->assignedTo > 0)
           <div class="col-md-12">
             <h5 class="border-bottom mb-10">
-              Assigned to
+              {{ __('translation.assigned_to') }}
               <span class="float-right">
                 <img alt="gmicon" src='{{ asset('images/icons/gm.png') }}' />
                 <span class="text-gamemaster">
@@ -68,10 +68,10 @@
         @if ( $ticket->closedBy  > 0)
           <div class="col-md-12">
             <h5 class="border-bottom mb-10">
-              Closed by
+              {{ __('translation.closed_by') }}
               <span class="float-right">
                 @if ($ticket->closedBy == $ticket->playerGuid)
-                  Creator (<a href="{{ url('/acp/character') }}/{{ $ticket->name }}">{{$ticket->name}}</a>)
+                  {{ __('translation.creator') }} (<a href="{{ url('/acp/character') }}/{{ $ticket->name }}">{{$ticket->name}}</a>)
                 @else
                   <img alt="gmicon" src='{{ asset('images/icons/gm.png') }}' />
                   <span class="text-gamemaster">
@@ -85,7 +85,7 @@
       @endif
       <div class="col-md-12 mt-20">
         <h5 class="border-bottom mb-10">
-          Description:
+            {{ __('translation.description') }}:
         </h5>
         <p>
           {!! nl2br($ticket->description) !!}
@@ -95,7 +95,7 @@
       @if (!$ticket->response == "")
         <div class="col-md-12 mt-20">
           <h5 class="border-bottom mb-10">
-            <img alt="gmicon" src='{{ asset('images/icons/gm.png') }}' /> Response:
+            <img alt="gmicon" src='{{ asset('images/icons/gm.png') }}' /> {{ __('translation.response') }}:
           </h5>
           <p>
             {!! nl2br($ticket->response) !!}
@@ -106,7 +106,9 @@
         <div class="col-md-12 mt-20">
           <form action="{{ route('closeTicket',$ticket->id) }}" method="POST">
             {{ csrf_field() }}
-            <button type="submit" class="btn btn-sm btn-outline-danger">Close ticket</button>
+            <button type="submit" class="btn btn-sm btn-outline-danger">
+              {{ __('translation.button_close_ticket') }}
+            </button>
           </form>
         </div>
       @endif

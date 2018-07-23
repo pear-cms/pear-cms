@@ -4,10 +4,10 @@
 <div class="third-page">
   <div class="half-page-content mt-20">
     <h4 class="text-header text-upper">
-      Register Account
+      {{ __('translation.register_account') }}
     </h4>
     <p class="text-beige col-md-6 col-center">
-      Register an account below by entering your desired account information.
+      {{ __('translation.register_page_description') }}
     </p>
   </div>
 </div>
@@ -24,46 +24,46 @@
 
     <div class="form-group">
     <label for="email">
-      Email address
+      {{ __('translation.email') }}
     </label>
-    <input type="email" class="form-control" id="email" name="email" aria-describedby="emailhelp" value="{{ old('email') }}" placeholder="Enter your email..." />
+    <input type="email" class="form-control" id="email" name="email" aria-describedby="emailhelp" value="{{ old('email') }}" placeholder="{{ __('translation.placeholder_email') }}" />
     <small id="emailhelp" class="form-text text-muted">
-      We promise not to send you anything inappropriate or share your email address among third parties.
+      {{ __('translation.email_label') }}
     </small>
   </div>
 
   <div class="form-group">
   <label for="username">
-    Username
+    {{ __('translation.username') }}
   </label>
-  <input type="text" class="form-control" id="username" name="username" aria-describedby="usernamehelp" value="{{ old('username') }}" placeholder="Enter a cool username..." />
+  <input type="text" class="form-control" id="username" name="username" aria-describedby="usernamehelp" value="{{ old('username') }}" placeholder="{{ __('translation.placeholder_username') }}" />
   <small id="usernamehelp" class="form-text text-muted">
-    Do not enter an inappropriate name as they may be suspended.
+    {{ __('translation.username_label') }}
   </small>
 </div>
 
 <div class="form-group">
 <label for="password">
-  Password
+  {{ __('translation.password') }}
 </label>
-<input type="password" class="form-control" id="password" name="password" aria-describedby="passwordhelp" placeholder="Enter a strong password..." />
+<input type="password" class="form-control" id="password" name="password" aria-describedby="passwordhelp" placeholder="{{ __('translation.placeholder_password') }}" />
 <small id="passwordhelp" class="form-text text-muted">
-  A strong password is the key to keeping your account secured!
+  {{ __('translation.password_label') }}
 </small>
 </div>
 
 <div class="form-group">
 <label for="password">
-  Confirm password
+  {{ __('translation.confirm_password') }}
 </label>
-<input type="password" class="form-control" id="confirm_password" name="password_confirmation" aria-describedby="passwordhelp" placeholder="Confirm your strong password..." />
+<input type="password" class="form-control" id="confirm_password" name="password_confirmation" aria-describedby="passwordhelp" placeholder="{{ __('translation.placeholder_confirm_password') }}" />
 </div>
 <div class="form-group text-center">
 {!! Recaptcha::render() !!}
 </div>
 <div class="form-group text-center">
 <button type="submit" class="button border orange">
-Count me in!
+{{ __('translation.button_register') }}
 </button>
 </div>
   </form>

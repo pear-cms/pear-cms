@@ -4,10 +4,10 @@
 <div class="third-page">
   <div class="half-page-content mt-20">
     <h4 class="text-header text-upper">
-      Log in
+      {{ __('translation.log_in') }}
     </h4>
     <p class="text-beige col-md-6 col-center">
-      Log in to your account by entering your account information below.
+      {{ __('translation.login_page_description') }}
     </p>
   </div>
 </div>
@@ -23,16 +23,16 @@
     @endif
   <div class="form-group">
   <label for="username">
-    Username
+    {{ __('translation.username') }}
   </label>
-  <input type="text" class="form-control" id="username" name="username" placeholder="Enter your cool username..." value="{{ old('username') }}" />
+  <input type="text" class="form-control" id="username" name="username" placeholder="{{ __('translation.placeholder_username') }}" value="{{ old('username') }}" />
 </div>
 
 <div class="form-group">
 <label for="password">
-  Password
+  {{ __('translation.password') }}
 </label>
-<input type="password" class="form-control" id="password" name="password" placeholder="Enter your strong password..." />
+<input type="password" class="form-control" id="password" name="password" placeholder="{{ __('translation.placeholder_password') }}" />
 </div>
 
 <div class="form-group">
@@ -41,7 +41,7 @@
       <input class="form-check-input" name="remember" type="checkbox" id="remember"> Remember me
     </label>
     <small id="emailhelp" class="form-text text-muted">
-      This will keep your session alive and will not log you out due to inactivity.
+      {{ __('translation.remember_me_description') }}
     </small>
   </div>
 </div>
@@ -51,7 +51,7 @@
 </div>
 <div class="form-group text-center">
 <button type="submit" class="button border orange">
-Count me in!
+{{ __('translation.button_log_in') }}
 </button>
 </div>
   </form>

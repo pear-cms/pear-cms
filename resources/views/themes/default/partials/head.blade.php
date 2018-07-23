@@ -21,7 +21,7 @@
         <link href="{{ asset('themes/default/css/app.css') }}" rel="stylesheet">
         <link href="{{ asset('themes/default/css/buttons.css') }}" rel="stylesheet">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-        <script src="https://code.jquery.com/jquery-1.11.0.js"></script>
+        <script src="{{ asset('themes/default/js/jquery.min.js') }}"></script>
     </head>
     <body>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -38,41 +38,66 @@
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
               <a class="nav-link" href="{{ url('/') }}">
-                Home
+                {{ __('translation.menu_home') }}
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">
-                Features
+                {{ __('translation.menu_features') }}
               </a>
             </li>
             <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              News <span class="navbar-arrow"></span>
+              {{ __('translation.menu_news') }} <span class="navbar-arrow"></span>
             </a>
             <div class="dropdown-menu fluid" aria-labelledby="navbarDropdownMenuLink">
               <p>
-                News at a glance.
+                {{ __('translation.menu_news_description') }}
               </p>
-              <a class="dropdown-item" href="{{url('/news')}}">View all news</a>
+              <a class="dropdown-item" href="{{url('/news')}}">
+                {{ __('translation.menu_view_all_news') }}
+              </a>
             </div>
           </li>
           <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Game <span class="navbar-arrow"></span>
+            {{ __('translation.menu_game') }} <span class="navbar-arrow"></span>
           </a>
           <div class="dropdown-menu fluid" aria-labelledby="navbarDropdownMenuLink2">
             <p>
-              Realm server status and in-game statistics.
+              {{ __('translation.menu_game_description') }}
             </p>
-            <a class="dropdown-item" href="{{url('/status')}}">View realm status</a>
+            <a class="dropdown-item" href="{{url('/status')}}">
+              {{ __('translation.menu_game_status') }}
+            </a>
           </div>
         </li>
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{ __('translation.menu_language') }} <span class="navbar-arrow"></span>
+        </a>
+        <div class="dropdown-menu fluid" aria-labelledby="navbarDropdownMenuLink2">
+          <p>
+            {{ __('translation.menu_language_description') }}
+          </p>
+          @foreach (Config::get('languages') as $lang => $language)
+            @if ($lang != App::getLocale())
+                    <a class="dropdown-item" href="{{ route('lang.switch', $lang) }}">
+                      {{ $language }}
+                    </a>
+            @endif
+        @endforeach
+        </div>
+      </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ url('/connection-guide') }}">Connection Guide</a>
+              <a class="nav-link" href="{{ url('/connection-guide') }}">
+                {{ __('translation.menu_connection_guide') }}
+              </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link disabled" href="#">Shop</a>
+              <a class="nav-link disabled" href="#">
+                {{ __('translation.menu_shop') }}
+              </a>
             </li>
           </ul>
           <ul class="navbar-nav ml-auto">
@@ -86,36 +111,40 @@
             </a>
             <div class="dropdown-menu fluid" aria-labelledby="navbarDropdownMenuLink3">
               <p>
-                User Actions
+                {{ __('translation.menu_user_actions') }}
                 <span class="float-right">
                   <span class="mr-10">
                   <img alt="silvercoins" src="{{ asset('images/icons/silvercoin.png') }}" /> {{ Auth::user()->silvercoins }}
                 </span>
-                  <img alt="goldcoins" src="{{ asset('icons/goldcoin.png') }}" /> {{ Auth::user()->goldcoins }}
+                  <img alt="goldcoins" src="{{ asset('images/icons/goldcoin.png') }}" /> {{ Auth::user()->goldcoins }}
                 </span>
               </p>
               <a class="dropdown-item" href="{{ url('/acp') }}">
-                Account Panel
+                {{ __('translation.account_panel') }}
               </a>
               @if (Helpers::checkIfGM())
               <a class="dropdown-item" href="{{ url('/gm') }}">
-                GM Panel
+                {{ __('translation.gm_panel') }}
               </a>
               @endif
               <a class="dropdown-item" href="{{ url('/donate') }}">
-                Donate to {{ env('APP_NAME') }}
+                {{ __('translation.donate_to') }} {{ env('APP_NAME') }}
               </a>
               <a class="dropdown-item" href="{{ url('/logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                Log out
+                {{ __('translation.menu_log_out') }}
               </a>
             </div>
           </li>
           @else
           <li class="nav-item red mr-5">
-            <a class="nav-link" href="{{ url('/login') }}">Log in</a>
+            <a class="nav-link" href="{{ url('/login') }}">
+              {{ __('translation.menu_log_in') }}
+            </a>
           </li>
           <li class="nav-item red">
-            <a class="nav-link" href="{{ url('/register') }}">Register</a>
+            <a class="nav-link" href="{{ url('/register') }}">
+              {{ __('translation.menu_register') }}
+            </a>
           </li>
           @endif
           </ul>

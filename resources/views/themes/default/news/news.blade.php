@@ -3,10 +3,10 @@
 <div class="third-page">
   <div class="half-page-content mt-20">
     <h4 class="text-header text-upper">
-      Displaying all news
+      {{ __('translation.displaying_all_news') }}
     </h4>
     <p class="text-beige col-md-6 col-center">
-      Here are all news that {{env('APP_NAME')}} currently has.
+      {{ __('translation.news_page_description') }}
     </p>
   </div>
 </div>
@@ -22,13 +22,15 @@
   <h4 class="news-article-title">
     {{ ucwords($news->title) }}
     @if (time()-$news->timestamp < 86400)
-      <span class="badge badge-secondary">New</span>
+      <span class="badge badge-secondary">
+        {{ __('translation.badge_new') }}
+      </span>
     @endif
   </h4>
   <h4 class="news-article-description">
     {{ substr($news->description, 0, 50) }}..
     <span class="float-right">
-      Read more
+      {{ __('translation.read_more') }}
     </span>
   </h4>
   </div>
@@ -37,7 +39,7 @@
 @endforeach
 @else
 <p class="col-sm">
-  No news articles to show.
+  {{ __('translation.no_articles') }}
 </p>
 @endif
 </div>

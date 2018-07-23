@@ -14,12 +14,14 @@
 Route::get('/', function () {
     if ( Helpers::getSiteMaintenanceStatus() ) {
       // if site maintenance is set to 1, show maintenance page.
-      return view('misc.maintenance', ['title' => 'Maintenance Mode']);
+      return view('misc.maintenance', ['title' => __('translation.maintenance_mode')]);
     } else {
       // if not, continue as normal.
     return view('welcome');
   }
 });
+
+Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'LanguageController@switchLang']);
 
 Route::fallback(function() {
   Helpers::saveErrorLog(request()->fullUrl() . ' is missing?');
@@ -31,7 +33,7 @@ Route::group(['middleware' => ['\App\Http\Middleware\SiteMaintenance::class']], 
 
   // Connection guide route below.
   Route::get('/connection-guide', function () {
-      return view('misc.connection-guide', ['title' => 'Connection Guide']);
+      return view('misc.connection-guide', ['title' => __('translation.connection_guide')]);
   });
 
   // Donation routes below.
@@ -40,7 +42,7 @@ Route::group(['middleware' => ['\App\Http\Middleware\SiteMaintenance::class']], 
   Route::get('donate/status', array('as' => 'payment.status', 'uses' => 'PaypalController@getPaymentStatus'));
 
   Route::get('/status', function () {
-      return view('server.status', ['title' => "Server Status"]);
+      return view('server.status', ['title' => __('translation.server_status')]);
   });
 
   // News routes below.

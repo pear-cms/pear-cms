@@ -4,10 +4,10 @@
 <div class="third-page">
   <div class="half-page-content mt-20">
     <h4 class="text-header text-upper">
-      Ticket List
+        {{ __('translation.ticket_list') }}
     </h4>
     <p class="text-beige col-md-6 col-center">
-      Here are all the tickets made by players.
+        {{ __('translation.ticket_list_page_description') }}
     </p>
   </div>
 </div>
@@ -15,7 +15,7 @@
 <div class="row">
   <div class="col-md-12 mt-20 no-padding">
   <h5 class="border-bottom mb-10">
-    Ticket List
+      {{ __('translation.ticket_list') }}
   </h5>
 </div>
 @if ( Helpers::getAllTickets()->count() > 0)
@@ -26,16 +26,16 @@
         #
       </th>
       <th scope="col">
-        Description
+          {{ __('translation.description') }}
       </th>
       <th scope="col">
-        Created
+          {{ __('translation.created') }}
       </th>
       <th scope="col">
-        Modified
+            {{ __('translation.modified') }}
       </th>
       <th scope="col">
-        Status
+          {{ __('translation.status') }}
       </th>
     </tr>
   </thead>
@@ -78,7 +78,7 @@
 </table>
 @else
   <p class="text-red">
-    There aren't any tickets.
+      {{ __('translation.error_no_tickets_2') }}
   </p>
 @endif
 </div>

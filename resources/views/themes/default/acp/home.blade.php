@@ -6,8 +6,7 @@
       {{ Auth::user()->username }}
     </h4>
     <p class="text-beige col-md-6 col-center">
-      This is your personal account panel and from within here you can adjust some account settings, view your characters' information as well as
-      seeing your tickets that you have made in-game.
+      {{ __('translation.account_panel_page_description') }}
     </p>
   </div>
 </div>
@@ -15,29 +14,29 @@
 <div class="row">
   <div class="col-md-12 no-padding">
   <h5 class="border-bottom mb-10">
-    Quick Tools
+    {{ __('translation.quick_tools') }}
   </h5>
 </div>
 <a class="button border orange col-sm" href="#">
-  Change Avatar
+    {{ __('translation.button_change_avatar') }}
 </a>
   <a class="button border orange col-sm" href="{{ url('/acp/password') }}">
-    Change password
+    {{ __('translation.button_change_password') }}
   </a>
   <a class="button border orange col-sm" href="{{ url('/acp/tickets') }}">
-    My Tickets
+    {{ __('translation.button_my_tickets') }}
   </a>
   @if (Helpers::checkIfGM())
   <a class="button border orange col-sm" href="{{ url('/gm') }}">
-    GM Panel
+    {{ __('translation.button_gm_panel') }}
   </a>
   @endif
   <a class="button border orange col-sm" href="{{ url('/logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-    Log out
+    {{ __('translation.button_log_out') }}
   </a>
   <div class="col-md-12 mt-20 no-padding">
   <h5 class="border-bottom mb-10 text-grey">
-    Character List
+    {{ __('translation.character_list') }}
   </h5>
 </div>
 
@@ -48,7 +47,7 @@
 @endforeach
 @if (Helpers::getAccountCharactersNumbers() == 0)
 <p class="text-red">
-  You don't have any characters!
+  {{ __('translation.error_no_characters') }}
 </p>
 @endif
 

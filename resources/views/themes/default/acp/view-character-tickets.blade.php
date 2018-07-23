@@ -4,7 +4,7 @@
 <div class="third-page">
   <div class="half-page-content mt-20">
     <h4 class="text-header text-upper">
-      {{ $character->name }}'s tickets
+      {{ $character->name }}'s {{ __('translation.tickets') }}
     </h4>
     <p class="text-beige col-md-6 col-center">
       Here are all the tickets made by {{ $character->name }}.
@@ -26,16 +26,16 @@
         #
       </th>
       <th scope="col">
-        Description
+        {{ __('translation.description') }}
       </th>
       <th scope="col">
-        Created
+        {{ __('translation.created') }}
       </th>
       <th scope="col">
-        Modified
+        {{ __('translation.modified') }}
       </th>
       <th scope="col">
-        Status
+        {{ __('translation.status') }}
       </th>
     </tr>
   </thead>
@@ -65,7 +65,7 @@
 </table>
 @else
   <p class="text-red">
-    {{$character->name}} has no tickets made.
+    {{$character->name}} {{ __('translation.has_no_tickets') }}
   </p>
 @endif
 </div>

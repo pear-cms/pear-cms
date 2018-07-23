@@ -7,10 +7,10 @@
 <div class="third-page">
   <div class="half-page-content mt-20">
     <h4 class="text-header text-upper">
-      Publish Article
+      {{ __('translation.publish_article') }}
     </h4>
     <p class="text-beige col-md-6 col-center">
-      Publish an awesome, exciting and thrilling fresh-out-of-the-oven article!
+      {{ __('translation.publish_article_page_description') }}
     </p>
   </div>
 </div>
@@ -26,20 +26,20 @@
     @endif
   <div class="form-group">
   <label for="title">
-    News Title
+    {{ __('translation.news') }} {{ __('translation.title') }}
   </label>
-  <input type="text" class="form-control" id="title" name="title" placeholder="{{ env('APP_NAME') }} is.." value="{{ old('title') }}" />
+  <input type="text" class="form-control" id="title" name="title" placeholder="{{ __('translation.placeholder_article_title') }}." value="{{ old('title') }}" />
 </div>
 
 <div class="form-group">
 <label for="title">
-  News Description
+    {{ __('translation.news') }} {{ __('translation.description') }}
 </label>
-<input type="text" class="form-control" id="description" name="description" placeholder="Fancy description to glance at..." value="{{ old('description') }}" />
+<input type="text" class="form-control" id="description" name="description" placeholder="{{ __('translation.placeholder_article_description') }}" value="{{ old('description') }}" />
 </div>
 <div class="form-group">
 <label for="title">
-  News Image
+  {{ __('translation.news') }} {{ __('translation.image') }}
 </label>
 @if( Helpers::getNewsImages() > 0)
 <div class="row" id="row">
@@ -70,7 +70,7 @@
 
 <div class="form-group text-center">
 <button type="submit" class="button border orange">
-Publish article
+{{ __('translation.button_publish_article') }}
 </button>
 </div>
   </form>
@@ -89,7 +89,7 @@ Publish article
       [{ 'color': [] }],
     ]
   },
-  placeholder: '{{ env('APP_NAME') }} is getting a major update...',
+  placeholder: '{{ __('translation.placeholder_article_content') }}',
           theme: 'snow'
         });
         @if(!empty(old('content')))

@@ -3,10 +3,10 @@
 <div class="third-page">
   <div class="half-page-content mt-20">
     <h4 class="text-header text-upper">
-      Change password
+      {{ __('translation.change_password') }}
     </h4>
     <p class="text-beige col-md-6 col-center">
-      Do you need a new password? Change your old password now!
+      {{ __('translation.change_password_page_description') }}
     </p>
   </div>
 </div>
@@ -32,28 +32,28 @@
     @endif
   <div class="form-group">
   <label for="oldpass">
-    Current password
+    {{ __('translation.current_password') }}
   </label>
-  <input type="password" class="form-control" id="current_password" name="current_password" placeholder="Enter your current password..." />
+  <input type="password" class="form-control" id="current_password" name="current_password" placeholder="{{ __('translation.placeholder_current_password') }}" />
 </div>
 
 <div class="form-group">
 <label for="password">
-  New password
+  {{ __('translation.new_password') }}
 </label>
-<input type="password" class="form-control" id="password" name="password" placeholder="Enter your new strong password..." />
+<input type="password" class="form-control" id="password" name="password" placeholder="{{ __('translation.placeholder_new_password') }}" />
 </div>
 
 <div class="form-group">
 <label for="confirmpassword">
-  Confirm password
+  {{ __('translation.confirm_password') }}
 </label>
-<input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Repeat your new strong password..." />
+<input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="{{ __('translation.placeholder_confirm_password') }}" />
 </div>
 
 <div class="form-group text-center">
 <button type="submit" class="button border orange">
-Okay! Let's do the change.
+{{ __('translation.button_change_password') }}
 </button>
 </div>
   </form>

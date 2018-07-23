@@ -22,7 +22,7 @@
   </span>
 
   <span class="float-right">
-    Posted on {{ date('h:i A d/m/y',$news->timestamp) }}
+    {{ __('translation.posted_on') }} {{ date('h:i A d/m/y',$news->timestamp) }}
   </span>
 </h5>
 </div>
@@ -49,7 +49,7 @@
       <div class="col-md-12">
         <h5 class="mb-10 text-small">
           <span class="float-right text-muted">
-            Posted on {{ date('h:i A d/m/y', $comment->timestamp) }}
+            {{ __('translation.posted_on') }} {{ date('h:i A d/m/y', $comment->timestamp) }}
           </span>
         </h5>
       </div>
@@ -70,7 +70,7 @@
       <div class="col-md-12">
         <h5 class="mb-10 text-small">
           <span class="float-right text-muted">
-            Posted on {{ date('h:i A d/m/y', $comment->timestamp) }}
+            {{ __('translation.posted_on') }} {{ date('h:i A d/m/y', $comment->timestamp) }}
           </span>
         </h5>
       </div>
@@ -95,15 +95,15 @@
   @endif
 <div class="form-group">
   <label for="comment" class="text-muted">
-    Share your thoughts
+    {{ __('translation.share_your_thoughts') }}
   </label>
   <textarea class="form-control" id="comment" name="comment" value="{{ old('comment') }}"
-  aria-describedby="commenthelp" placeholder="Enter your cool comment..." rows="3">
+  aria-describedby="commenthelp" placeholder="{{ __('translation.placeholder_comment') }}" rows="3">
 </textarea>
 </div>
 <div class="form-group text-right">
 <button type="submit" class="button border orange">
-Comment
+{{ __('translation.button_comment') }}
 </button>
 </form>
 </div>

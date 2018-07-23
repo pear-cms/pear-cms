@@ -4,10 +4,10 @@
 <div class="third-page">
   <div class="half-page-content mt-20">
     <h4 class="text-header text-upper">
-      My Tickets
+      {{ __('translation.my_tickets') }}
     </h4>
     <p class="text-beige col-md-6 col-center">
-      Pick a character to see its tickets.
+      {{ __('translation.pick_character_see_tickets') }}
     </p>
   </div>
 </div>
@@ -15,7 +15,7 @@
 <div class="row">
   <div class="col-md-12 mt-20 no-padding">
   <h5 class="border-bottom text-grey mb-10">
-    Select a character
+    {{ __('translation.select_a_character') }}
   </h5>
 </div>
 
@@ -26,7 +26,7 @@
 @endforeach
 @if (Helpers::getAccountCharactersNumbers() == 0)
 <p class="text-red">
-  You don't have any characters!
+  {{ __('translation.error_no_characters') }}
 </p>
 @endif
 </div>

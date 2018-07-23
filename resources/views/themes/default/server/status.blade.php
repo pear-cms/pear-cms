@@ -4,10 +4,10 @@
 <div class="third-page">
   <div class="half-page-content mt-20">
     <h4 class="text-header text-upper">
-      Server Status
+      {{ __('translation.server_status') }}
     </h4>
     <p class="text-beige col-md-6 col-center">
-      See some important statistics, status and other essential information about {{ env('APP_NAME') }}.
+      {{ __('translation.server_status_page_description') }}
     </p>
   </div>
 </div>
@@ -24,7 +24,7 @@
     </span>
   </h5>
   <p class="text-small">
-    This reflects the world server status.
+    {{ __('translation.server_world_small_description') }}
     <span class="float-right text-orange">
     {{ env('REALM_DESCRIPTION') }}
   </span>
@@ -35,14 +35,14 @@
   <div class="col-md-12 mt-20">
   <h5 class="border-bottom mb-10">
     <span class="text-orange">
-      Authentication system
+      {{ __('translation.authentication_system') }}
     </span>
     <span class="float-right status {{ Helpers::getRealmStatus(3724) }}">
       {{ Helpers::getRealmStatus(3724) }}
     </span>
   </h5>
   <p class="text-small">
-    This reflects the authentication (login) status.
+    {{ __('translation.server_auth_small_description') }}
   </p>
 </div>
 </div>

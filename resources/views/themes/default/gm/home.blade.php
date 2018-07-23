@@ -3,10 +3,10 @@
 <div class="third-page">
   <div class="half-page-content mt-20">
     <h4 class="text-header text-upper">
-      GM Panel
+        {{ __('translation.gm_panel') }}
     </h4>
     <p class="text-beige col-md-6 col-center">
-      This is the Gamemaster Panel. You can do all sort of things here!
+      {{ __('translation.gm_panel_page_description') }}
     </p>
   </div>
 </div>
@@ -14,22 +14,22 @@
 <div class="row">
   <div class="col-md-12 no-padding">
   <h5 class="border-bottom mb-10">
-    Management Tools
+    {{ __('translation.management_tools') }}
   </h5>
 </div>
 <a class="button border orange col-sm" href="{{url('/gm/account/list')}}">
-  Account List
+  {{ __('translation.button_account_list') }}
 </a>
 <a class="button border orange col-sm" href="{{url('/gm/ticket/list')}}">
-  Ticket List
+  {{ __('translation.button_ticket_list') }}
 </a>
 <div class="col-md-12 mt-20 no-padding">
 <h5 class="border-bottom mb-10 text-grey">
-  News system
+  {{ __('translation.news_system') }}
 </h5>
 </div>
 <a class="button border orange col-sm" href="{{ url('/gm/publish-article') }}">
-  Publish Article
+  {{ __('translation.button_publish_article') }}
 </a>
 </div>
 </div>
