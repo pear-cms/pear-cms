@@ -1,4 +1,4 @@
-![picture](public/images/logo/logo_64.png)
+![picture](public/themes/default/images/logo/logo_64.png)
 
 # Pear-CMS
 How to install
