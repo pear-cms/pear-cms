@@ -42,7 +42,7 @@
 
 @foreach(Helpers::getAccountCharacters() as $character)
 <a class="button border orange col-sm-5" href="{{ url('/acp/character') }}/{{ $character->name }}">
-  <img alt="{{ $character->name }}" src="{{ asset('themes/default/images/races') }}/{{ $character->race }}_{{ $character->gender }}.jpg" /> {{ $character->name }}
+  <img alt="{{ $character->name }}" src="{{ asset('images/races') }}/{{ $character->race }}_{{ $character->gender }}.jpg" /> {{ $character->name }}
 </a>
 @endforeach
 @if (Helpers::getAccountCharactersNumbers() == 0)

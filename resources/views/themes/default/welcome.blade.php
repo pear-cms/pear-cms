@@ -42,7 +42,7 @@
     </div>
     @if(Helpers::getNewsArticles()->count() > 0)
     @foreach ( Helpers::getNewsArticles() as $news)
-    <a class="news-article col-sm" href="{{ url('/news/')}}/{{$news->id}}" style="background-image:url('{{ asset('themes/default/images/news/' . $news->image) }}')">
+    <a class="news-article col-sm" href="{{ url('/news/')}}/{{$news->id}}" style="background-image:url('{{ asset('images/news/' . $news->image) }}')">
       <div class="news-article-bottom col-md-12">
       <p class="news-article-date">
         {{ date('M d, Y', $news->timestamp) }}
