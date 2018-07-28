@@ -8,6 +8,8 @@ use Helpers;
 use Auth;
 use DB;
 use Lang;
+use Account;
+use Characters;
 
 class AccountPanelController extends Controller
 {
@@ -29,24 +31,19 @@ class AccountPanelController extends Controller
     public function index()
     {
       // get IP info for last ip that accessed account.
-      $data = json_decode(file_get_contents("http://ip-api.com/json/" . Auth::user()->last_ip));
       return view('acp.home',
       [
         'title' => __('translation.account_panel'),
-        'data' => $data
+        'characters' => Characters::where('account', Auth::user()->id)->get(),
       ]);
     }
 
     public function viewCharacter($name)
     {
-      if ( Helpers::CharacterBelongsToId($name, Auth::user()->id) || Helpers::checkIfGM())
+      if ( Characters::where('name', $name)->first() || Helpers::checkIfGM())
       {
         // Character belongs to the id accessing it.
-        $data = Helpers::getCharacterDataByName($name);
-        if (!$data)
-        {
-          return redirect()->back();
-        }
+        $data = Characters::where(['name' => $name, 'account' => Auth::user()->id])->first();
         return view('acp.view-character', ['title' => __('translation.viewing_character') . ': ' . $name , 'character' => $data]);
       } else {
         // Character do not belong to the id attempting to access it. Redirect to acp.

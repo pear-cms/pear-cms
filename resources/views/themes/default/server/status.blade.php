@@ -13,7 +13,7 @@
 </div>
 <div class="container col-md-6 mt-20">
 <div class="row">
-  @foreach ( Helpers::getRealms() as $realm)
+  @foreach ( Realms::all() as $realm)
   <div class="col-md-12">
   <h5 class="border-bottom mb-10">
     <span class="text-orange">

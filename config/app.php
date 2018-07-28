@@ -17,6 +17,14 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Application Version
+    |--------------------------------------------------------------------------
+    */
+
+    'version' => '1.0',
+
+    /*
+    |--------------------------------------------------------------------------
     | Hide debug information
     |--------------------------------------------------------------------------
     */
@@ -189,6 +197,13 @@ return [
     */
 
     'aliases' => [
+        'Realms' => App\Realms::class,
+        'Tickets' => App\Tickets::class,
+        'Account' => App\Account::class,
+        'Characters' => App\Characters::class,
+        'News' => App\News::class,
+        'NewsComments' => App\NewsComments::class,
+        'Logs' => App\Logs::class,
         'Theme' => Igaster\LaravelTheme\Facades\Theme::class,
         'Helpers' => App\Classes\Helpers::class,
         'Recaptcha' => Greggilbert\Recaptcha\Facades\Recaptcha::class,

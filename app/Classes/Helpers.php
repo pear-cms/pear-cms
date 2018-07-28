@@ -10,6 +10,10 @@ use SoapParam;
 
 class Helpers {
 
+  function setActive($path)
+  {
+      return Request::is($path . '*') ? ' class=open' :  '';
+  }
   public static function getAllAccounts()
   {
     // returns all accounts.

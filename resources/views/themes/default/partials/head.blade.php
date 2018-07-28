@@ -72,23 +72,6 @@
             </a>
           </div>
         </li>
-        <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          {{ __('translation.menu_language') }} <span class="navbar-arrow"></span>
-        </a>
-        <div class="dropdown-menu fluid" aria-labelledby="navbarDropdownMenuLink2">
-          <p>
-            {{ __('translation.menu_language_description') }}
-          </p>
-          @foreach (Config::get('languages') as $lang => $language)
-            @if ($lang != App::getLocale())
-                    <a class="dropdown-item" href="{{ route('lang.switch', $lang) }}">
-                      {{ $language }}
-                    </a>
-            @endif
-        @endforeach
-        </div>
-      </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ url('/connection-guide') }}">
                 {{ __('translation.menu_connection_guide') }}
@@ -101,6 +84,23 @@
             </li>
           </ul>
           <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {{ __('translation.menu_language') }} <span class="navbar-arrow"></span>
+            </a>
+            <div class="dropdown-menu fluid" aria-labelledby="navbarDropdownMenuLink2">
+              <p>
+                {{ __('translation.menu_language_description') }}
+              </p>
+              @foreach (Config::get('languages') as $lang => $language)
+                @if ($lang != App::getLocale())
+                        <a class="dropdown-item" href="{{ route('lang.switch', $lang) }}">
+                          {{ $language }}
+                        </a>
+                @endif
+            @endforeach
+            </div>
+          </li>
             @if(isset(Auth::user()->id))
             <li class="nav-item red dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 Use Helpers;
 use Auth;
+use Account;
 
 class AdminCheck
 {
@@ -19,7 +20,7 @@ class AdminCheck
      {
        if (isset ( Auth::user()->username ))
        {
-         if ( !Helpers::checkIfAdmin() )
+         if ( !Account::checkIfAdmin(Auth::user()->id) )
          {
            if ( env('ERROR_LOGGING') == true )
            {

@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use Helpers;
 use DB;
 use Auth;
+use News;
+use NewsComments;
 
 class NewsController extends Controller
 {
@@ -15,21 +17,22 @@ class NewsController extends Controller
     {
       return view('news.news',
       [
-        'title' => 'Viewing News'
+        'title'     => 'Viewing News',
+        'articles'  => News::select('id', 'title', 'description', 'content', 'image', 'timestamp')->get(),
       ]);
     }
-    public function getNewsArticles($id)
+    public function getArticle($id)
     {
-      $data = Helpers::getNewsArticle($id);
-      if ( $data ) {
+      if ( News::find($id) ) {
+        $data = News::find($id)->first();
         return view('news.view-news',
         [
           'title'     => $data->title,
           'news'      => $data,
-          'comments'  => Helpers::getNewsArticleComments($id)
+          'comments'  => News::find($id)->comments()->where('newsId', $id)->get(),
         ]);
       } else {
-        return redirect('/news');
+        return redirect()->route('newsId', $id);
       }
     }
 
@@ -39,13 +42,15 @@ class NewsController extends Controller
       $validator = $request->validate([
             'comment' => 'required|min:30|max:250'
         ]);
-        $is_gm = 0;
-        if(Helpers::checkIfGM())
+
+        if( Helpers::checkIfGM() )
         {
           $is_gm = 1;
+        } else {
+          $is_gm = 0;
         }
-        $query = DB::connection('website')->table('news_comments')->insert([
-          'newsid'    => $id,
+        $query = NewsComments::insert([
+          'newsId'    => $id,
           'comment'   => $request->get('comment'),
           'timestamp' => time(),
           'is_gm'     => $is_gm,
@@ -54,7 +59,7 @@ class NewsController extends Controller
 
       if ( $query )
       {
-        return back();
+        return redirect()->route('newsId', $id);
       } else {
         return false;
       }

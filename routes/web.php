@@ -22,6 +22,19 @@ Route::get('/', function () {
 });
 
 Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'LanguageController@switchLang']);
+Route::get('backend', 'AdminPanelController@index')->name('backend');
+
+Route::get('backend/accounts', 'AdminPanelController@accounts')->name('accountsmanager');
+Route::get('backend/account/{id}', 'AdminPanelController@view');
+Route::get('backend/account/{id}/edit', 'AdminPanelController@edit');
+Route::post('backend/account/{id}/delete', 'AdminPanelController@delete');
+
+Route::get('backend/comments', 'AdminPanelController@comments')->name('commentsmanager');
+Route::post('backend/comment/{id}/delete', 'AdminPanelController@deleteComment');
+
+Route::get('backend/articles', 'AdminPanelController@articles')->name('articlesmanager');
+Route::get('backend/article/{id}/edit', 'AdminPanelController@editArticle');
+Route::post('backend/article/{id}/delete', 'AdminPanelController@deleteArticle');
 
 Route::fallback(function() {
   Helpers::saveErrorLog(request()->fullUrl() . ' is missing?');
@@ -46,9 +59,9 @@ Route::group(['middleware' => ['\App\Http\Middleware\SiteMaintenance::class']], 
   });
 
   // News routes below.
-  Route::get('/news/{id}', 'NewsController@getNewsArticles');
+  Route::get('/news/{id}', 'NewsController@getArticle')->name('getArticle');
   Route::post('/news/{id}', 'NewsController@addNewsComment');
-  Route::get('/news', 'NewsController@index');
+  Route::get('/news', 'NewsController@index')->name('news');
 });
 
 // Route group will redirect all routes within to maintenance page if auth maintenance is enabled.
@@ -76,15 +89,16 @@ Route::group(['middleware' => ['\App\Http\Middleware\AuthMaintenance::class']], 
 Route::group(['middleware' => ['\App\Http\Middleware\GMCheck::class']], function () {
   Route::get('/gm', 'GamemasterController@index');
   Route::get('/gm/account/list', 'GamemasterController@viewAccountList');
-  Route::get('/gm/ticket/list', 'GamemasterController@viewTicketList');
-  Route::get('/gm/ticket/view/{id}', 'GamemasterController@viewTicket')->name('viewTicket');
   Route::get('/gm/account/view/{id}', 'GamemasterController@viewAccount');
   Route::get('/gm/account/edit/{id}', 'GamemasterController@editAccount');
   Route::get('/gm/account/{id}/character/customize', 'GamemasterController@viewCustomizeCharacter');
   Route::post('/gm/account/{id}/character/customize', 'GamemasterController@customizeCharacter');
-  Route::get('/gm/publish-article', 'GamemasterController@publishArticleForm');
+  Route::get('/gm/publish-article', 'GamemasterController@publishArticleForm')->name('publishArticleForm');
   Route::post('/gm/publish-article/', 'GamemasterController@publishArticle');
-  Route::post('/gm/ticket/close/{id}', 'GamemasterController@closeTicket')->name('closeTicket');
+
+  Route::get('/gm/ticket/list', 'GamemasterController@viewTicketList')->name('viewTicketList');
+  Route::get('/gm/ticket/{id}', 'TicketsController@viewTicket')->name('viewTicket');
+  Route::post('/gm/ticket/{id}/close', 'TicketsController@closeTicket')->name('closeTicket');
 });
 
 Route::group(['middleware' => ['\App\Http\Middleware\AdminCheck::class']], function () {

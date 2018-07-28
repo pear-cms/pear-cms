@@ -12,8 +12,8 @@
 </div>
 <div class="container col-md-6 text-grey mt-20">
 <div class="row news-articles">
-  @if(Helpers::getAllNewsArticles()->count() > 0)
-@foreach (Helpers::getAllNewsArticles() as $news)
+  @if(count($articles) > 0)
+@foreach ($articles as $news)
 <a class="news-article col-sm-12 mt-20" href="{{ url('/news/')}}/{{$news->id}}" style="background-image:url('{{ asset('images/news/' . $news->image) }}')">
   <div class="news-article-bottom col-md-12">
   <p class="news-article-date">
@@ -21,7 +21,7 @@
   </p>
   <h4 class="news-article-title">
     {{ ucwords($news->title) }}
-    @if (time()-$news->timestamp < 86400)
+    @if (time() - $news->timestamp < 86400)
       <span class="badge badge-secondary">
         {{ __('translation.badge_new') }}
       </span>
