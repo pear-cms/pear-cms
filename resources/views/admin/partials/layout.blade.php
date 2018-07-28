@@ -28,7 +28,7 @@
         <script src="{{ asset('admin/js/core/bootstrap.min.js') }}"></script>
         <script src="{{ asset('admin/js/core/jquery.slimscroll.min.js') }}"></script>
         <script src="{{ asset('admin/js/core/jquery.scrollLock.min.js') }}"></script>
-        <script src="{{ asset('admin/js/core/jquery.appear.min.js"') }}'></script>
+        <script src="{{ asset('admin/js/core/jquery.appear.min.js') }}"></script>
         <script src="{{ asset('admin/js/core/jquery.countTo.min.js') }}"></script>
         <script src="{{ asset('admin/js/core/js.cookie.min.js') }}"></script>
         <script src="{{ asset('admin/js/codebase.js') }}"></script>
