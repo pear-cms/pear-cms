@@ -34,7 +34,7 @@
             </ul>
         </div>
         <div class="content-header-section">
-          <a href="{{ url('backend') }}" target="_blank" class="btn btn-circle btn-dual-secondary">
+          <a href="{{ url('backend/settings') }}" class="btn btn-circle btn-dual-secondary">
               <i class="fas fa-cog"></i>
           </a>
             <a href="{{ url('/') }}" target="_blank" class="btn btn-circle btn-dual-secondary">

@@ -127,6 +127,11 @@
                 {{ __('translation.gm_panel') }}
               </a>
               @endif
+              @if (Account::checkIfAdmin(Auth::user()->id))
+              <a class="dropdown-item" href="{{ url('/backend') }}">
+                Admin Panel
+              </a>
+              @endif
               <a class="dropdown-item" href="{{ url('/donate') }}">
                 {{ __('translation.donate_to') }} {{ env('APP_NAME') }}
               </a>

@@ -26,7 +26,7 @@
           </div>
 
           <div class="col-md-4">
-          <a class="block block-link-pop text-right bg-corporate" href="javascript:void(0)">
+          <a class="block block-link-pop text-right bg-corporate" href="{{ url('/backend/article/create') }}">
                 <div class="block-content block-content-full clearfix border-black-op-b border-3x">
                     <div class="float-left mt-10 d-none d-sm-block">
                         <i class="si si-plus fa-3x text-corporate-light"></i>
@@ -82,7 +82,7 @@
                                         <div class="mb-20">
                                             <i class="fas fa-thermometer-full fa-4x text-success"></i>
                                         </div>
-                                        <div class="font-size-h4 font-w600">Pear CMS v{{ config('app.version') }}</div>
+                                        <div class="font-size-h4 font-w600">Pear CMS v{{ env('APP_VER') }}</div>
                                         <div class="text-muted">Your application is up-to-date.</div>
                                         <div class="pt-20">
                                             <a class="btn btn-rounded btn-alt-warning" href="javascript:void(0)">

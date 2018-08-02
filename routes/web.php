@@ -12,8 +12,8 @@
 */
 
 Route::get('/', function () {
-    if ( Helpers::getSiteMaintenanceStatus() ) {
-      // if site maintenance is set to 1, show maintenance page.
+    if ( env('SITE_MAINTENANCE') == TRUE) {
+      // if site maintenance is set to true, show maintenance page.
       return view('misc.maintenance', ['title' => __('translation.maintenance_mode')]);
     } else {
       // if not, continue as normal.
@@ -23,6 +23,12 @@ Route::get('/', function () {
 
 Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'LanguageController@switchLang']);
 Route::get('backend', 'AdminPanelController@index')->name('backend');
+Route::get('backend/settings', 'AdminPanelController@settings')->name('settings');
+Route::get('backend/settings/core', 'AdminPanelController@coreShow');
+Route::post('backend/settings/core/save', 'AdminPanelController@saveCoreSettings');
+Route::get('backend/settings/realms', 'AdminPanelController@realmsShow');
+Route::get('backend/settings/realm/{id}', 'AdminPanelController@realmShow');
+Route::post('backend/settings/realm/save/{id}', 'AdminPanelController@saveRealmSettings');
 
 Route::get('backend/accounts', 'AdminPanelController@accounts')->name('accountsmanager');
 Route::get('backend/account/{id}', 'AdminPanelController@view');
@@ -33,7 +39,10 @@ Route::get('backend/comments', 'AdminPanelController@comments')->name('commentsm
 Route::post('backend/comment/{id}/delete', 'AdminPanelController@deleteComment');
 
 Route::get('backend/articles', 'AdminPanelController@articles')->name('articlesmanager');
-Route::get('backend/article/{id}/edit', 'AdminPanelController@editArticle');
+Route::get('backend/article/create', 'AdminPanelController@createArticle');
+Route::post('backend/article/create/publish', 'AdminPanelController@publishArticle');
+Route::get('backend/article/edit/{id}', 'AdminPanelController@editArticle');
+Route::post('backend/article/edit/save/{id}', 'AdminPanelController@saveArticle');
 Route::post('backend/article/{id}/delete', 'AdminPanelController@deleteArticle');
 
 Route::fallback(function() {
@@ -60,7 +69,7 @@ Route::group(['middleware' => ['\App\Http\Middleware\SiteMaintenance::class']], 
 
   // News routes below.
   Route::get('/news/{id}', 'NewsController@getArticle')->name('getArticle');
-  Route::post('/news/{id}', 'NewsController@addNewsComment');
+  Route::post('/news/{id}', 'NewsController@addNewsComment')->name('newsId');
   Route::get('/news', 'NewsController@index')->name('news');
 });
 
