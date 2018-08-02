@@ -1,12 +1,12 @@
 <?php
 
-namespace App;
+namespace App\Classes;
 
 use Illuminate\Database\Eloquent\Model;
 
-class NewsComments extends Model
+class Logs extends Model
 {
   public $timestamps     = false;
   protected $connection  = 'website';
-  protected $table       = 'news_comments';
+  protected $table       = 'error_logs';
 }

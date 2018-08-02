@@ -17,7 +17,7 @@ class AuthMaintenance
      */
     public function handle($request, Closure $next)
     {
-        if ( Helpers::getSiteAuthenticationStatus() && !Helpers::checkIfGM() )
+        if ( env('AUTH_MAINTENANCE') == TRUE)
         {
           return redirect('/');
         }

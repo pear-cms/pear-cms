@@ -17,7 +17,7 @@ class SiteMaintenance
      */
     public function handle($request, Closure $next)
     {
-        if ( Helpers::getSiteMaintenanceStatus() && !Helpers::checkIfGM() )
+        if (env('SITE_MAINTENANCE') == TRUE)
         {
           return redirect('/');
         }

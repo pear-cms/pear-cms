@@ -78,6 +78,7 @@
   </div>
   @endif
   @endforeach
+  {{ $comments->links() }}
 </div>
 
 @if(isset(Auth::user()->username))

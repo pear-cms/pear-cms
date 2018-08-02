@@ -4,7 +4,7 @@
 <div class="content content-full">
     <div class="block">
         <div class="block-header block-header-default">
-            <h3 class="block-title">All Articles</h3>
+            <h3 class="block-title">All Articles <a href="{{ url('backend/article/create') }}" class="btn btn-primary float-right">Create New Article</a></h3>
         </div>
         <div class="block-content">
             <p>
@@ -31,6 +31,9 @@
                                 <div class="btn-group">
                                   <a class="btn btn-sm btn-secondary" data-toggle="tooltip" title="View" href="{{ url('news') }}/{{ $article->id }}" target="_blank">
                                       <i class="fas fa-eye"></i>
+                                  </a>
+                                  <a class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Edit" href="{{ url('backend/article/edit') }}/{{ $article->id }}" target="_blank">
+                                      <i class="fas fa-pen"></i>
                                   </a>
                                     <a class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Delete" onclick="deleteFunction('{{ $article->id }}')">
                                         <i class="fas fa-times"></i>

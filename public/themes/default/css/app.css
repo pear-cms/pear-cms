@@ -483,6 +483,20 @@ border: 1px solid #fff;
 .ticket-status-Closed {
   color:#ee5253 !important;
 }
+.pagination {
+  margin-top: 10px;
+}
+.page-item.disabled .page-link, .page-link {
+  color: #6c757d;
+    cursor: auto;
+    background-color: #170e09;
+    border-color: #352011;
+}
+.page-item.active .page-link, .page-link:hover {
+  color: #ebdec2;
+  background-color: #170e09;
+  border-color: #352011;
+}
 
 table {
   font-size:11px;

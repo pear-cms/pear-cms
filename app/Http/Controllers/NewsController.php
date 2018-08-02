@@ -23,13 +23,12 @@ class NewsController extends Controller
     }
     public function getArticle($id)
     {
-      if ( News::find($id) ) {
-        $data = News::find($id)->first();
+      if ( $data = News::where('id', $id)->first() ) {
         return view('news.view-news',
         [
           'title'     => $data->title,
           'news'      => $data,
-          'comments'  => News::find($id)->comments()->where('newsId', $id)->get(),
+          'comments'  => News::find($id)->comments()->where('newsId', $id)->paginate(10),
         ]);
       } else {
         return redirect()->route('newsId', $id);
