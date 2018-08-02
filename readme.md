@@ -11,6 +11,10 @@ Please, insert the SQL files from within [/sql](https://github.com/pear-cms/pear
 
 * [Bootstrap 4](https://getbootstrap.com/docs/4.0/getting-started/introduction/) - The web framework used
 * [Laravel](https://laravel.com) - The PHP framework used
+* [Codebase](https://demo.pixelcave.com/codebase/) - Back-end dashboard framework
+* [CKEditor](https://ckeditor.com) - WYSIWYG editor for articles system
+* [SimpleIcons](https://simpleicons.org) - Icon framework used
+* [FontAwesome](https://fontawesome.com) - Icon framework used
 
 ## Authors
 
