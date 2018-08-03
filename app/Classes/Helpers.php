@@ -686,7 +686,11 @@ class Helpers {
       '571' => 'Northrend'
     ];
 
-    return $maps[$id];
+      if (array_key_exists($id, $maps)) {
+      return $maps[$id];
+    } else {
+      return "Unknown";
+    }
   }
 
   public static function UnixToTime($time) {
