@@ -45,6 +45,8 @@ Route::get('backend/article/edit/{id}', 'AdminPanelController@editArticle');
 Route::post('backend/article/edit/save/{id}', 'AdminPanelController@saveArticle');
 Route::post('backend/article/{id}/delete', 'AdminPanelController@deleteArticle');
 
+Route::get('backend/themes', 'AdminPanelController@themes')->name('themesmanager');
+
 Route::fallback(function() {
   Helpers::saveErrorLog(request()->fullUrl() . ' is missing?');
   return response()->view('misc.missing', [], 404);

@@ -61,6 +61,7 @@ return [
   'closed_by'                               => 'Closed by',
   'donate_to'                               => 'Donate to',
   'gm_panel'                                => 'GM Panel',
+  'admin_panel'                                => 'Admin Panel',
   'response'                                => 'Response',
   'username'                                => 'Username',
   'password'                                => 'Password',
@@ -109,6 +110,7 @@ return [
   'button_change_avatar'                    => 'Change Avatar',
   'button_my_tickets'                       => 'My Tickets',
   'button_gm_panel'                         => 'GM Panel',
+  'button_admin_panel'                         => 'Admin Panel',
   'button_log_out'                          => 'Log Out',
 
 
@@ -174,5 +176,9 @@ return [
   'button_publish_article'                  => 'Publish Article',
   'publish_article'                         => 'Publish Article',
 
+  //Languages
+  'english'                                 => 'English',
+  'swedish'                                 => 'Swedish',
+  'bulgarian'                               => 'Bulgarian',
 
 ];

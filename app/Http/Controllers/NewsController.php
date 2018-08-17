@@ -18,7 +18,7 @@ class NewsController extends Controller
       return view('news.news',
       [
         'title'     => 'Viewing News',
-        'articles'  => News::select('id', 'title', 'description', 'content', 'image', 'timestamp')->get(),
+        'articles'  => News::select('id', 'title', 'description', 'content', 'image', 'timestamp')->orderBy('id', 'desc')->get(),
       ]);
     }
     public function getArticle($id)

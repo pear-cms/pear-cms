@@ -14,6 +14,7 @@ use Characters;
 use Logs;
 use NewsComments;
 use News;
+use Theme;
 
 class AdminPanelController extends Controller
 {
@@ -37,7 +38,7 @@ class AdminPanelController extends Controller
       // Dashboard page.
       return view('admin.home',
       [
-        'title' => 'Admin',
+        'title' => 'Admin Panel',
       ]);
     }
 
@@ -205,8 +206,11 @@ class AdminPanelController extends Controller
 
     public function edit($id)
     {
-      $account = Account::find($id);
-      return view('admin.accounts.edit')->with('account', $account);
+      return view('admin.accounts.edit',
+      [
+        'title' => 'Edit Account',
+        'account' => Account::find($id),
+      ]);
     }
 
     public function update($id)
@@ -250,7 +254,16 @@ class AdminPanelController extends Controller
       return view('admin.accounts.home',
       [
         'title' => 'Accounts',
-        'accounts' => Account::paginate(15),
+        'accounts' => Account::paginate(10),
+      ]);
+    }
+
+    public function themes()
+    {
+      // Dashboard page.
+      return view('admin.themes.home',
+      [
+        'title' => 'Themes',
       ]);
     }
 

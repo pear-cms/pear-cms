@@ -61,6 +61,7 @@ return [
   'closed_by'                               => 'Затворен от',
   'donate_to'                               => 'Дари на',
   'gm_panel'                                => 'GM Панел',
+  'admin_panel'                                => 'Админ Панел',
   'response'                                => 'Отговор',
   'username'                                => 'Никнейм',
   'password'                                => 'Парола',
@@ -109,6 +110,7 @@ return [
   'button_change_avatar'                    => 'Смяна на снимка',
   'button_my_tickets'                       => 'Моите въпроси',
   'button_gm_panel'                         => 'GM Панел',
+  'button_admin_panel'                         => 'Админ Панел',
   'button_log_out'                          => 'Излез',
 
 
@@ -174,5 +176,9 @@ return [
   'button_publish_article'                  => 'Публикувай Статия',
   'publish_article'                         => 'Публикувай Статия',
 
+  //Languages
+  'english'                                 => 'Английски',
+  'swedish'                                 => 'Шведски',
+  'bulgarian'                               => 'Български',
 
 ];

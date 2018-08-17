@@ -24,9 +24,12 @@
                         <li>
                             <a class="{{ (Request::route()->getName() == 'articlesmanager') ? 'active' : '' }}" href="{{ url('backend/articles') }}">Articles Manager</a>
                         </li>
+                        <li>
+                            <a class="{{ (Request::route()->getName() == 'themesmanager') ? 'active' : '' }}" href="{{ url('backend/themes') }}">Themes Manager</a>
+                        </li>
                     </ul>
                 </li>
-                @if(!empty(url()->previous()))
+                @if(!(url()->previous() == url()->current()))
                 <li>
                     <a href="{{ url()->previous() }}"><i class="si si-action-undo"></i>Go Back</a>
                 </li>

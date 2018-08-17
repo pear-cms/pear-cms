@@ -85,7 +85,7 @@
               <div class="col-md-3">
                 <div class="form-material input-group">
                     <input type="text" class="form-control" disabled="" id="material-addon-icon" name="material-addon-icon" placeholder="{{ $account->last_ip }}">
-                      <label for="material-addon-icon js-popover-enabled" data-toggle="popover" title="" data-trigger="hover" data-placement="top" data-content="{{ Account::getIPInfo($account->last_ip) }}" data-original-title="Located in">Last IP (<a href="#">IP Information</a>)</label>
+                      <label for="material-addon-icon js-popover-enabled" data-toggle="popover" title="" data-trigger="hover" data-placement="top" data-content="{{ Account::getIPInfo($account->last_ip) }}" data-original-title="Located in:">Last IP (<a href="#">IP Information</a>)</label>
                        <div class="input-group-append">
                         <span class="input-group-text">
                           <i class="fa fa-fw fa-user-secret"></i>

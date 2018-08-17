@@ -129,7 +129,7 @@
               @endif
               @if (Account::checkIfAdmin(Auth::user()->id))
               <a class="dropdown-item" href="{{ url('/backend') }}">
-                Admin Panel
+                {{ __('translation.admin_panel') }}
               </a>
               @endif
               <a class="dropdown-item" href="{{ url('/donate') }}">

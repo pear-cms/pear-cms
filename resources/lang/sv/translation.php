@@ -61,6 +61,7 @@ return [
   'closed_by'                               => 'Stängd av',
   'donate_to'                               => 'Donera till',
   'gm_panel'                                => 'GM Panel',
+  'admin_panel'                                => 'Admin Panel',
   'response'                                => 'Respons',
   'username'                                => 'Användarnamn',
   'password'                                => 'Lösenord',
@@ -109,6 +110,7 @@ return [
   'button_change_avatar'                    => 'Byt Avatar',
   'button_my_tickets'                       => 'Mina frågor',
   'button_gm_panel'                         => 'GM Panel',
+  'button_admin_panel'                         => 'Admin Panel',
   'button_log_out'                          => 'Logga ut',
 
 
@@ -174,5 +176,9 @@ return [
   'button_publish_article'                  => 'Publicera Nyhet',
   'publish_article'                         => 'Publicera Nyhet',
 
+  //Languages
+  'english'                                 => '???',
+  'swedish'                                 => '???',
+  'bulgarian'                               => '???',
 
 ];

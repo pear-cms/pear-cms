@@ -23,6 +23,11 @@
 <a class="button border orange col-sm" href="{{url('/gm/ticket/list')}}">
   {{ __('translation.button_ticket_list') }}
 </a>
+@if (Helpers::checkIfAdmin())
+<a class="button border orange col-sm" href="{{ url('/backend') }}">
+  {{ __('translation.button_admin_panel') }}
+</a>
+@endif
 <div class="col-md-12 mt-20 no-padding">
 <h5 class="border-bottom mb-10 text-grey">
   {{ __('translation.news_system') }}
