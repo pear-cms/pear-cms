@@ -67,7 +67,7 @@
     @endforeach
     @else
     <p class="col-sm">
-      {{ __('translation.no_articles_to_show') }}
+      {{ __('translation.no_articles') }}
     </p>
     @endif
 </div>
