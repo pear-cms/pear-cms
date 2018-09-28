@@ -61,7 +61,7 @@ return [
   'closed_by'                               => 'Closed by',
   'donate_to'                               => 'Donate to',
   'gm_panel'                                => 'GM Panel',
-  'admin_panel'                                => 'Admin Panel',
+  'admin_panel'                             => 'Admin Panel',
   'response'                                => 'Response',
   'username'                                => 'Username',
   'password'                                => 'Password',

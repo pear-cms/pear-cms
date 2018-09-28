@@ -68,7 +68,7 @@
                 </div>
 
             <div class="col-12 text-center">
-              <input type="submit" class="btn btn-primary mb-10" value="Save settings for {{ $realm->name }}" onclick="saveSettings()" />
+              <input type="submit" class="btn btn-primary mb-10" value="Save settings for {{ $realm->name }}" onclick="return saveSettings()" />
             </div>
           </form>
             </div>
@@ -100,7 +100,7 @@ $( document ).ready(function() {
 });
 
 function saveSettings() {
-  event.preventDefault(); // prevent form submit
+  //event.preventDefault(); // prevent form submit
           swal({
     title: "Are you sure?",
     text: "Saving will overwrite the current realm settings.",
@@ -154,6 +154,7 @@ if (result.value) {
   });
 }
 })
+return false;
   }
 
   </script>

@@ -61,7 +61,7 @@ return [
   'closed_by'                               => 'Затворен от',
   'donate_to'                               => 'Дари на',
   'gm_panel'                                => 'GM Панел',
-  'admin_panel'                                => 'Админ Панел',
+  'admin_panel'                             => 'Админ Панел',
   'response'                                => 'Отговор',
   'username'                                => 'Никнейм',
   'password'                                => 'Парола',

@@ -14,13 +14,14 @@
 <div class="container col-md-6 mt-20">
 <div class="row">
   @foreach ( Realms::select('name', 'address', 'port', 'description')->get() as $realm)
+  @php ($status = Realms::getRealmStatus($realm->port))
   <div class="col-md-12">
   <h5 class="border-bottom mb-10">
     <span class="text-orange">
       {{ $realm->name }}
     </span>
-    <span class="float-right status {{ Helpers::getRealmStatus($realm->port) }}">
-      {{ Realms::getRealmStatus($realm->port) }}
+    <span class="float-right status {{ $status }}">
+      {{ $status }}
     </span>
   </h5>
   <p class="text-small">
@@ -31,14 +32,14 @@
   </p>
   </div>
   @endforeach
-
+  @php ($authstatus = Helpers::getRealmStatus(3724))
   <div class="col-md-12 mt-10">
   <h5 class="border-bottom mb-10">
     <span class="text-orange">
       {{ __('translation.authentication_system') }}
     </span>
-    <span class="float-right status {{ Helpers::getRealmStatus(3724) }}">
-      {{ Realms::getRealmStatus(3724) }}
+    <span class="float-right status {{ $authstatus }}">
+      {{ $authstatus }}
     </span>
   </h5>
   <p class="text-small">

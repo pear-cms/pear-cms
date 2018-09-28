@@ -61,7 +61,7 @@ return [
   'closed_by'                               => 'Stängd av',
   'donate_to'                               => 'Donera till',
   'gm_panel'                                => 'GM Panel',
-  'admin_panel'                                => 'Admin Panel',
+  'admin_panel'                             => 'Admin Panel',
   'response'                                => 'Respons',
   'username'                                => 'Användarnamn',
   'password'                                => 'Lösenord',

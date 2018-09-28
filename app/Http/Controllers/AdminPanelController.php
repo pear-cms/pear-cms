@@ -164,7 +164,7 @@ class AdminPanelController extends Controller
       $validator = Validator::make($request->all(), [
         'realmName'           => 'required|min:3|max:32',
         'realmAddress'        => 'required|min:3|max:255|ipv4',
-        'realmDescription'    => 'max:30',
+        'realmDescription'    => 'max:150',
         'realmPort'           => 'required|integer',
         'realmIcon'           => 'required|integer',
         'realmSecurityLevel'  => 'required|integer',

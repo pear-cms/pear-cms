@@ -22,7 +22,7 @@
                     <label>Application Url</label>
                     <input type="text" class="form-control" name="appUrl" placeholder="App Url" value="{{ old('appUrl', env('APP_URL')) }}">
                     <div class="form-text text-muted small">
-                      The URL for the application, for example: <strong>https://example.com/pear-cms</strong>
+                      The URL for the application, for example: <b>https://example.com/pear-cms</b>
                     </div>
                 </div>
 
@@ -38,7 +38,7 @@
                   <label>Meta Description</label>
                   <input type="text" class="form-control" name="metaDescription" placeholder="Meta description" value="{{ old('metaDescription', env('META_DESCRIPTION')) }}">
                   <div class="form-text text-muted small">
-                    <strong>Meta description</strong>s are HTML attributes that provide concise summaries of webpages. They are between one sentence to a short paragraph and appear underneath the blue clickable links in a search engine results page.
+                    <b>Meta description</b>s are HTML attributes that provide concise summaries of webpages. They are between one sentence to a short paragraph and appear underneath the blue clickable links in a search engine results page.
                   </div>
               </div>
 
@@ -46,7 +46,7 @@
                   <label>Meta Keywords</label>
                   <input type="text" class="form-control" name="metaKeywords" placeholder="Meta Keywords" value="{{ old('metaKeywords', env('META_KEYWORDS')) }}">
                   <div class="form-text text-muted small">
-                    <strong>Meta Keywords</strong> are a specific type of meta tag that appear in the HTML code of a Web page and help tell search engines what the topic of the page is.
+                    <b>Meta Keywords</b> are a specific type of meta tag that appear in the HTML code of a Web page and help tell search engines what the topic of the page is.
                   </div>
               </div>
 
@@ -62,8 +62,8 @@
                       <span class="css-control-indicator"></span> No
                   </label>
                   <div class="form-text text-muted small">
-                    When enablning <strong>app debugging</strong>, the application will output very detailed error logs instead of showing "An error has occurred" and have it logged in <i>storage/logs/laravel.log</i>.
-                    <strong>Not recommended for production</strong>!
+                    When enabling <b>app debugging</b>, the application will output very detailed error logs instead of showing "An error has occurred" and have it logged in <i>storage/logs/laravel.log</i>.
+                    <b>Not recommended for production</b>!
                   </div>
               </div>
 
@@ -111,7 +111,7 @@
                       <span class="css-control-indicator"></span> No
                   </label>
                   <div class="form-text text-muted small">
-                    Enabling this will log every error that occurrs such as donation attempts, 404's, etc into the database. May cause a ton of logs.
+                    Enabling this will log every error that occurs such as donation attempts, 404's, etc into the database. May cause a ton of logs.
                   </div>
               </div>
 
@@ -136,7 +136,7 @@
                             <label>Host</label>
                             <input type="text" class="form-control" name="authHost" placeholder="{{ env('DB_HOST_AUTH') }}" value="{{ old('DB_HOST_AUTH', env('DB_HOST_AUTH')) }}">
                             <div class="form-text text-muted small">
-                              Domain name or IP to connect to for auth database. If using a domain name or external IP, ensure that you allowed <strong>{{ $_SERVER['SERVER_ADDR'] }}</strong> proper remote MySQL permissions.
+                              Domain name or IP to connect to for auth database. If using a domain name or external IP, ensure that you allowed <b>{{ $_SERVER['SERVER_ADDR'] }}</b> proper remote MySQL permissions.
                             </div>
                         </div>
 
@@ -174,7 +174,7 @@
                             <label>Host</label>
                             <input type="text" class="form-control" name="charactersHost" placeholder="{{ env('DB_HOST_CHARACTERS') }}" value="{{ old('DB_HOST_CHARACTERS', env('DB_HOST_CHARACTERS')) }}">
                             <div class="form-text text-muted small">
-                              Domain name or IP to connect to for characters database. If using a domain name or external IP, ensure that you allowed <strong>{{ $_SERVER['SERVER_ADDR'] }}</strong> proper remote MySQL permissions.
+                              Domain name or IP to connect to for characters database. If using a domain name or external IP, ensure that you allowed <b>{{ $_SERVER['SERVER_ADDR'] }}</b> proper remote MySQL permissions.
                             </div>
                         </div>
 
@@ -212,7 +212,7 @@
                             <label>Host</label>
                             <input type="text" class="form-control" name="worldHost" placeholder="{{ env('DB_HOST_WORLD') }}" value="{{ old('DB_HOST_WORLD', env('DB_HOST_WORLD')) }}">
                             <div class="form-text text-muted small">
-                              Domain name or IP to connect to for world database. If using a domain name or external IP, ensure that you allowed <strong>{{ $_SERVER['SERVER_ADDR'] }}</strong> proper remote MySQL permissions.
+                              Domain name or IP to connect to for world database. If using a domain name or external IP, ensure that you allowed <b>{{ $_SERVER['SERVER_ADDR'] }}</b> proper remote MySQL permissions.
                             </div>
                         </div>
 
@@ -250,7 +250,7 @@
                             <label>Host</label>
                             <input type="text" class="form-control" name="websiteHost" placeholder="{{ env('DB_HOST_WEBSITE') }}" value="{{ old('DB_HOST_WEBSITE', env('DB_HOST_WEBSITE')) }}">
                             <div class="form-text text-muted small">
-                              Domain name or IP to connect to for website database. If using a domain name or external IP, ensure that you allowed <strong>{{ $_SERVER['SERVER_ADDR'] }}</strong> proper remote MySQL permissions.
+                              Domain name or IP to connect to for website database. If using a domain name or external IP, ensure that you allowed <b>{{ $_SERVER['SERVER_ADDR'] }}</b> proper remote MySQL permissions.
                             </div>
                         </div>
 
@@ -354,7 +354,7 @@
                                 <span class="css-control-indicator"></span> Sandbox
                             </label>
                             <div class="form-text text-muted small">
-                              <strong>Live</strong> = production | <strong>Sandbox</strong> = development
+                              <b>Live</b> = production | <b>Sandbox</b> = development
                             </div>
                         </div>
 
@@ -363,7 +363,7 @@
                   </div>
             </div>
             <div class="col-12 text-center">
-              <input type="submit" class="btn btn-primary mb-10" value="Save settings" onclick="saveSettings()"/>
+              <input type="submit" class="btn btn-primary mb-10" value="Save settings" onclick="return saveSettings()"/>
             </div>
           </form>
             </div>
@@ -395,7 +395,7 @@ $( document ).ready(function() {
 });
 
 function saveSettings() {
-  event.preventDefault(); // prevent form submit
+//  event.preventDefault(); // prevent form submit
           swal({
     title: "Are you sure?",
     text: "Saving will overwrite the current settings.",
@@ -479,6 +479,7 @@ if (result.value) {
   });
 }
 })
+return false;
   }
 
   </script>

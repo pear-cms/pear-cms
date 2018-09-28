@@ -13,7 +13,7 @@ class Realms extends Model
     public static function getRealmStatus($port)
     {
       // attempts to  connect to the port for 5 seconds.
-      if(@fsockopen(env('REALMLIST'), $port, $error, $errorString, 1)) {
+      if(@fsockopen(env('REALMLIST'), $port, $error, $errorString, 5)) {
         // return online if connected.
         return "Online";
       } else {

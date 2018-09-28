@@ -1,1 +1,1 @@
-ALTER TABLE `realmlist` ADD `description` VARCHAR(30) NOT NULL AFTER `address`;
+ALTER TABLE `realmlist` ADD `description` VARCHAR(150) NOT NULL AFTER `address`;
