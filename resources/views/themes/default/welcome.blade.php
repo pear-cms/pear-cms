@@ -6,10 +6,11 @@
       {{ env('APP_NAME') }}
     </h4>
     <p class="text-beige col-md-6 col-center">
-      {{ env('APP_NAME') }} is a new content management system for World of Warcraft servers, it is primarily built to manage TrinityCore 3.3.5a
+      <!--{{ env('APP_NAME') }} is a new content management system for World of Warcraft servers, it is primarily built to manage TrinityCore 3.3.5a
       powered servers but may receive additional core support if there is enough demand for it. It is powered by the magics of Laravel for enhanced
       security layers and it also uses the latest framework for the front-end as well as the back-end.
-    </p>
+    -->
+    {!! env('APP_INFO') !!}</p>
     @if(!isset(Auth::user()->id))
     <div class="container col-md-6">
     <div class="row justify-content-md-center mt-20">

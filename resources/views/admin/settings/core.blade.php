@@ -12,14 +12,22 @@
                 <div class="alert alert-danger" style="display:none"></div>
                 <div class="form-group col-12">
                     <label>Application Name</label>
-                    <input type="text" class="form-control" name="appName" placeholder="App Name" value="{{ old('appName', env('APP_NAME')) }}">
+                    <input type="text" class="form-control" name="appName" placeholder="App Name" value="{{ old('appName', (env('APP_NAME'))) }}">
                     <div class="form-text text-muted small">
                       Your application name that will be displayed in the title bar when browsing around.
                     </div>
                 </div>
 
                 <div class="form-group col-12">
-                    <label>Application Url</label>
+                    <label>Application Description</label>
+                    <input type="text" class="form-control" name="appDesc" placeholder="App Description" value="{{ old('appDesc', env('APP_INFO')) }}">
+                    <div class="form-text text-muted small">
+                      Your application description that will be displayed in the main page. You can use <b>${APP_NAME}</b> or any other environment value.<br>You can also use <b>&lt;br&gt;</b> or any other HTML code.
+                    </div>
+                </div>
+
+                <div class="form-group col-12">
+                    <label>Application URL</label>
                     <input type="text" class="form-control" name="appUrl" placeholder="App Url" value="{{ old('appUrl', env('APP_URL')) }}">
                     <div class="form-text text-muted small">
                       The URL for the application, for example: <b>https://example.com/pear-cms</b>
@@ -413,6 +421,7 @@ if (result.value) {
       dataType: "JSON",
       data: {
           "appName": $("input[name='appName']").val(),
+          "appDesc": $("input[name='appDesc']").val(),
           "appUrl": $("input[name='appUrl']").val(),
           "realmlist": $("input[name='realmlist']").val(),
           "metaDescription": $("input[name='metaDescription']").val(),

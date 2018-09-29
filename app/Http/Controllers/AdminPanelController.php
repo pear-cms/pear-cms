@@ -66,6 +66,7 @@ class AdminPanelController extends Controller
 
       $validator = Validator::make($request->all(), [
         'appName'               => 'required|min:5',
+        'appDesc'               => 'required|min:5|max:500',
         'appUrl'                => 'required|min:10',
         'realmlist'             => 'required|min:5',
         'metaDescription'       => 'required|min:10|max:250',
@@ -100,6 +101,7 @@ class AdminPanelController extends Controller
         }
             Helpers::setConfig([
               'APP_NAME'             => '"' . $request->input('appName') . '"',
+              'APP_INFO'             => '"' . $request->input('appDesc') . '"',
               'APP_URL'              => $request->input('appUrl'),
               'REALMLIST'            => $request->input('realmlist'),
               'META_DESCRIPTION'     => '"' . $request->input('metaDescription') . '"',
