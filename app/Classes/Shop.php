@@ -10,5 +10,6 @@ use SoapParam;
 
 class Shop {
 
+  //write shop functions here.
 
 }
