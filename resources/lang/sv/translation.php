@@ -176,6 +176,10 @@ return [
   'button_publish_article'                  => 'Publicera Nyhet',
   'publish_article'                         => 'Publicera Nyhet',
 
+  //Shop
+  'shop_page'                               => 'Affär',
+  'shop_page_description'                   => 'Du kan köpa alla typer av varor i vår butik.',
+
   //Languages
   'english'                                 => '???',
   'swedish'                                 => '???',

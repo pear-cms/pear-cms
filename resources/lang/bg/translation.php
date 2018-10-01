@@ -33,7 +33,7 @@ return [
 
   // Donate page translations below.
   'donate_page_description'                 => 'Дари на ' . env('APP_NAME') . ' и получи монети като знак за благодарност.',
-  'placeholder_donate'                      => 'Въведете сумата, която да дарите...',
+  'placeholder_donate'                      => 'Въведете сумата, която искате да дарите...',
   'donate_amount'                           => 'Сума в долари ($)',
   'button_donate'                           => 'Дари',
 
@@ -110,7 +110,7 @@ return [
   'button_change_avatar'                    => 'Смяна на снимка',
   'button_my_tickets'                       => 'Моите въпроси',
   'button_gm_panel'                         => 'GM Панел',
-  'button_admin_panel'                         => 'Админ Панел',
+  'button_admin_panel'                      => 'Админ Панел',
   'button_log_out'                          => 'Излез',
 
 
@@ -175,6 +175,10 @@ return [
   'placeholder_article_title'               => env('APP_NAME') . ' получава голяма актуализация...',
   'button_publish_article'                  => 'Публикувай Статия',
   'publish_article'                         => 'Публикувай Статия',
+
+  //Shop
+  'shop_page'                               => 'Магазин',
+  'shop_page_description'                   => 'Можете да закупите всички видове стоки в нашия магазин.',
 
   //Languages
   'english'                                 => 'Английски',

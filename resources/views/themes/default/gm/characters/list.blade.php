@@ -33,9 +33,9 @@
     <td class="nosearch">
       <a href="{{url('/gm/account/view/'.$account->id)}}">
       View
-    </a> 
+    </a>
       /
-      <a href="{{url('/gm/account/edit/'.$account->id)}}">
+      <a href="{{url('/backend/account/'.$account->id.'/edit')}}">
         Edit
       </a>
     </td>

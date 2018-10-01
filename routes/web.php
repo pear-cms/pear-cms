@@ -73,6 +73,9 @@ Route::group(['middleware' => ['\App\Http\Middleware\SiteMaintenance::class']], 
   Route::get('/news/{id}', 'NewsController@getArticle')->name('getArticle');
   Route::post('/news/{id}', 'NewsController@addNewsComment')->name('newsId');
   Route::get('/news', 'NewsController@index')->name('news');
+
+  //Shop
+  Route::get('/shop', 'ShopController@index');
 });
 
 // Route group will redirect all routes within to maintenance page if auth maintenance is enabled.

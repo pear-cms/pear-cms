@@ -33,7 +33,7 @@ return [
 
   // Donate page translations below.
   'donate_page_description'                 => 'Donate to ' . env('APP_NAME') . ' and receive coins as a token of appreciation.',
-  'placeholder_donate'                      => 'Enter amount to doante...',
+  'placeholder_donate'                      => 'Enter amount to donate...',
   'donate_amount'                           => 'Amount in dollar ($)',
   'button_donate'                           => 'Donate',
 
@@ -175,6 +175,10 @@ return [
   'placeholder_article_title'               => env('APP_NAME') . ' is receiving a major update...',
   'button_publish_article'                  => 'Publish Article',
   'publish_article'                         => 'Publish Article',
+
+  //Shop
+  'shop_page'                               => 'Shop',
+  'shop_page_description'                   => 'You can purchase all kinds of goods in our shop.',
 
   //Languages
   'english'                                 => 'English',

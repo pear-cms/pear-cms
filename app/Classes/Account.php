@@ -27,7 +27,7 @@ class Account extends Model
      {
        return $data->city . ', ' . $data->country;
      } else {
-       return 'Unkown';
+       return 'Unknown';
      }
   }
 
