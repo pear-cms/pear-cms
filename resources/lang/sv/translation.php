@@ -179,6 +179,10 @@ return [
   //Shop
   'shop_page'                               => 'Affär',
   'shop_page_description'                   => 'Du kan köpa alla typer av varor i vår butik.',
+  'quick_options'                           => '???',
+  'show_all_items'                          => '???',
+  'show_all_categories'                     => '???',
+  'random_items'                            => '???',
 
   //Languages
   'english'                                 => '???',

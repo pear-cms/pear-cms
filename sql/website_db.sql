@@ -36,3 +36,34 @@ CREATE TABLE `news_comments` (
     `date` VARCHAR(30) NOT NULL COMMENT 'Date of occurrence.' ,
     PRIMARY KEY (`id`))
  ENGINE = InnoDB;
+
+ CREATE TABLE `shop_items` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`categoryid` INT(11) NOT NULL DEFAULT '1',
+	`quality` INT(11) NOT NULL DEFAULT '1',
+	`name` VARCHAR(255) NOT NULL,
+	`description` VARCHAR(255) NULL DEFAULT 'No description.',
+	`image` VARCHAR(255) NOT NULL DEFAULT 'inv_misc_questionmark',
+	`vp` INT(11) NULL DEFAULT '0',
+	`dp` INT(11) NULL DEFAULT '0',
+	PRIMARY KEY (`id`)
+)
+COLLATE='latin1_swedish_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=1
+;
+
+CREATE TABLE `shop_categories` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`name` VARCHAR(55) NULL DEFAULT NULL,
+	`description` VARCHAR(255) NOT NULL DEFAULT 'No description.',
+	`image` VARCHAR(255) NOT NULL DEFAULT 'inv_misc_questionmark',
+	PRIMARY KEY (`id`)
+)
+COLLATE='latin1_swedish_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=1
+;
+
+--Test Category, comment if you don't want it;
+INSERT INTO `shop_categories` VALUES (1, 'Test Category', 'Test Category', 'test.png');

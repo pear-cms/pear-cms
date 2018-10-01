@@ -179,6 +179,10 @@ return [
   //Shop
   'shop_page'                               => 'Магазин',
   'shop_page_description'                   => 'Можете да закупите всички видове стоки в нашия магазин.',
+  'quick_options'                           => 'Бързи опций',
+  'show_all_items'                          => 'Покажи всички артикули',
+  'show_all_categories'                     => 'Покажи всички категории',
+  'random_items'                            => 'Случайни артикули',
 
   //Languages
   'english'                                 => 'Английски',

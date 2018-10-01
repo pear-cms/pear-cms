@@ -11,41 +11,32 @@
     </p>
   </div>
 </div>
-<div class="container col-md-6 mt-20">
-  @if (Session::has('success'))
-              <div class="form success" style="display:block;">
-                {{ Session::get('success') }}
-              </div>
-                @endif
-                @if ( Session::has('fail'))
-                <div class="form error" style="display:block;">
-                {{ Session::get('fail') }}
-              </div>
-                @endif
-  <form action="{{ url('/donate') }}" method="POST">
-    @csrf
-    @if($errors->all())
-    <div class="form error" style="display:block;">
-    @foreach ($errors->all() as $error)
-                <p>{{ $error }}</p>
-            @endforeach
-    </div>
-    @endif
-    <div class="form-group">
-    <label for="amount">
-      {{ __('translation.donate_amount') }}
-    </label>
-    <input type="amount" class="form-control" id="amount" name="amount" aria-describedby="amount" placeholder="{{ __('translation.placeholder_donate') }}" value="{{ old('amount') }}" />
-    <small class="form-text text-muted">
-      <img src="{{ asset('images/icons/goldcoin.png') }}"> 1 = $1
-    </small>
-  </div>
+<div class="container col-md-6 text-grey mt-20">
+<div class="row">
 
-<div class="form-group text-center">
-<button type="submit" class="button border orange">
-{{ __('translation.button_donate') }}
-</button>
+    <div class="col-md-12 no-padding">
+    <h5 class="border-bottom mb-10">
+      {{ __('translation.quick_options') }}
+    </h5>
+  </div>
+  <a class="button border orange col-sm" href="{{ url('/shop/items') }}">
+      {{ __('translation.show_all_items') }}
+  </a>
+
+  <a class="button border orange col-sm" href="{{ url('/shop/categories') }}">
+      {{ __('translation.show_all_categories') }}
+  </a>
+  <div class="col-md-12 mt-20 no-padding">
+  <h5 class="border-bottom mb-10 text-grey">
+    {{ __('translation.random_items') }}
+  </h5>
 </div>
-  </form>
+@foreach($randomitems as $randomitem)
+<a class="button border orange col-sm-5 center text-center" href="{{ url('/shop/item/'.$randomitem->id) }}">
+   <img alt="itemIcon" src="https://wow.zamimg.com/images/wow/icons/medium/{{ $randomitem->image }}.jpg"/><p style="color:{{ Helpers::findQuality($randomitem->quality) }}; margin:0; padding:0;">{{ $randomitem->name }}</p>
+   <p style="color:#b7b7b7; margin:0; padding:0; font-size:9px;">{{$randomitem->description}}</p>
+</a>
+@endforeach
+</div>
 </div>
 @endsection

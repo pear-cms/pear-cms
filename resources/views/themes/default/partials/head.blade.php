@@ -78,7 +78,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link disabled" href="#">
+              <a class="nav-link" href="{{ url('/shop') }}">
                 {{ __('translation.menu_shop') }}
               </a>
             </li>

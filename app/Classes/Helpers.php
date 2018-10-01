@@ -773,4 +773,31 @@ class Helpers {
     return array_diff(scandir('../public/images/news/'), array('..', '.'));
   }
 
+  //shop functions
+
+  public static function randomShopItems()
+  {
+    // returns the characters of the account by id.
+    return DB::connection('website')->table('shop_items')->take(10)->inRandomOrder()->get();
+  }
+
+  public static function findQuality($quality)
+  {
+    $qualities = [
+      '0' => '#9d9d9d',
+      '1' => '#ffffff',
+      '2' => '#1eff00',
+      '3' => '#0070dd',
+      '4' => '#a335ee',
+      '5' => '#ff8000',
+      '6' => '#e6cc80',
+    ];
+
+    if (array_key_exists($quality, $qualities)) {
+      return $qualities[$quality];
+    } else {
+      return "red";
+    }
+  }
+
 }

@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Language;
 use Helpers;
-
 class ShopController extends Controller
 {
     public function index()
@@ -14,6 +13,7 @@ class ShopController extends Controller
       return view('shop.home',
       [
         'title' => 'Shop',
+        'randomitems' => Helpers::randomShopItems(),
       ]);
 
     }

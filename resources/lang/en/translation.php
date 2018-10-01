@@ -179,6 +179,10 @@ return [
   //Shop
   'shop_page'                               => 'Shop',
   'shop_page_description'                   => 'You can purchase all kinds of goods in our shop.',
+  'quick_options'                           => 'Quick Options',
+  'show_all_items'                          => 'Show all items',
+  'show_all_categories'                     => 'Show all categories',
+  'random_items'                            => 'Random items',
 
   //Languages
   'english'                                 => 'English',
