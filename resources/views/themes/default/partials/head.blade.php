@@ -10,7 +10,8 @@
         <meta name="keywords" content="{{ env('META_KEYWORDS') }}">
 
         <title>{{ env('APP_NAME') }} @if ( isset ($title ) ) | {{ $title }} @endif</title>
-
+        <script>var whTooltips = {colorLinks: true, iconizeLinks: true, renameLinks: true};</script>
+        <script src="http://wow.zamimg.com/widgets/power.js"></script>
         <!-- Google fonts -->
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
