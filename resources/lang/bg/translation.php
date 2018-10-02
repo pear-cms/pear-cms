@@ -183,6 +183,12 @@ return [
   'show_all_items'                          => 'Покажи всички артикули',
   'show_all_categories'                     => 'Покажи всички категории',
   'random_items'                            => 'Случайни артикули',
+  'shop_items_page'                         => 'Артикули',
+  'shop_items_page_description'             => 'Тук вие виждате всички артикули на '.env('APP_NAME'),
+  'showing_all_items'                       => 'Всички Артикули',
+  'shop_categories_page'                    => 'Категории',
+  'shop_categories_page_description'        => 'Можете да разгледате разнообразието от категории на '.env('APP_NAME'),
+  'showing_all_categories'                  => 'Всички Категории',
 
   //Languages
   'english'                                 => 'Английски',

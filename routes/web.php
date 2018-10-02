@@ -76,6 +76,9 @@ Route::group(['middleware' => ['\App\Http\Middleware\SiteMaintenance::class']], 
 
   //Shop
   Route::get('/shop', 'ShopController@index');
+  Route::get('/shop/items', 'ShopController@showItems');
+  Route::get('/shop/categories', 'ShopController@showCategories');
+  Route::get('/shop/category/{id}', 'ShopController@showCategory');
 });
 
 // Route group will redirect all routes within to maintenance page if auth maintenance is enabled.

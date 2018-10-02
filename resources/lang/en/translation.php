@@ -183,6 +183,12 @@ return [
   'show_all_items'                          => 'Show all items',
   'show_all_categories'                     => 'Show all categories',
   'random_items'                            => 'Random items',
+  'shop_items_page'                         => 'Shop Items',
+  'shop_items_page_description'             => 'Here you can see all items that are offered by '.env('APP_NAME'),
+  'showing_all_items'                       => 'All Items',
+  'shop_categories_page'                    => 'Categories',
+  'shop_categories_page_description'        => 'You can see all kinds of categories of '.env('APP_NAME'),
+  'showing_all_categories'                  => 'All Categories',
 
   //Languages
   'english'                                 => 'English',

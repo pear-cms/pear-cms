@@ -34,7 +34,7 @@
 @foreach($randomitems as $randomitem)
 <a class="button border orange col-sm-5 center text-center" href="{{ url('/shop/item/'.$randomitem->id) }}">
    <img alt="itemIcon" src="http://media.blizzard.com/wow/icons/36/{{ $randomitem->image }}.jpg"/><p style="color:{{ Helpers::findQuality($randomitem->quality) }}; margin:0; padding:0;">{{ $randomitem->name }}</p>
-   <p style="color:#b7b7b7; margin:0; padding:0; font-size:9px;">{{$randomitem->description}}</p>
+   <p style="color:#b7b7b7; margin:0; padding:0; font-size:9px;">{{Helpers::limitDescription($randomitem->description)}}</p>
 </a>
 @endforeach
 </div>

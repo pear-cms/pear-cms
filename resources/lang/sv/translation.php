@@ -183,6 +183,12 @@ return [
   'show_all_items'                          => '???',
   'show_all_categories'                     => '???',
   'random_items'                            => '???',
+  'shop_items_page'                         => '???',
+  'shop_items_page_description'             => '???',
+  'showing_all_items'                       => '???',
+  'shop_categories_page'                    => '???',
+  'shop_categories_page_description'        => '???',
+  'showing_all_categories'                  => '???',
 
   //Languages
   'english'                                 => '???',

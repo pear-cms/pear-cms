@@ -723,6 +723,17 @@ class Helpers {
     return $str;
   }
 
+  public static function limitDescription($string)
+  {
+    // limits description length.
+    if (strlen($string) > 15) {
+      $str = substr($string, 0, 12) . "...";
+    } else {
+      $str = $string;
+    }
+    return $str;
+  }
+
   public static function ticketStatus($status)
   {
     // returns ticket status.
@@ -777,8 +788,32 @@ class Helpers {
 
   public static function randomShopItems()
   {
-    // returns the characters of the account by id.
+    // returns 10 random shop items.
     return DB::connection('website')->table('shop_items')->take(10)->inRandomOrder()->get();
+  }
+
+  public static function getShopItems()
+  {
+    // returns all shop items.
+    return DB::connection('website')->table('shop_items')->get();
+  }
+
+  public static function getShopCategories()
+  {
+    // returns all shop categories.
+    return DB::connection('website')->table('shop_categories')->get();
+  }
+
+  public static function getCategory($id)
+  {
+    // returns category info
+    return DB::connection('website')->table('shop_categories')->where('id', '=', $id)->get()->first();
+  }
+
+  public static function getItemsByCategory($categoryid)
+  {
+    // return items by category id
+    return DB::connection('website')->table('shop_items')->where('categoryid', '=', $categoryid)->get();
   }
 
   public static function findQuality($quality)
