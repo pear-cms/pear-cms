@@ -20,7 +20,7 @@ Please, insert the SQL files from within [/sql](https://github.com/pear-cms/pear
 
 * **Pear CMS** - *Initial work* - [Pear CMS](https://github.com/pear-cms)
 * **Albin** - *Development* - [albin@pear-cms.eu](mailto:albin@pear-cms.eu)
-* **Hristiyan** - *Development* - [himikoemu@pear-cms.eu](mailto:himikoemu@pear-cms.eu)
+* **Hristiyan** - *Development* - [titaka@pear-cms.eu](mailto:titaka@pear-cms.eu)
 
 See also the list of [contributors](https://github.com/pear-cms/pear-cms/graphs/contributors) who participated in this project.
 
