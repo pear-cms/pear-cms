@@ -726,8 +726,8 @@ class Helpers {
   public static function limitDescription($string)
   {
     // limits description length.
-    if (strlen($string) > 15) {
-      $str = substr($string, 0, 12) . "...";
+    if (strlen($string) > 25) {
+      $str = substr($string, 0, 21) . "...";
     } else {
       $str = $string;
     }

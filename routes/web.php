@@ -74,6 +74,9 @@ Route::group(['middleware' => ['\App\Http\Middleware\SiteMaintenance::class']], 
   Route::post('/news/{id}', 'NewsController@addNewsComment')->name('newsId');
   Route::get('/news', 'NewsController@index')->name('news');
 
+  //Features
+  Route::get('/features', function(){ return view('misc.features'); });
+
   //Shop
   Route::get('/shop', 'ShopController@index');
   Route::get('/shop/items', 'ShopController@showItems');
