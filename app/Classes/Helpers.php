@@ -444,7 +444,7 @@ class Helpers {
   public static function getRealmIcon($icon)
   {
     // returns realm icon
-    $icons = [
+    static $icons = [
       '0'     => 'Normal',
       '1'     => 'PvP',
       '4'     => 'Normal',
@@ -624,7 +624,7 @@ class Helpers {
   public static function MapIdToZoneName($id)
   {
     // returns map name by map id
-    $maps = [
+    static $maps = [
       '0'   => 'Eastern Kingdoms',
       '1'   => 'Kalimdor',
       '30'  => 'Alterac Valley',
@@ -818,7 +818,7 @@ class Helpers {
 
   public static function findQuality($quality)
   {
-    $qualities = [
+    static $qualities = [
       '0' => '#9d9d9d',
       '1' => '#ffffff',
       '2' => '#1eff00',

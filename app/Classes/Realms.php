@@ -25,7 +25,7 @@ class Realms extends Model
     public static function getRealmIcon($icon)
     {
       // returns realm icon
-      $icons = [
+      static $icons = [
         '0'     => 'Normal',
         '1'     => 'PvP',
         '4'     => 'Normal',
@@ -39,7 +39,7 @@ class Realms extends Model
     public static function getGameBuild($gamebuild)
     {
       // returns realm icon
-      $gamebuilds = [
+      static $gamebuilds = [
         '5875'     => '1.12.1',
         '6005'     => '1.12.2',
         '8606'     => '2.4.3',

@@ -13,7 +13,7 @@ class Account extends Model
 
   public static function statusToText($locked)
   {
-      $status = [
+      static $status = [
         '0'     => 'unlocked',
         '1'     => 'locked',
       ];
