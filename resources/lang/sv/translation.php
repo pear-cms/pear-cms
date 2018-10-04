@@ -12,6 +12,7 @@ return [
   'menu_game_status'                        => 'Se server status',
   'menu_language'                           => 'Språk',
   'menu_features'                           => 'Kännemärken',
+  'menu_changelog'                          => '???',
   'menu_register'                           => 'Registrera',
   'menu_log_out'                            => 'Logga ut',
   'menu_log_in'                             => 'Logga in',

@@ -106,8 +106,8 @@
 <button type="submit" class="button border orange">
 {{ __('translation.button_comment') }}
 </button>
-</form>
 </div>
+</form>
 </div>
 </div>
 </div>

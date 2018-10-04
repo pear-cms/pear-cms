@@ -14,6 +14,7 @@ use Characters;
 use Logs;
 use NewsComments;
 use News;
+use Changelog;
 use Theme;
 
 class AdminPanelController extends Controller
@@ -250,6 +251,16 @@ class AdminPanelController extends Controller
       }
     }
 
+    public function deleteChangelog($id)
+    {
+      if ( Changelog::destroy($id))
+      {
+        return response()->json(['success' => true], 200);
+      } else {
+        return response()->json(['success' => false], 200);
+      }
+    }
+
     public function accounts()
     {
       // get IP info for last ip that accessed account.
@@ -279,6 +290,16 @@ class AdminPanelController extends Controller
       ]);
     }
 
+    public function changelog()
+    {
+      // get IP info for last ip that accessed account.
+      return view('admin.changelogs.changelogs',
+      [
+        'title' => 'Changelogs',
+        'changelogs' => Changelog::paginate(15),
+      ]);
+    }
+
     public function articles()
     {
       // get IP info for last ip that accessed account.
@@ -295,6 +316,15 @@ class AdminPanelController extends Controller
       [
         'title' => 'Editing Article',
         'article' => News::where('id', $id)->first(),
+      ]);
+    }
+
+    public function editChangelog($id)
+    {
+      return view('admin.changelogs.changelog',
+      [
+        'title' => 'Editing Changelog',
+        'changelog' => Changelog::where('id', $id)->first(),
       ]);
     }
 
@@ -329,6 +359,57 @@ class AdminPanelController extends Controller
       [
         'title' => 'Creating Article'
       ]);
+    }
+
+    public function saveChangelog($id, Request $request)
+    {
+      // Save article.
+
+      $validator = Validator::make($request->all(), [
+        'changelogTitle'           => 'required|min:3|max:50',
+        'changelogContent'         => 'required|max:65000',
+
+
+        ]);
+        if ($validator->fails())
+        {
+            return response()->json(['success' => false, 'errors' => $validator->getMessageBag()->toArray()], 422);
+        }
+            Changelog::where('id', $id)->update([
+              'title'                    => $request->input('changelogTitle'),
+              'content'                  => $request->input('changelogContent'),
+              'author'                   => Auth::user()->username,
+            ]);
+            return response()->json(['success' => true], 200);
+    }
+
+    public function createChangelog()
+    {
+      return view('admin.changelogs.create',
+      [
+        'title' => 'Creating Changelog'
+      ]);
+    }
+
+    public function publishChangelog(Request $request)
+    {
+      // Publish article.
+
+      $validator = Validator::make($request->all(), [
+        'changelogTitle'           => 'required|min:3|max:255',
+        'changelogContent'         => 'required|max:65000',
+        ]);
+        if ($validator->fails())
+        {
+            return response()->json(['success' => false, 'errors' => $validator->getMessageBag()->toArray()], 422);
+        }
+            Changelog::insert([
+              'title'                    => $request->input('changelogTitle'),
+              'content'                  => $request->input('changelogContent'),
+              'author'                   => Auth::user()->username,
+              'timestamp'                => time(),
+            ]);
+            return response()->json(['success' => true], 200);
     }
 
     public function publishArticle(Request $request)

@@ -45,6 +45,13 @@ Route::get('backend/article/edit/{id}', 'AdminPanelController@editArticle');
 Route::post('backend/article/edit/save/{id}', 'AdminPanelController@saveArticle');
 Route::post('backend/article/{id}/delete', 'AdminPanelController@deleteArticle');
 
+Route::get('backend/changelog', 'AdminPanelController@changelog')->name('changelogmanager');
+Route::get('backend/changelog/create', 'AdminPanelController@createChangelog');
+Route::post('backend/changelog/create/publish', 'AdminPanelController@publishChangelog');
+Route::get('backend/changelog/edit/{id}', 'AdminPanelController@editChangelog');
+Route::post('backend/changelog/edit/save/{id}', 'AdminPanelController@saveChangelog');
+Route::post('backend/changelog/{id}/delete', 'AdminPanelController@deleteChangelog');
+
 Route::get('backend/themes', 'AdminPanelController@themes')->name('themesmanager');
 
 Route::fallback(function() {
@@ -68,6 +75,10 @@ Route::group(['middleware' => ['\App\Http\Middleware\SiteMaintenance::class']], 
   Route::get('/status', function () {
       return view('server.status', ['title' => __('translation.server_status')]);
   });
+
+  // Changelog routes below.
+  Route::get('/changelog/{id}', 'ChangelogController@getChangelog')->name('getChangelog');
+  Route::get('/changelog', 'ChangelogController@index')->name('changelogs');
 
   // News routes below.
   Route::get('/news/{id}', 'NewsController@getArticle')->name('getArticle');

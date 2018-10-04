@@ -12,6 +12,7 @@ return [
   'menu_game_status'                        => 'Преглед на състоянието на играта',
   'menu_language'                           => 'Език',
   'menu_features'                           => 'Функции',
+  'menu_changelog'                          => 'Промени',
   'menu_register'                           => 'Регистриране',
   'menu_log_out'                            => 'Излез',
   'menu_log_in'                             => 'Влез',

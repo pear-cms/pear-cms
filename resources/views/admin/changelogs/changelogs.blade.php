@@ -4,13 +4,13 @@
 <div class="content content-full">
     <div class="block">
         <div class="block-header block-header-default">
-            <h3 class="block-title">All Articles <a href="{{ url('backend/article/create') }}" class="btn btn-primary float-right">Create New Article</a></h3>
+            <h3 class="block-title">All Changelogs <a href="{{ url('backend/changelog/create') }}" class="btn btn-primary float-right">Create New Changelog</a></h3>
         </div>
         <div class="block-content">
             <p>
-              From here you can view all the articles that are published. You can filter through the articles by typing into the input field below.
+              From here you can view all the changelogs that are published. You can filter through the changelogs by typing into the input field below.
             </p>
-            <input class="form-control mb-10" type="text" id="search" placeholder="Type to search for an article..." />
+            <input class="form-control mb-10" type="text" id="search" placeholder="Type to search for an changelog..." />
             <div class="table-responsive">
                 <table class="table table-striped table-vcenter" id="articles">
                     <thead>
@@ -22,20 +22,20 @@
                         </tr>
                     </thead>
                     <tbody>
-                      @foreach ($articles as $article)
+                      @foreach ($changelogs as $changelog)
                         <tr>
-                            <td class="text-center"><a href="{{ url('news') }}/{{ $article->id }}" target="_blank">{{ $article->id }}</a></td>
-                            <td class="font-w600">{{ $article->title }}</td>
-                            <td>{{ $article->author }}</td>
+                            <td class="text-center"><a href="{{ url('news') }}/{{ $changelog->id }}" target="_blank">{{ $changelog->id }}</a></td>
+                            <td class="font-w600">{{ $changelog->title }}</td>
+                            <td>{{ $changelog->author }}</td>
                             <td class="text-center">
                                 <div class="btn-group">
-                                  <a class="btn btn-sm btn-secondary" data-toggle="tooltip" title="View" href="{{ url('news') }}/{{ $article->id }}" target="_blank">
+                                  <a class="btn btn-sm btn-secondary" data-toggle="tooltip" title="View" href="{{ url('changelog') }}/{{ $changelog->id }}" target="_blank">
                                       <i class="fas fa-eye"></i>
                                   </a>
-                                  <a class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Edit" href="{{ url('backend/article/edit') }}/{{ $article->id }}" target="_blank">
+                                  <a class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Edit" href="{{ url('backend/changelog/edit') }}/{{ $changelog->id }}" target="_blank">
                                       <i class="fas fa-pen"></i>
                                   </a>
-                                    <a class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Delete" onclick="deleteFunction('{{ $article->id }}')">
+                                    <a class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Delete" onclick="deleteFunction('{{ $changelog->id }}')">
                                         <i class="fas fa-times"></i>
                                     </a>
                                 </div>
@@ -44,7 +44,7 @@
                         @endforeach
                     </tbody>
                 </table>
-                {{ $articles->links() }}
+                {{ $changelogs->links() }}
             </div>
         </div>
     </div>
@@ -71,7 +71,7 @@ $("#search").on("keyup", function() {
     event.preventDefault(); // prevent form submit
             swal({
       title: "Are you sure?",
-      text: "Deleting an article is permanent and you cannot recover it.",
+      text: "Deleting an changelog is permanent and you cannot recover it.",
       type: 'warning',
   showCancelButton: true,
   confirmButtonColor: '#fc5c65',
@@ -81,7 +81,7 @@ $("#search").on("keyup", function() {
   if (result.value) {
     $.ajax(
     {
-        url: "article/" + id + "/delete",
+        url: "changelog/" + id + "/delete",
         type: 'POST',
         dataType: "JSON",
         data: {
@@ -92,7 +92,7 @@ $("#search").on("keyup", function() {
         {
             //console.log(response); // see the reponse sent
             swal({
-              title: "Article was deleted.",
+              title: "Changelog was deleted.",
               text: "Page is reloading in 3 seconds.",
               type: 'success',
             })
@@ -105,7 +105,7 @@ $("#search").on("keyup", function() {
          //console.log(xhr.responseText);
          swal({
            title: "An error occurred.",
-           text: "Article was not deleted. Try again!",
+           text: "Changelog was not deleted. Try again!",
            type: 'error',
          })
        }

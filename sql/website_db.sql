@@ -65,5 +65,18 @@ ENGINE=InnoDB
 AUTO_INCREMENT=1
 ;
 
+CREATE TABLE `changelogs` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`title` VARCHAR(255) NOT NULL DEFAULT 'Realm',
+	`timestamp` INT(20) NOT NULL DEFAULT '1104746400',
+	`content` TEXT NOT NULL,
+	`author` VARCHAR(255) NOT NULL,
+	PRIMARY KEY (`id`)
+)
+ENGINE=InnoDB
+AUTO_INCREMENT=1
+;
+
+
 --Test Category, comment if you don't want it;
 INSERT INTO `shop_categories` VALUES (1, 'Test Category', 'Test Category', 'test.png');

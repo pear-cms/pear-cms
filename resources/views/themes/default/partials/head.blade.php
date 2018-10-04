@@ -43,8 +43,8 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
-                {{ __('translation.menu_features') }}
+              <a class="nav-link" href="{{ url('/changelog') }}">
+                {{ __('translation.menu_changelog') }}
               </a>
             </li>
             <li class="nav-item dropdown">

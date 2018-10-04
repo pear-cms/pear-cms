@@ -193,6 +193,7 @@ return [
         'Tickets' => App\Classes\Tickets::class,
         'Account' => App\Classes\Account::class,
         'Characters' => App\Classes\Characters::class,
+        'Changelog' => App\Classes\Changelog::class,
         'News' => App\Classes\News::class,
         'NewsComments' => App\Classes\NewsComments::class,
         'Logs' => App\Classes\Logs::class,

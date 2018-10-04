@@ -12,6 +12,7 @@ return [
   'menu_game_status'                        => 'View game status',
   'menu_language'                           => 'Language',
   'menu_features'                           => 'Features',
+  'menu_changelog'                          => 'Changelog',
   'menu_register'                           => 'Register',
   'menu_log_out'                            => 'Log Out',
   'menu_log_in'                             => 'Log in',

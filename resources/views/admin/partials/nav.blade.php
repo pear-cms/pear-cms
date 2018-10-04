@@ -27,6 +27,9 @@
                         <li>
                             <a class="{{ (Request::route()->getName() == 'themesmanager') ? 'active' : '' }}" href="{{ url('backend/themes') }}">Themes Manager</a>
                         </li>
+                        <li>
+                            <a class="{{ (Request::route()->getName() == 'changelogmanager') ? 'active' : '' }}" href="{{ url('backend/changelog') }}">Changelog Manager</a>
+                        </li>
                     </ul>
                 </li>
                 @if(!(url()->previous() == url()->current()))
