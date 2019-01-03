@@ -46,7 +46,7 @@
         <ul>
           <li>
             <strong>
-              set realmlist {{ env('REALM_IP') }}
+              set realmlist {{ env('REALMLIST') }}
             </strong>
           </li>
         </ul>
